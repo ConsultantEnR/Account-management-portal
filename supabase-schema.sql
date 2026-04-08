@@ -51,6 +51,8 @@ CREATE INDEX IF NOT EXISTS accounts_user_id_idx ON public.accounts (user_id);
 --      hugo.pagola@aegide-international.com
 --      raphael.gabriels@dolfines.com
 --      khalil.badri@aegide-international.com
+--      julia.lefloch@aegide-international.com
+--      dimitri.fay@dolfines.com
 --
 -- 2. OU utilisez ce script pour créer les utilisateurs
 --    directement (nécessite service_role, à exécuter
