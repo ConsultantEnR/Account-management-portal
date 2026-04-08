@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Tracker - Dolfines AM Portal</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .tracker-header { display:flex; align-items:flex-start; gap:16px; width:100%; }
+    .tracker-header-copy { flex:1; }
+    .tracker-header-actions { margin-left:auto; display:flex; align-items:center; gap:10px; }
+    .filter-shell { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(240px,.8fr); gap:16px; align-items:start; }
+    .filter-side-note { background:linear-gradient(180deg, rgba(24,99,220,0.08) 0%, rgba(24,99,220,0.03) 100%); border:1px solid rgba(24,99,220,0.16); border-radius:16px; padding:16px; }
+    .filter-side-note strong { display:block; color:var(--primary); font-size:13px; margin-bottom:6px; }
+    .filter-side-note p { font-size:12.5px; line-height:1.6; color:#5e7088; }
+    .tracker-table th, .tracker-table td { padding: 8px 10px; font-size: 12px; white-space: nowrap; }
+    .tracker-table .action-cell { text-align: center; cursor: pointer; font-size: 15px; }
+    .tracker-table .action-cell:hover { background: rgba(24,99,220,0.08); }
+    .tier-badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:11px; font-weight:700; }
+    .tier-key { background:#eef2ff; color:#272A5A; border:1px solid #c5cdf5; font-weight:800; }
+    .tier-core { background:#eff6ff; color:#1863DC; border:1px solid #bdd8fb; }
+    .tier-opp { background:#f0fdf4; color:#1aaa55; border:1px solid #bbf0cf; }
+    .pct-cell { font-weight:700; }
+    .pct-high { color: var(--success); }
+    .pct-mid  { color: var(--warning); }
+    .pct-low  { color: var(--danger); }
+    .group-header td { background: #e8eef5; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--primary); }
+    .sticky-left { position:sticky; left:0; background:white; z-index:1; }
+    .sticky-left-2 { position:sticky; left:120px; background:white; z-index:1; }
+    .btn-edit-row { background:none; border:none; cursor:pointer; font-size:13px; padding:3px 7px; border-radius:4px; transition:background .15s; }
+    .btn-edit-row:hover { background:#f0f0f0; }
+    .status-dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:3px; }
+    .dot-done { background:var(--success); }
+    .dot-progress { background:var(--in-progress); }
+    .dot-not { background:var(--danger); }
+    .dot-na { background:var(--na); }
+    @media (max-width: 900px) {
+      .tracker-header { flex-direction:column; }
+      .tracker-header-actions { margin-left:0; width:100%; }
+      .tracker-header-actions .btn { width:100%; justify-content:center; }
+      .filter-shell { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-cover"></div>
+  <div class="bg-overlay"></div>
+
+  <div id="headerMount"></div>
+  <div id="sidebarMount"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <span class="icon">&#128202;</span>
+      <div>
+        <h1>Account Tracker</h1>
+        <p>Vue d'ensemble de tous les comptes et de l'avancement des 25 actions</p>
+      </div>
+      <button class="btn btn-primary" style="margin-left:auto;" onclick="openNewAccountModal()">+ Nouveau compte</button>
+    </div>
+
+    <section class="section-intro">
+      <div class="hero-panel">
+        <div class="hero-kicker">D&eacute;marrage guid&eacute;</div>
+        <h2>Ajoutez un compte en quelques champs cl&eacute;s, puis suivez la progression sans ambigu&iuml;t&eacute;.</h2>
+        <p>Le tracker doit permettre &agrave; chacun de comprendre quoi remplir au premier regard. Les champs essentiels sont mis en avant, les filtres servent &agrave; retrouver vite les bons comptes et chaque cellule reste exploitable sans formation lourde.</p>
+        <div class="hero-checklist">
+          <span>Nom du compte et responsable visibles en priorit&eacute;</span>
+          <span>Tier et score ICP clairement positionn&eacute;s</span>
+          <span>Tableau utilisable comme cockpit quotidien</span>
+          <span>Lecture rapide des statuts et du pourcentage global</span>
+        </div>
+      </div>
+      <aside class="info-panel">
+        <h3>Parcours recommand&eacute;</h3>
+        <div class="mini-steps">
+          <div class="mini-step">
+            <span class="mini-step-num">1</span>
+            <div>
+              <strong>Cr&eacute;er le compte</strong>
+              <p>Renseignez d'abord le nom, le responsable, le tier et l'ICP si disponible.</p>
+            </div>
+          </div>
+          <div class="mini-step">
+            <span class="mini-step-num">2</span>
+            <div>
+              <strong>V&eacute;rifier la priorit&eacute;</strong>
+              <p>Les cartes de synth&egrave;se et les badges aident &agrave; identifier les comptes &agrave; traiter en premier.</p>
+            </div>
+          </div>
+          <div class="mini-step">
+            <span class="mini-step-num">3</span>
+            <div>
+              <strong>Ouvrir le d&eacute;tail</strong>
+              <p>Acc&eacute;dez ensuite &agrave; la fiche d&eacute;taill&eacute;e pour documenter les 25 actions sans rien oublier.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Stats row -->
+    <div class="grid-4 mb-24" id="statsRow"></div>
+
+    <!-- Filters -->
+    <div class="card mb-16">
+      <div class="card-body" style="padding:14px 20px;">
+        <div class="form-guide" style="margin-bottom:14px;">
+          <div>
+            <strong>Retrouver rapidement un compte</strong>
+            <p>Commencez par le nom si vous savez quel compte ouvrir, puis affinez avec le tier ou le responsable.</p>
+          </div>
+          <span class="guide-badge">Recherche rapide</span>
+        </div>
+        <div class="flex align-center gap-12 flex-wrap">
+          <div style="flex:1;min-width:200px;">
+            <input type="text" id="filterName" class="form-control" placeholder="&#128269; Rechercher un compte..." oninput="renderTable()" style="margin:0;">
+          </div>
+          <div>
+            <select id="filterTier" class="form-control" onchange="renderTable()" style="margin:0;width:160px;">
+              <option value="">Tous les tiers</option>
+              <option value="Key">Key</option>
+              <option value="Core">Core</option>
+              <option value="Opportunistic">Opportunistic</option>
+            </select>
+          </div>
+          <div>
+            <select id="filterOwner" class="form-control" onchange="renderTable()" style="margin:0;width:160px;">
+              <option value="">Tous les responsables</option>
+            </select>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="clearFilters()">R&eacute;initialiser</button>
+        </div>
+        <div class="filter-side-note" style="margin-top:14px;">
+          <strong>Astuce d'usage</strong>
+          <p>Si vous cr&eacute;ez un nouveau compte, ouvrez sa fiche d&eacute;taill&eacute;e juste apr&egrave;s pour renseigner les actions prioritaires et &eacute;viter un tracker incomplet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <div style="overflow-x:auto;max-height:calc(100vh - 340px);">
+        <table class="tracker-table sticky-header" id="trackerTable" style="width:max-content;min-width:100%;">
+          <thead>
+            <tr id="trackerHead"></tr>
+          </thead>
+          <tbody id="trackerBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal: New / Edit Account -->
+  <div class="modal-overlay" id="accountModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span id="modalTitle">Nouveau compte</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="grid-2">
+          <div class="form-group required field-spotlight">
+            <label>Nom du compte *</label>
+            <input type="text" id="f_name" class="form-control" placeholder="Ex: ETMF, Total Energies...">
+            <div class="field-hint">Le nom du compte est le point d'entr&eacute;e principal pour la recherche et la navigation.</div>
+          </div>
+          <div class="form-group required field-spotlight">
+            <label>Responsable (Account Owner) *</label>
+            <input type="text" id="f_owner" class="form-control" placeholder="Pr&eacute;nom Nom">
+          </div>
+          <div class="form-group">
+            <label>Tier</label>
+            <select id="f_tier" class="form-control">
+              <option value="Key">Key</option>
+              <option value="Core">Core</option>
+              <option value="Opportunistic">Opportunistic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Score ICP</label>
+            <input type="number" id="f_icp" class="form-control" placeholder="0-630" min="0" max="630">
+          </div>
+          <div class="form-group">
+            <label>Objectif annuel (USD)</label>
+            <input type="number" id="f_target" class="form-control" placeholder="250000">
+          </div>
+          <div class="form-group">
+            <label>R&eacute;alis&eacute; YTD (USD)</label>
+            <input type="number" id="f_achieved" class="form-control" placeholder="0">
+          </div>
+        </div>
+        <div class="field-chip-row" style="margin: 2px 0 14px;">
+          <span class="field-chip">Champ prioritaire : nom du compte</span>
+          <span class="field-chip">Champ prioritaire : responsable</span>
+          <span class="field-chip">Tier = niveau d'effort</span>
+          <span class="field-chip">ICP = niveau de priorit&eacute;</span>
+        </div>
+        <div class="form-group">
+          <label>Commentaires / Actions &agrave; mener</label>
+          <textarea id="f_comments" class="form-control" rows="3" placeholder="Notes libres..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal()">Annuler</button>
+        <button class="btn btn-primary" onclick="saveAccountFromModal()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    let editingId = null;
+
+    function buildTrackerTemplateAccount() {
+      return {
+        id: generateId(),
+        accountName: 'ETMF',
+        tier: 'Key',
+        icpScore: 274,
+        icpFit: 'Good Fit',
+        accountOwner: 'Dylan',
+        lastUpdated: '2026-03-31',
+        target: 250000,
+        achieved: 98120.96,
+        comments: 'Meeting to be schedule with Denis Raoul in La garde during Q2 or begining Q3.',
+        actions: {
+          1: { status: 'done' },
+          2: { status: 'done' },
+          3: { status: 'done' },
+          4: { status: 'done' },
+          5: { status: 'done' },
+          6: { status: 'done' },
+          7: { status: 'not-started' },
+          8: { status: 'done' },
+          9: { status: 'done' },
+          10: { status: 'done' },
+          11: { status: 'done' },
+          12: { status: 'done' },
+          13: { status: 'not-started' },
+          14: { status: 'done' },
+          15: { status: 'not-started' },
+          16: { status: 'not-started' },
+          17: { status: 'done' },
+          18: { status: 'done' },
+          19: { status: 'done' },
+          20: { status: 'done' },
+          21: { status: 'done' },
+          22: { status: 'not-started' },
+          23: { status: 'not-started' },
+          24: { status: 'done' },
+          25: { status: 'done' },
+        },
+      };
+    }
+
+    function ensureTrackerUsesExcelRow3() {
+      window._cache.accounts = window._cache.accounts.filter(acc => {
+        const name  = (acc.accountName  || '').trim().toLowerCase();
+        const owner = (acc.accountOwner || '').trim().toLowerCase();
+        return name !== 'account name' && owner !== 'account owner';
+      });
+    }
+
+    /* â”€â”€ Render stats â”€â”€ */
+    function renderStats() {
+      const accounts = getAccounts();
+      const key = accounts.filter(a => a.tier === 'Key').length;
+      const core = accounts.filter(a => a.tier === 'Core').length;
+      const opp = accounts.filter(a => a.tier === 'Opportunistic').length;
+      const avgPct = accounts.length
+        ? Math.round(accounts.reduce((s,a) => s + (calcCompletion(a.actions)||0), 0) / accounts.length)
+        : 0;
+
+      document.getElementById('statsRow').innerHTML = `
+        <div class="stat-card">
+          <div class="stat-number">${accounts.length}</div>
+          <div class="stat-label">Comptes totaux</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="color:#272A5A;">${key}</div>
+          <div class="stat-label">Comptes Key</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="color:#1863DC;">${core}</div>
+          <div class="stat-label">Comptes Core</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="color:#1aaa55;">${avgPct}%</div>
+          <div class="stat-label">Compl&eacute;tion moy.</div>
+        </div>
+      `;
+
+      // Populate owner filter
+      const owners = [...new Set(accounts.map(a => a.accountOwner).filter(Boolean))];
+      const sel = document.getElementById('filterOwner');
+      const cur = sel.value;
+      sel.innerHTML = '<option value="">Tous les responsables</option>' +
+        owners.map(o => `<option value="${o}" ${o===cur?'selected':''}>${o}</option>`).join('');
+    }
+
+    /* â”€â”€ Build table header â”€â”€ */
+    function buildTableHeader() {
+      const head = document.getElementById('trackerHead');
+      head.innerHTML = `<tr>
+        <th class="sticky-left" style="min-width:130px;">Compte</th>
+        <th style="min-width:90px;">Tier</th>
+        <th style="min-width:60px;">ICP</th>
+        <th style="min-width:90px;">Responsable</th>
+        <th style="min-width:90px;">M&agrave;j</th>
+        <th style="min-width:70px;text-align:center;">%</th>
+        <th style="min-width:90px;">Objectif</th>
+        <th style="min-width:90px;">R&eacute;alis&eacute;</th>
+        <th style="min-width:140px;">Commentaires</th>
+        <th style="min-width:80px;">Actions</th>
+      </tr>`;
+    }
+
+    /* â”€â”€ Render table body â”€â”€ */
+    function renderTable() {
+      const accounts = getAccounts();
+      const nameF  = document.getElementById('filterName').value.toLowerCase();
+      const tierF  = document.getElementById('filterTier').value;
+      const ownerF = document.getElementById('filterOwner').value;
+
+      const filtered = accounts.filter(a => {
+        if (nameF  && !a.accountName?.toLowerCase().includes(nameF)) return false;
+        if (tierF  && a.tier !== tierF) return false;
+        if (ownerF && a.accountOwner !== ownerF) return false;
+        return true;
+      });
+
+      const tbody = document.getElementById('trackerBody');
+      if (!filtered.length) {
+        tbody.innerHTML = `<tr><td colspan="999" style="text-align:center;padding:32px;color:#aaa;">
+          Aucun compte trouv&eacute;. <a href="#" onclick="openNewAccountModal();return false;" style="color:var(--accent);">Ajouter un compte</a>
+        </td></tr>`;
+        return;
+      }
+
+      // Group by tier
+      const order = { Key: 0, Core: 1, Opportunistic: 2 };
+      filtered.sort((a,b) => (order[a.tier]||3) - (order[b.tier]||3));
+
+      let html = '';
+      let lastTier = null;
+      filtered.forEach(acc => {
+        if (acc.tier !== lastTier) {
+          html += `<tr class="group-header"><td colspan="999" style="padding:6px 12px;">Accounts</td></tr>`;
+          lastTier = acc.tier;
+        }
+
+        const pct = calcCompletion(acc.actions);
+        const pctCls = pct >= 90 ? 'pct-high' : pct >= 70 ? 'pct-mid' : 'pct-low';
+        const tierCls = { Key: 'tier-key', Core: 'tier-core', Opportunistic: 'tier-opp' }[acc.tier] || 'tier-opp';
+        const updated = acc.lastUpdated ? formatDate(acc.lastUpdated) : '-';
+
+        const fmtNum = n => n != null ? Number(n).toLocaleString('fr-FR') : '-';
+
+        html += `<tr data-id="${acc.id}">
+          <td class="sticky-left" style="font-weight:700;min-width:130px;">
+            <a href="account-detail.html?id=${acc.id}" style="color:var(--primary);text-decoration:none;"
+               onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+              ${acc.accountName}
+            </a>
+          </td>
+          <td><span class="tier-badge ${tierCls}">${acc.tier}</span></td>
+          <td style="font-weight:600;color:var(--primary);">${acc.icpScore || '-'}</td>
+          <td>${acc.accountOwner || '-'}</td>
+          <td style="color:#888;">${updated}</td>
+          <td class="pct-cell ${pctCls}" style="text-align:center;">
+            ${pct}%
+            <div class="progress-bar" style="width:46px;margin:3px auto 0;height:5px;">
+              <div class="progress-fill" style="width:${pct}%;"></div>
+            </div>
+          </td>
+          <td>${fmtNum(acc.target)} $</td>
+          <td>${fmtNum(acc.achieved)} $</td>
+          <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:#666;"
+              title="${escHtml(acc.comments||'')}">${escHtml((acc.comments||'').slice(0,60))}${(acc.comments||'').length>60?'â€¦':''}</td>
+          <td>
+            <button class="btn-edit-row" title="Modifier" onclick="openEditModal('${acc.id}')">Modifier</button>
+            <button class="btn-edit-row" title="Voir le détail" onclick="window.location.href='account-detail.html?id=${acc.id}'">Détail</button>
+            <button class="btn-edit-row" title="Supprimer" onclick="doDelete('${acc.id}')">Suppr.</button>
+          </td>
+        </tr>`;
+      });
+
+      tbody.innerHTML = html;
+      renderStats();
+    }
+
+
+    /* â”€â”€ Modal â”€â”€ */
+    function openNewAccountModal() {
+      editingId = null;
+      document.getElementById('modalTitle').textContent = 'Nouveau compte';
+      ['f_name','f_owner','f_icp','f_target','f_achieved','f_comments'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('f_tier').value = 'Key';
+      document.getElementById('accountModal').classList.add('open');
+    }
+
+    function openEditModal(id) {
+      const acc = getAccountById(id);
+      if (!acc) return;
+      editingId = id;
+      document.getElementById('modalTitle').textContent = 'Modifier - ' + (acc.accountName || '');
+      document.getElementById('f_name').value = acc.accountName || '';
+      document.getElementById('f_owner').value = acc.accountOwner || '';
+      document.getElementById('f_tier').value = acc.tier || 'Key';
+      document.getElementById('f_icp').value = acc.icpScore || '';
+      document.getElementById('f_target').value = acc.target || '';
+      document.getElementById('f_achieved').value = acc.achieved || '';
+      document.getElementById('f_comments').value = acc.comments || '';
+      document.getElementById('accountModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('accountModal').classList.remove('open');
+      editingId = null;
+    }
+
+    async function saveAccountFromModal() {
+      const name = document.getElementById('f_name').value.trim();
+      const owner = document.getElementById('f_owner').value.trim();
+      if (!name) { alert('Le nom du compte est requis.'); return; }
+      if (!owner) { alert('Le responsable est requis.'); return; }
+
+      const icp = parseInt(document.getElementById('f_icp').value) || 0;
+      const icpInfo = classifyICP(icp);
+
+      const acc = editingId ? (getAccountById(editingId) || {}) : {};
+      acc.id = editingId || generateId();
+      acc.accountName = name;
+      acc.accountOwner = owner;
+      acc.tier = document.getElementById('f_tier').value;
+      acc.icpScore = icp || null;
+      acc.icpFit = icp ? icpInfo.fit : null;
+      acc.target = parseFloat(document.getElementById('f_target').value) || null;
+      acc.achieved = parseFloat(document.getElementById('f_achieved').value) || null;
+      acc.comments = document.getElementById('f_comments').value.trim();
+      acc.lastUpdated = todayISO();
+      if (!acc.actions) acc.actions = {};
+
+      await saveAccount(acc);
+      closeModal();
+      renderTable();
+      renderStats();
+      showToast(editingId ? 'Compte mis à jour.' : 'Compte créé avec succès.', 'success');
+    }
+
+    async function doDelete(id) {
+      const acc = getAccountById(id);
+      if (!acc) return;
+      if (!confirmAction(`Supprimer le compte "${acc.accountName}" ? Cette action est irr&eacute;versible.`)) return;
+      await deleteAccount(id);
+      renderTable();
+      renderStats();
+      showToast('Compte supprimé.', 'warning');
+    }
+
+    function clearFilters() {
+      document.getElementById('filterName').value = '';
+      document.getElementById('filterTier').value = '';
+      document.getElementById('filterOwner').value = '';
+      renderTable();
+    }
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // Close modal on overlay click
+    document.getElementById('accountModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    async function init() {
+      if (!(await requireAuth())) return;
+      await initData();
+      document.getElementById('headerMount').innerHTML = buildHeader('Account Tracker');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('account-tracker.html');
+      ensureTrackerUsesExcelRow3();
+      buildTableHeader();
+      renderTable();
+      renderStats();
+    }
+    init();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

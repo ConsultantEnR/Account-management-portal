@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Detail - Dolfines AM Portal</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .account-selector { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
+    .account-selector select { min-width:240px; }
+    .action-block { margin-bottom:10px; }
+    .action-block-body { padding:10px 14px 14px; }
+    .field-row { display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:8px; }
+    .field-row .full { grid-column:1/-1; }
+    .status-select { max-width:190px; }
+    .save-indicator { font-size:12px;color:var(--success);display:none; }
+    .header-info-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:0; }
+    .info-field { display:flex;flex-direction:column;gap:4px; }
+    .info-field label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#888; }
+    .info-field .value-display { font-size:14px;font-weight:600;color:var(--primary); }
+    .completion-bar-lg { height:10px;border-radius:5px;background:#e9ecef;margin-top:8px; }
+    .completion-fill-lg { height:100%;border-radius:5px;background:linear-gradient(90deg,var(--success),#27ae60); }
+  </style>
+</head>
+<body>
+  <div class="bg-cover"></div>
+  <div class="bg-overlay"></div>
+  <div id="headerMount"></div>
+  <div id="sidebarMount"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <span class="icon">&#128203;</span>
+      <div>
+        <h1>Account Detail Template</h1>
+        <p>Suivi détaillé des 25 actions par compte client</p>
+      </div>
+    </div>
+
+    <section class="section-intro">
+      <div class="hero-panel">
+        <div class="hero-kicker">Saisie guidée</div>
+        <h2>Chaque action doit être compréhensible et saisissable sans hésitation.</h2>
+        <p>Cette page devient le point de travail principal pour mettre à jour le compte. Les champs les plus utiles sont regroupés, les statuts sont lisibles instantanément et l'utilisateur sait toujours quelle information renseigner ensuite.</p>
+        <div class="hero-checklist">
+          <span>Choisir le compte à traiter en premier</span>
+          <span>Mettre à jour le statut puis la date</span>
+          <span>Ajouter le lien CRM si disponible</span>
+          <span>Documenter les prochaines étapes dans les notes</span>
+        </div>
+      </div>
+      <aside class="info-panel">
+        <h3>Repères rapides</h3>
+        <div class="mini-steps">
+          <div class="mini-step">
+            <span class="mini-step-num">1</span>
+            <div>
+              <strong>Sélectionnez le bon compte</strong>
+              <p>La liste déroulante charge immédiatement la fiche et l'avancement global.</p>
+            </div>
+          </div>
+          <div class="mini-step">
+            <span class="mini-step-num">2</span>
+            <div>
+              <strong>Concentrez-vous sur les champs utiles</strong>
+              <p>Statut, date, lien CRM et notes suffisent pour rendre une action exploitable par toute l'équipe.</p>
+            </div>
+          </div>
+          <div class="mini-step">
+            <span class="mini-step-num">3</span>
+            <div>
+              <strong>Enregistrez sans friction</strong>
+              <p>La sauvegarde automatique reste active et le bouton final sécurise la mise à jour complète.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="card mb-24">
+      <div class="card-body" style="padding:16px 20px;">
+        <div class="form-guide" style="margin-bottom:14px;">
+          <div>
+            <strong>Commencez toujours par le bon compte</strong>
+            <p>Une fois le compte sélectionné, faites d'abord un balayage des actions non démarrées puis mettez à jour celles du moment.</p>
+          </div>
+          <span class="guide-badge">Étape 1</span>
+        </div>
+        <div class="account-selector">
+          <label style="font-weight:700;color:#555;font-size:13px;white-space:nowrap;">Sélectionner un compte :</label>
+          <select id="accountSelect" class="form-control" onchange="loadAccount(this.value)" style="margin:0;min-width:240px;"></select>
+          <button class="btn btn-primary btn-sm" onclick="window.location.href='account-tracker.html'">Tracker</button>
+          <span class="save-indicator" id="saveIndicator">Sauvegardé</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="noAccount" class="empty-state card">
+      <div class="card-body text-center" style="padding:48px;">
+        <div class="icon">&#128203;</div>
+        <p style="margin-top:12px;font-size:15px;color:#888;">Sélectionnez un compte pour afficher son détail.</p>
+        <p style="font-size:13px;color:#aaa;margin-top:8px;">Ou <a href="account-tracker.html" style="color:var(--accent);">créez un nouveau compte</a> depuis l'Account Tracker.</p>
+      </div>
+    </div>
+
+    <div id="accountContent" style="display:none;">
+      <div class="card mb-16">
+        <div class="card-header" style="justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="icon">&#127970;</span>
+            <span id="accountNameDisplay">-</span>
+          </div>
+          <button class="btn btn-outline btn-sm" style="color:white;border-color:rgba(255,255,255,0.4);" onclick="openEditAccountModal()">Modifier les infos</button>
+        </div>
+        <div class="card-body">
+          <div class="form-guide" style="margin-bottom:16px;">
+            <div>
+              <strong>Priorité de mise à jour</strong>
+              <p>Commencez par les actions en cours ou non démarrées, puis ajoutez une date et une note pour que le contexte soit clair dès la première lecture.</p>
+            </div>
+            <span class="guide-badge">Étape 2</span>
+          </div>
+          <div class="header-info-grid" id="accountInfoGrid"></div>
+          <div style="margin-top:14px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:4px;">
+              <span>Avancement global</span>
+              <span id="pctLabel" style="font-weight:700;color:var(--primary);">0%</span>
+            </div>
+            <div class="completion-bar-lg">
+              <div class="completion-fill-lg" id="completionFill" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="actionsContainer"></div>
+
+      <div style="text-align:right;margin-top:10px;padding-bottom:20px;">
+        <button class="btn btn-primary" onclick="saveCurrentAccount(true)">Enregistrer toutes les modifications</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="editAccountModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>Modifier les informations du compte</span>
+        <button class="modal-close" onclick="document.getElementById('editAccountModal').classList.remove('open')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="grid-2">
+          <div class="form-group required field-spotlight">
+            <label>Nom du compte</label>
+            <input type="text" id="ea_name" class="form-control">
+          </div>
+          <div class="form-group required field-spotlight">
+            <label>Responsable</label>
+            <input type="text" id="ea_owner" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Tier</label>
+            <select id="ea_tier" class="form-control">
+              <option value="Key">Key</option>
+              <option value="Core">Core</option>
+              <option value="Opportunistic">Opportunistic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Score ICP</label>
+            <input type="number" id="ea_icp" class="form-control" min="0" max="630">
+          </div>
+          <div class="form-group">
+            <label>Objectif annuel (USD)</label>
+            <input type="number" id="ea_target" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Réalisé YTD (USD)</label>
+            <input type="number" id="ea_achieved" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date de dernière révision</label>
+          <input type="date" id="ea_reviewDate" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="document.getElementById('editAccountModal').classList.remove('open')">Annuler</button>
+        <button class="btn btn-primary" onclick="saveEditAccount()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    let currentAccount = null;
+
+    function populateSelector(selectedId) {
+      const accounts = getAccounts();
+      const sel = document.getElementById('accountSelect');
+      sel.innerHTML = '<option value="">- Choisir un compte -</option>' +
+        accounts.map(a => `<option value="${a.id}" ${a.id===selectedId?'selected':''}>${a.accountName} (${a.tier})</option>`).join('');
+      if (!accounts.length) {
+        sel.innerHTML = '<option value="">Aucun compte - créez-en un depuis Account Tracker</option>';
+      }
+    }
+
+    function loadAccount(id) {
+      if (!id) {
+        document.getElementById('noAccount').style.display = '';
+        document.getElementById('accountContent').style.display = 'none';
+        currentAccount = null;
+        return;
+      }
+      currentAccount = getAccountById(id);
+      if (!currentAccount) return;
+      if (!currentAccount.actions) currentAccount.actions = {};
+
+      document.getElementById('noAccount').style.display = 'none';
+      document.getElementById('accountContent').style.display = '';
+      document.getElementById('accountNameDisplay').textContent = currentAccount.accountName;
+      renderAccountInfo();
+      renderActions();
+      updateCompletion();
+    }
+
+    function renderAccountInfo() {
+      const a = currentAccount;
+      const tierCls = { Key: '#272A5A', Core: '#1863DC', Opportunistic: '#1aaa55' }[a.tier] || '#6b7280';
+      const icpInfo = a.icpScore ? classifyICP(a.icpScore) : null;
+      document.getElementById('accountInfoGrid').innerHTML = `
+        <div class="info-field">
+          <label>Tier</label>
+          <div class="value-display" style="color:${tierCls};">${a.tier || '-'}</div>
+        </div>
+        <div class="info-field">
+          <label>Score ICP</label>
+          <div class="value-display">${a.icpScore || '-'} ${icpInfo ? `<small style="font-weight:400;color:#888;">(${icpInfo.fit})</small>` : ''}</div>
+        </div>
+        <div class="info-field">
+          <label>Responsable</label>
+          <div class="value-display">${a.accountOwner || '-'}</div>
+        </div>
+        <div class="info-field">
+          <label>Objectif annuel</label>
+          <div class="value-display">${a.target ? Number(a.target).toLocaleString('fr-FR') + ' $' : '-'}</div>
+        </div>
+        <div class="info-field">
+          <label>Réalisé YTD</label>
+          <div class="value-display">${a.achieved ? Number(a.achieved).toLocaleString('fr-FR') + ' $' : '-'}</div>
+        </div>
+        <div class="info-field">
+          <label>Dernière mise à jour</label>
+          <div class="value-display">${formatDate(a.lastUpdated)}</div>
+        </div>
+      `;
+    }
+
+    function renderActions() {
+      const container = document.getElementById('actionsContainer');
+      let html = '';
+      ACTION_GROUPS.forEach(group => {
+        const groupActions = ACTIONS.filter(a => a.group === group);
+        const icons = {
+          'Account Setup & Assessment': '&#128269;',
+          'Strategic Planning & Governance': '&#128451;',
+          'Account Intelligence & Mapping': '&#128506;',
+          'Relationship Management': '&#129309;',
+          'Business Development & Growth': '&#128200;',
+          'Commercial & Contracts': '&#128220;',
+          'Operations & Tracking': '&#9881;',
+        };
+        html += `<div class="section-header">${icons[group] || '&#9656;'} ${group}</div>`;
+        groupActions.forEach(action => {
+          const saved = currentAccount.actions[action.id] || {};
+          const status = saved.status || 'not-started';
+          const statusOpts = STATUS_OPTS.map(o =>
+            `<option value="${o.value}" ${status===o.value?'selected':''}>${o.label}</option>`).join('');
+
+          html += `
+          <div class="action-block" id="block-${action.id}">
+            <div class="action-block-header">
+              <span class="action-number">${action.id}</span>
+              ${action.name}
+              <span style="margin-left:auto;">${statusBadge(status)}</span>
+            </div>
+            <div class="action-block-body">
+              <div class="action-definition">
+                <strong>Définition :</strong> ${action.def}
+                &nbsp;|&nbsp; <strong>Système :</strong> ${action.system}
+                &nbsp;|&nbsp; <strong>KPI :</strong> ${action.kpi}
+              </div>
+              <div class="field-row">
+                <div class="form-group" style="margin:0;">
+                  <label>Statut</label>
+                  <select class="form-control status-select" id="status-${action.id}" onchange="onStatusChange(${action.id}, this)">
+                    ${statusOpts}
+                  </select>
+                </div>
+                <div class="form-group" style="margin:0;">
+                  <label>Dernière mise à jour</label>
+                  <input type="date" class="form-control" id="updated-${action.id}" value="${saved.lastUpdated || ''}" oninput="autoSave()">
+                </div>
+                <div class="form-group" style="margin:0;">
+                  <label>Système / CRM</label>
+                  <input type="text" class="form-control" id="system-${action.id}" value="${escHtml(saved.system || action.system || '')}" placeholder="${action.system}" oninput="autoSave()">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:8px;">
+                <label>Lien CRM</label>
+                <input type="url" class="form-control" id="crm-${action.id}" value="${escHtml(saved.crmLink || '')}" placeholder="https://dolfines.monday.com/..." oninput="autoSave()">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label>Notes</label>
+                <textarea class="form-control" id="notes-${action.id}" rows="3" placeholder="Détails, prochaines étapes, contexte..." oninput="autoSave()">${escHtml(saved.notes || '')}</textarea>
+              </div>
+            </div>
+          </div>`;
+        });
+      });
+      container.innerHTML = html;
+    }
+
+    function onStatusChange(actionId, sel) {
+      const block = document.getElementById(`block-${actionId}`);
+      const badge = block.querySelector('.status-badge');
+      if (badge) badge.outerHTML = statusBadge(sel.value);
+      const dateField = document.getElementById(`updated-${actionId}`);
+      if (!dateField.value) dateField.value = todayISO();
+      autoSave();
+      updateCompletion();
+    }
+
+    function updateCompletion() {
+      const actions = collectActions();
+      const pct = calcCompletion(actions);
+      document.getElementById('pctLabel').textContent = pct + '%';
+      document.getElementById('completionFill').style.width = pct + '%';
+    }
+
+    function collectActions() {
+      const actions = {};
+      ACTIONS.forEach(a => {
+        const statusEl = document.getElementById(`status-${a.id}`);
+        if (!statusEl) return;
+        actions[a.id] = {
+          status:      statusEl.value,
+          lastUpdated: document.getElementById(`updated-${a.id}`)?.value || '',
+          system:      document.getElementById(`system-${a.id}`)?.value || '',
+          crmLink:     document.getElementById(`crm-${a.id}`)?.value || '',
+          notes:       document.getElementById(`notes-${a.id}`)?.value || '',
+        };
+      });
+      return actions;
+    }
+
+    let autoSaveTimer = null;
+    function autoSave() {
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => saveCurrentAccount(false), 1500);
+    }
+
+    async function saveCurrentAccount(showFeedback) {
+      if (!currentAccount) return;
+      currentAccount.actions = collectActions();
+      currentAccount.lastUpdated = todayISO();
+      await saveAccount(currentAccount);
+      renderAccountInfo();
+      if (showFeedback) showToast('Compte enregistré avec succès.', 'success');
+      else {
+        const ind = document.getElementById('saveIndicator');
+        ind.style.display = 'inline';
+        setTimeout(() => ind.style.display = 'none', 2000);
+      }
+    }
+
+    function openEditAccountModal() {
+      if (!currentAccount) return;
+      document.getElementById('ea_name').value = currentAccount.accountName || '';
+      document.getElementById('ea_owner').value = currentAccount.accountOwner || '';
+      document.getElementById('ea_tier').value = currentAccount.tier || 'Key';
+      document.getElementById('ea_icp').value = currentAccount.icpScore || '';
+      document.getElementById('ea_target').value = currentAccount.target || '';
+      document.getElementById('ea_achieved').value = currentAccount.achieved || '';
+      document.getElementById('ea_reviewDate').value = currentAccount.reviewDate || '';
+      document.getElementById('editAccountModal').classList.add('open');
+    }
+
+    async function saveEditAccount() {
+      if (!currentAccount) return;
+      currentAccount.accountName = document.getElementById('ea_name').value.trim();
+      currentAccount.accountOwner = document.getElementById('ea_owner').value.trim();
+      currentAccount.tier = document.getElementById('ea_tier').value;
+      const icp = parseInt(document.getElementById('ea_icp').value) || 0;
+      currentAccount.icpScore = icp || null;
+      currentAccount.icpFit = icp ? classifyICP(icp).fit : null;
+      currentAccount.target = parseFloat(document.getElementById('ea_target').value) || null;
+      currentAccount.achieved = parseFloat(document.getElementById('ea_achieved').value) || null;
+      currentAccount.reviewDate = document.getElementById('ea_reviewDate').value;
+      currentAccount.lastUpdated = todayISO();
+      await saveAccount(currentAccount);
+      document.getElementById('editAccountModal').classList.remove('open');
+      renderAccountInfo();
+      document.getElementById('accountNameDisplay').textContent = currentAccount.accountName;
+      populateSelector(currentAccount.id);
+      showToast('Informations mises à jour.', 'success');
+    }
+
+    function escHtml(str) {
+      return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    document.getElementById('editAccountModal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    async function init() {
+      if (!(await requireAuth())) return;
+      await initData();
+      document.getElementById('headerMount').innerHTML = buildHeader('Account Detail');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('account-detail.html');
+      const urlParams = new URLSearchParams(window.location.search);
+      const preselect = urlParams.get('id');
+      populateSelector(preselect);
+      if (preselect) loadAccount(preselect);
+    }
+    init();
+  </script>
+</body>
+</html>

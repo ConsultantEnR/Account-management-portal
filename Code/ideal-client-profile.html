@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideal Client Profile – Dolfines AM Portal</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .icp-layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
+    .criteria-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .criteria-table th { background: var(--primary); color: white; padding: 10px 14px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+    .criteria-table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+    .criteria-table tr:nth-child(even) td { background: #fafbfc; }
+    .criteria-table .criteria-name { font-weight: 600; font-size: 13px; color: var(--primary); min-width: 180px; }
+    .criteria-table select { font-size: 12.5px; padding: 6px 10px; }
+    .score-col { text-align: center; font-weight: 700; font-size: 14px; min-width: 60px; }
+    .score-col span { display: inline-block; padding: 2px 10px; border-radius: 10px; background: rgba(13,45,78,0.08); color: var(--primary); }
+    .sticky-score {
+      position: sticky;
+      top: 80px;
+    }
+    .icp-result-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,.25);
+    }
+    .icp-result-inner { padding: 24px; text-align: center; }
+    .icp-total { font-size: 64px; font-weight: 900; color: var(--accent); line-height: 1; margin: 8px 0; }
+    .icp-fit-label { font-size: 16px; font-weight: 700; color: white; margin-top: 6px; }
+    .icp-tier-label { font-size: 13px; opacity: .7; color: white; margin-top: 3px; }
+    .icp-bar-section { padding: 12px 24px 20px; }
+    .icp-bar-section .bar-label { display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.6);margin-bottom:4px; }
+    .icp-range-bar { position: relative; height: 12px; background: rgba(255,255,255,0.15); border-radius: 6px; overflow: hidden; }
+    .icp-range-fill { height: 100%; border-radius: 6px; transition: width .4s ease; }
+    .score-row-total { background: var(--primary) !important; }
+    .score-row-total td { color: white; font-weight: 700; padding: 12px 14px; border-top: 2px solid var(--accent); }
+    .account-link-row { margin-top: 16px; padding: 14px 16px; background: rgba(255,255,255,0.06); border-radius: 8px; }
+    .range-indicator {
+      margin-top: 12px;
+      font-size: 12px;
+      text-align: left;
+    }
+    .range-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; }
+    .range-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+    .save-icp-row { display: flex; gap: 10px; margin-top: 14px; flex-direction: column; }
+    .icp-legend { background: var(--card-bg); border-radius: 8px; padding: 14px; margin-top: 16px; }
+    .icp-legend h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: #888; margin-bottom: 10px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12.5px; }
+    .legend-badge { padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="bg-cover"></div>
+  <div class="bg-overlay"></div>
+  <div id="headerMount"></div>
+  <div id="sidebarMount"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <span class="icon">🎯</span>
+      <div>
+        <h1>Ideal Client Profile (ICP)</h1>
+        <p>Calculez le score ICP de vos clients pour déterminer leur tier (Key / Core / Opportunistic)</p>
+      </div>
+    </div>
+
+    <div class="alert alert-info mb-24">
+      ℹ️ Sélectionnez une valeur et un niveau d'importance pour chaque critère. Le score est calculé automatiquement : <strong>Score = Valeur × Importance</strong>. Le score total détermine la classification du compte.
+    </div>
+
+    <!-- Account link (optional) -->
+    <div class="card mb-16">
+      <div class="card-body" style="padding:14px 20px;">
+        <div class="flex align-center gap-12 flex-wrap">
+          <label style="font-weight:700;color:#555;font-size:13px;white-space:nowrap;">Lier à un compte (optionnel) :</label>
+          <select id="accountLinkSel" class="form-control" style="margin:0;min-width:240px;">
+            <option value="">— Calculer sans lier —</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="loadICPFromAccount()">📥 Charger ICP existant</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="icp-layout">
+      <!-- Criteria table -->
+      <div class="card">
+        <div class="card-header">
+          <span class="icon">📋</span> Critères d'évaluation
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="criteria-table" id="criteriaTable">
+            <thead>
+              <tr>
+                <th>Critère</th>
+                <th style="min-width:260px;">Valeur sélectionnée</th>
+                <th style="min-width:180px;">Importance</th>
+                <th style="min-width:80px;text-align:center;">Score</th>
+              </tr>
+            </thead>
+            <tbody id="criteriaBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Score panel (sticky) -->
+      <div class="sticky-score">
+        <div class="icp-result-card">
+          <div class="icp-result-inner">
+            <div style="font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;">Score ICP Total</div>
+            <div class="icp-total" id="totalScore">0</div>
+            <div class="icp-fit-label" id="fitLabel">—</div>
+            <div class="icp-tier-label" id="tierLabel">Tier : —</div>
+          </div>
+          <div class="icp-bar-section">
+            <div class="bar-label">
+              <span>0</span>
+              <span>630 (max)</span>
+            </div>
+            <div class="icp-range-bar">
+              <div class="icp-range-fill" id="icpBarFill" style="width:0%;background:var(--accent);"></div>
+            </div>
+            <div class="range-indicator" style="color:rgba(255,255,255,0.65);">
+              <div class="range-row"><span><span class="range-dot" style="background:#c5cdf5;"></span>Key – Excellent Fit</span><span>386–630</span></div>
+              <div class="range-row"><span><span class="range-dot" style="background:#8898e8;"></span>Key – Good Fit</span><span>264–385</span></div>
+              <div class="range-row"><span><span class="range-dot" style="background:#1863DC;"></span>Core – Moderate Fit</span><span>211–263</span></div>
+              <div class="range-row"><span><span class="range-dot" style="background:#1aaa55;"></span>Opp. – Low Fit</span><span>141–210</span></div>
+              <div class="range-row"><span><span class="range-dot" style="background:#6b7280;"></span>Opp. – Poor Fit</span><span>0–140</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="icp-legend">
+          <h4>Actions</h4>
+          <div class="save-icp-row">
+            <button class="btn btn-primary" onclick="saveICPToAccount()" id="btnSaveICP" style="width:100%;justify-content:center;">
+              💾 Enregistrer dans le compte
+            </button>
+            <button class="btn btn-outline" onclick="resetForm()" style="width:100%;justify-content:center;">
+              🔄 Réinitialiser
+            </button>
+          </div>
+        </div>
+
+        <div class="icp-legend" style="margin-top:12px;">
+          <h4>Légende des tiers</h4>
+          <div class="legend-item"><span class="legend-badge" style="background:#eef2ff;color:#272A5A;border:1px solid #c5cdf5;">Key</span> Excellent Fit (386+)</div>
+          <div class="legend-item"><span class="legend-badge" style="background:#eef2ff;color:#272A5A;border:1px solid #c5cdf5;">Key</span> Good Fit (264–385)</div>
+          <div class="legend-item"><span class="legend-badge" style="background:#eff6ff;color:#1863DC;border:1px solid #bdd8fb;">Core</span> Moderate Fit (211–263)</div>
+          <div class="legend-item"><span class="legend-badge" style="background:#f0fdf4;color:#1aaa55;border:1px solid #bbf0cf;">Opp.</span> Low Fit (141–210)</div>
+          <div class="legend-item"><span class="legend-badge" style="background:#f0fdf4;color:#1aaa55;border:1px solid #bbf0cf;">Opp.</span> Poor Fit (0–140)</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    async function init() {
+      if (!(await requireAuth())) return;
+      await initData();
+      document.getElementById('headerMount').innerHTML = buildHeader('Ideal Client Profile');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('ideal-client-profile.html');
+
+    // Populate account selector
+    function populateAccountSel() {
+      const sel = document.getElementById('accountLinkSel');
+      const accounts = getAccounts();
+      sel.innerHTML = '<option value="">— Calculer sans lier —</option>' +
+        accounts.map(a => `<option value="${a.id}">${a.accountName} (${a.tier})</option>`).join('');
+    }
+    populateAccountSel();
+
+    // Check URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const preId = urlParams.get('id');
+    if (preId) {
+      document.getElementById('accountLinkSel').value = preId;
+    }
+
+    /* ── Build criteria rows ── */
+    function buildCriteriaTable() {
+      const tbody = document.getElementById('criteriaBody');
+      let html = '';
+      ICP_CRITERIA.forEach((c, idx) => {
+        const valOpts = c.options.map(o => `<option value="${o.score}" data-label="${o.value}">${o.value}</option>`).join('');
+        const impOpts = c.importanceOptions.map(o => `<option value="${o.score}" data-label="${o.value}">${o.value}</option>`).join('');
+
+        html += `
+        <tr>
+          <td class="criteria-name">${c.label}</td>
+          <td>
+            <select class="form-control" id="val-${c.key}" style="margin:0;font-size:12.5px;" onchange="recalcScore('${c.key}')">
+              <option value="0">— Sélectionner —</option>
+              ${valOpts}
+            </select>
+          </td>
+          <td>
+            <select class="form-control" id="imp-${c.key}" style="margin:0;font-size:12.5px;" onchange="recalcScore('${c.key}')">
+              ${impOpts}
+            </select>
+          </td>
+          <td class="score-col"><span id="sc-${c.key}">0</span></td>
+        </tr>`;
+      });
+      // Total row
+      html += `
+      <tr class="score-row-total">
+        <td colspan="3" style="text-align:right;font-size:14px;">SCORE ICP TOTAL</td>
+        <td class="score-col" style="color:var(--accent);font-size:16px;"><span id="sc-total">0</span></td>
+      </tr>`;
+      tbody.innerHTML = html;
+    }
+
+    function recalcScore(key) {
+      const valEl = document.getElementById(`val-${key}`);
+      const impEl = document.getElementById(`imp-${key}`);
+      const valScore = parseInt(valEl.value) || 0;
+      const impScore = parseInt(impEl.value) || 1;
+      const score = valScore * impScore;
+      document.getElementById(`sc-${key}`).textContent = score;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let total = 0;
+      ICP_CRITERIA.forEach(c => {
+        const valEl = document.getElementById(`val-${c.key}`);
+        const impEl = document.getElementById(`imp-${c.key}`);
+        if (!valEl || !impEl) return;
+        total += (parseInt(valEl.value) || 0) * (parseInt(impEl.value) || 1);
+      });
+      document.getElementById('sc-total').textContent = total;
+      document.getElementById('totalScore').textContent = total;
+
+      const info = classifyICP(total);
+      document.getElementById('fitLabel').textContent = info.fit;
+      document.getElementById('tierLabel').textContent = 'Tier : ' + info.tier;
+
+      const pct = Math.min((total / 630) * 100, 100);
+      document.getElementById('icpBarFill').style.width = pct + '%';
+
+      // Bar color by tier
+      const colors = { Key: '#272A5A', Core: '#1863DC', Opportunistic: '#1aaa55' };
+      document.getElementById('icpBarFill').style.background = colors[info.tier] || 'var(--accent)';
+    }
+
+    /* ── Load ICP from account ── */
+    function loadICPFromAccount() {
+      const id = document.getElementById('accountLinkSel').value;
+      if (!id) { showToast('Sélectionnez un compte à charger.', 'warning'); return; }
+      const acc = getAccountById(id);
+      if (!acc || !acc.icpSelections) {
+        showToast('Aucun ICP enregistré pour ce compte.', 'info'); return;
+      }
+      const sel = acc.icpSelections;
+      ICP_CRITERIA.forEach(c => {
+        if (sel[c.key]) {
+          const valEl = document.getElementById(`val-${c.key}`);
+          const impEl = document.getElementById(`imp-${c.key}`);
+          if (valEl) valEl.value = sel[c.key].valueScore || 0;
+          if (impEl) impEl.value = sel[c.key].importanceScore || 2;
+          recalcScore(c.key);
+        }
+      });
+      showToast('✅ ICP chargé depuis le compte.', 'success');
+    }
+
+    /* ── Save ICP to account ── */
+    async function saveICPToAccount() {
+      const id = document.getElementById('accountLinkSel').value;
+      if (!id) {
+        showToast('Sélectionnez un compte pour enregistrer l\'ICP.', 'warning');
+        return;
+      }
+      const acc = getAccountById(id);
+      if (!acc) return;
+
+      const selections = {};
+      ICP_CRITERIA.forEach(c => {
+        const valEl = document.getElementById(`val-${c.key}`);
+        const impEl = document.getElementById(`imp-${c.key}`);
+        selections[c.key] = {
+          valueScore: parseInt(valEl?.value) || 0,
+          importanceScore: parseInt(impEl?.value) || 1,
+        };
+      });
+
+      const total = parseInt(document.getElementById('sc-total').textContent) || 0;
+      const info = classifyICP(total);
+
+      acc.icpSelections = selections;
+      acc.icpScore = total;
+      acc.icpFit = info.fit;
+      acc.tier = info.tier;
+      acc.lastUpdated = todayISO();
+      await saveAccount(acc);
+      populateAccountSel();
+      document.getElementById('accountLinkSel').value = id;
+      showToast(`✅ ICP (${total} – ${info.fit}) enregistré dans "${acc.accountName}". Tier mis à jour : ${info.tier}.`, 'success');
+    }
+
+    function resetForm() {
+      ICP_CRITERIA.forEach(c => {
+        const valEl = document.getElementById(`val-${c.key}`);
+        const impEl = document.getElementById(`imp-${c.key}`);
+        if (valEl) valEl.value = 0;
+        if (impEl) impEl.value = impEl.options[0]?.value || 2;
+        const scEl = document.getElementById(`sc-${c.key}`);
+        if (scEl) scEl.textContent = '0';
+      });
+      updateTotal();
+      showToast('🔄 Formulaire réinitialisé.', 'info');
+    }
+
+      buildCriteriaTable();
+      populateAccountSel();
+      if (preId) {
+        document.getElementById('accountLinkSel').value = preId;
+        loadICPFromAccount();
+      }
+    }
+    init();
+  </script>
+</body>
+</html>

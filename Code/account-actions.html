@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management Actions - Dolfines AM Portal</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .action-ref-card {
+      border: 1.5px solid #e5e9ef;
+      border-radius: 9px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      transition: box-shadow .15s;
+    }
+    .action-ref-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+    .action-ref-head {
+      background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+      padding: 12px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color .15s;
+    }
+    .action-ref-card.open .action-ref-head {
+      border-bottom-color: #e5e9ef;
+      background: #e8eef5;
+    }
+    .action-ref-num {
+      background: var(--primary);
+      color: white;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .action-ref-title { font-weight: 700; font-size: 14px; color: var(--primary); flex: 1; }
+    .action-ref-title small { display:block;font-weight:400;font-size:12px;color:#888;margin-top:2px; }
+    .tier-pill {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+    .pill-key  { background:#eef2ff; color:#272A5A; border:1px solid #c5cdf5; }
+    .pill-core { background:#eff6ff; color:#1863DC; border:1px solid #bdd8fb; }
+    .pill-opp  { background:#f0fdf4; color:#1aaa55; border:1px solid #bbf0cf; }
+    .action-ref-body { padding: 16px 18px 18px; display: none; }
+    .action-ref-card.open .action-ref-body { display: block; }
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+    .ref-item { background: #f8f9fa; border-radius: 6px; padding: 10px 14px; }
+    .ref-item strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: #888; margin-bottom: 4px; }
+    .ref-item p { font-size: 13px; color: #333; line-height: 1.5; }
+    .tips-box { background: rgba(9,132,227,0.07); border-left: 3px solid var(--in-progress); padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; }
+    .tips-box strong { color: var(--in-progress); }
+    .group-label { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; letter-spacing:.5px; text-transform:uppercase; margin: 20px 0 10px; display:flex; align-items:center; gap:8px; }
+    .filter-bar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .chevron-icon { margin-left:auto; font-size:12px; transition:transform .2s; color:#888; }
+    .action-ref-card.open .chevron-icon { transform:rotate(180deg); }
+    .action-status-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+      transition: opacity .15s;
+      margin-left: auto;
+      margin-right: 8px;
+    }
+    .action-status-btn:hover { opacity: 0.8; }
+    .status-done         { background:#dcfce7; color:#166534; }
+    .status-in-progress  { background:#fef9c3; color:#854d0e; }
+    .status-not-started  { background:#fee2e2; color:#991b1b; }
+    .status-na           { background:#f1f5f9; color:#64748b; }
+  </style>
+</head>
+<body>
+  <div class="bg-cover"></div>
+  <div class="bg-overlay"></div>
+  <div id="headerMount"></div>
+  <div id="sidebarMount"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <span class="icon">&#10003;</span>`n      <div>`n        <h1>Account Management Actions</h1>
+        <p>Référentiel complet des 25 actions, définitions, KPIs et conseils</p>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="card mb-24">
+      <div class="card-body" style="padding:14px 20px;">
+        <div class="filter-bar">
+          <label style="font-weight:700;font-size:13px;color:#555;">Filtrer :</label>
+          <input type="text" id="filterSearch" class="form-control" style="margin:0;width:220px;" placeholder="&#128269; Rechercher..." oninput="applyFilters()">
+          <select id="filterGroup" class="form-control" style="margin:0;width:210px;" onchange="applyFilters()">
+            <option value="">Tous les groupes</option>
+          </select>
+          <select id="filterTier" class="form-control" style="margin:0;width:170px;" onchange="applyFilters()">
+            <option value="">Tous les tiers</option>
+            <option value="key">Key</option>
+            <option value="core">Core</option>
+            <option value="opp">Opportunistic</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="expandAll()">+ Tout déplier</button>
+          <button class="btn btn-outline btn-sm" onclick="collapseAll()">- Tout replier</button>
+          <button class="btn btn-outline btn-sm" onclick="clearFilters()">Réinitialiser</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account selector -->
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-body" style="padding:14px 20px;">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <label style="font-weight:700;font-size:13px;color:#555;">Compte&nbsp;:</label>
+          <select id="accountSelector" class="form-control" style="margin:0;width:260px;" onchange="renderActions()">
+            <option value="">— Aucun compte sélectionné —</option>
+          </select>
+          <span id="accountCompletion" style="font-size:13px;font-weight:700;color:var(--primary);"></span>
+          <span style="font-size:12px;color:#999;margin-left:auto;">Sélectionnez un compte pour voir et modifier les statuts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions list -->
+    <div id="actionsList"></div>
+
+  </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    async function init() {
+      if (!(await requireAuth())) return;
+      await initData();
+      document.getElementById('headerMount').innerHTML = buildHeader('Account Actions');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('account-actions.html');
+    }
+    init();
+  </script>
+  <script>
+    // Populate group filter
+    const groupSel = document.getElementById('filterGroup');
+    ACTION_GROUPS.forEach(g => {
+      const opt = document.createElement('option');
+      opt.value = g;
+      opt.textContent = g;
+      groupSel.appendChild(opt);
+    });
+
+    function loadAccountSelector() {
+      const accounts = (typeof getAccounts === 'function') ? getAccounts() : [];
+      const sel = document.getElementById('accountSelector');
+      const cur = sel.value;
+      sel.innerHTML = '<option value="">— Aucun compte sélectionné —</option>' +
+        accounts.map(a => {
+          const name = (a.accountName || '').replace(/"/g, '&quot;');
+          return '<option value="' + a.id + '"' + (a.id === cur ? ' selected' : '') + '>' + name + ' (' + (a.tier || '') + ')</option>';
+        }).join('');
+    }
+
+    const TIPS = {
+      1: `Commencez toujours par cette Ã©tape â€“ utilisez le champ statut CRM basÃ© sur les derniers projets et revenus avec le client.`,
+      2: `Utilisez le modÃ¨le ICP Excel joint aux dossiers clients.`,
+      3: `Quand vous manquez de donnÃ©es complÃ¨tes, estimez d'aprÃ¨s : rÃ©putation sectorielle, historique de projets (infos publiques), taille de l'entreprise, prÃ©sence gÃ©ographique. Mettez Ã  jour l'ICP calculÃ© une fois qu'ils deviennent clients.`,
+      4: `Classifiez selon le score ICP : Key â‰¥264, Core 211-263, Opportunistic <211.`,
+      5: `Listez tous les projets actifs + les besoins futurs identifiÃ©s. Incluez calendrier, budget et dÃ©lai de dÃ©cision. RÃ©visez mensuellement pour les comptes Key.`,
+      6: `Fixez des objectifs rÃ©alistes basÃ©s sur : revenus de l'annÃ©e prÃ©cÃ©dente, valeur du pipeline, conditions de marchÃ©. RÃ©visez tous les six mois vs. rÃ©alisÃ©.`,
+      7: `Planifiez avec le Responsable de StratÃ©gie en Q4. PrÃ©parez une prÃ©sentation couvrant : rÃ©Ã©valuation ICP, performance vs. objectif, paysage concurrentiel, stratÃ©gie pour l'annÃ©e suivante. Documentez les dÃ©cisions dans le CRM.`,
+      8: `CrÃ©ez un organigramme dans l'Account One-Page : siÃ¨ge, filiales par rÃ©gion, structure d'achat, dÃ©partements techniques. Mettez Ã  jour quand vous dÃ©couvrez de nouvelles entitÃ©s.`,
+      9: `Demandez aux clients : "Qui d'autre avez-vous envisagÃ© ?" Surveillez les consultants concurrents sur LinkedIn. Surveillez l'actualitÃ© du secteur. Mettez Ã  jour l'onglet Couverture Concurrents sur Monday.com trimestriellement.`,
+      10: `Collectez lors des rÃ©unions : tendances du secteur, changements rÃ©glementaires, changements de stratÃ©gie client, activitÃ©s M&A. Consignez dans le CRM.`,
+      11: `Identifiez 3 niveaux : DÃ©cideurs (approbateurs de budget), Responsables techniques (dÃ©finisseurs de scope), Achats (propriÃ©taires de processus). Obtenez tÃ©lÃ©phone/email directs.`,
+      12: `Planifiez Ã  l'avance. Agenda : bilan relationnel, projets en cours, besoins futurs, retours. Key/Core = trimestriel, Opportunistic = annuel. Documentez les actions dans le CRM dans les 24h.`,
+      13: `Faites correspondre les niveaux de senioritÃ© : leur C-level avec notre direction senior. Organisez 1 rÃ©union stratÃ©gique/an. Concentrez-vous sur la vision long terme, pas les dÃ©tails opÃ©rationnels.`,
+      14: `EnquÃªte aprÃ¨s chaque projet (Ã  envoyer par le PM). Participez aux rÃ©unions de clÃ´ture. Posez : Qu'est-ce qui s'est bien passÃ© ? Quoi amÃ©liorer ? Nous recommanderiez-vous ?`,
+      15: `DÃ©briefer les consultants post-projet : douleurs clients, activitÃ© concurrentielle, besoins futurs entendus, qualitÃ© relationnelle. Capturez les insights dans la semaine suivant la fin du projet.`,
+      16: `Demandez aprÃ¨s les projets rÃ©ussis : "Pouvons-nous vous utiliser comme rÃ©fÃ©rence ?" Obtenez une endorsement LinkedIn ou volontÃ© de parler aux prospects. Ajoutez au profil client.`,
+      17: `Pendant/aprÃ¨s les projets, posez : "Sur quoi d'autre travaillez-vous ?" Cherchez des scopes adjacents, d'autres dÃ©partements, des phases futures. CrÃ©ez un Lead dans le CRM immÃ©diatement.`,
+      18: `Cartographiez la structure du groupe client. Demandez Ã  votre contact : "Qui gÃ¨re [sujet] chez [filiale] ?" Demandez une prÃ©sentation chaleureuse par email CC. Suivez dans les 3 jours.`,
+      19: `N'imposez pas tous les services d'un coup. Quand pertinent pour leurs besoins, mentionnez : "Nous aidons aussi les clients avec [service]." Partagez une courte Ã©tude de cas. Proposez une rÃ©union avec l'expert Dolfines concernÃ©.`,
+      20: `Utilisez les tableaux de bord CRM pour suivre : # de prospects, taux de conversion par Ã©tape, dÃ©lai moyen de conclusion. RÃ©visez hebdomadairement. Identifiez les goulots d'Ã©tranglement.`,
+      21: `Avant de soumettre, dÃ©finissez : stratÃ©gie de victoire, analyse prix-pour-gagner, diffÃ©renciation. StratÃ©gie documentÃ©e dans le CRM.`,
+      22: `PrÃ©parez : point de rupture, plan de concessions, offre alternative. Pour les grandes nÃ©gociations : impliquez le Manager BD ou le Responsable de StratÃ©gie.`,
+      23: `Identifiez les opportunitÃ©s pluriannuelles (retainer, contrats cadres). Proposez un cadre pour rÃ©duire leur effort d'achat. VÃ©rifiez que les T&Cs sont acceptables avant de soumissionner.`,
+      24: `VÃ©rifiez le portail fournisseur et les systÃ¨mes e-procurement du client. Enregistrez toutes les entitÃ©s Dolfines et lignes de service pertinentes. Renouvelez avant expiration.`,
+      25: `Mettez Ã  jour le CRM aprÃ¨s chaque interaction : rÃ©unions, appels, emails avec dÃ©cisions. Remplissez tous les champs obligatoires. DonnÃ©es propres = bonne intelligence compte.`,
+    };
+
+    const STATUS_CYCLE = ['not-started', 'in-progress', 'done', 'na'];
+    const STATUS_LABELS = { done: 'Fait', 'in-progress': 'En cours', 'not-started': 'Non démarré', na: 'N/A' };
+    const STATUS_DOT    = { done: 'dot-done', 'in-progress': 'dot-progress', 'not-started': 'dot-not', na: 'dot-na' };
+
+    async function cycleActionStatus(accountId, actionId, btn) {
+      const acc = (typeof getAccountById === 'function') ? getAccountById(accountId) : null;
+      if (!acc) return;
+      if (!acc.actions) acc.actions = {};
+      if (!acc.actions[actionId]) acc.actions[actionId] = { status: 'not-started' };
+      const cur = acc.actions[actionId].status || 'not-started';
+      const next = STATUS_CYCLE[(STATUS_CYCLE.indexOf(cur) + 1) % STATUS_CYCLE.length];
+      acc.actions[actionId].status = next;
+      acc.lastUpdated = (typeof todayISO === 'function') ? todayISO() : new Date().toISOString().slice(0,10);
+      if (typeof saveAccount === 'function') await saveAccount(acc);
+      btn.className = 'action-status-btn status-' + next;
+      btn.innerHTML = '<span class="status-dot ' + STATUS_DOT[next] + '"></span>' + STATUS_LABELS[next];
+      if (typeof calcCompletion === 'function') {
+        const pct = calcCompletion(acc.actions);
+        document.getElementById('accountCompletion').textContent = 'Complétion : ' + pct + '%';
+      }
+    }
+
+    function renderActions() {
+      loadAccountSelector();
+      const container = document.getElementById('actionsList');
+      const searchTerm = document.getElementById('filterSearch').value.toLowerCase();
+      const groupFilter = document.getElementById('filterGroup').value;
+      const tierFilter  = document.getElementById('filterTier').value;
+      const accountId   = document.getElementById('accountSelector').value;
+      const account     = (accountId && typeof getAccountById === 'function') ? getAccountById(accountId) : null;
+
+      if (account && typeof calcCompletion === 'function') {
+        const pct = calcCompletion(account.actions);
+        document.getElementById('accountCompletion').textContent = 'Complétion : ' + pct + '%';
+      } else {
+        document.getElementById('accountCompletion').textContent = '';
+      }
+
+      let html = '';
+      ACTION_GROUPS.forEach(function(group) {
+        const groupActions = ACTIONS.filter(function(a) {
+          if (groupFilter && a.group !== groupFilter) return false;
+          if (tierFilter && !a.tiers.includes(tierFilter)) return false;
+          if (searchTerm && !a.name.toLowerCase().includes(searchTerm) && !a.def.toLowerCase().includes(searchTerm)) return false;
+          return a.group === group;
+        });
+        if (!groupActions.length) return;
+
+        html += '<div class="group-label">' + group + '</div>';
+
+        groupActions.forEach(function(a) {
+          const tierPills = a.tiers.map(function(t) {
+            const cfg = { key: ['Key','pill-key'], core: ['Core','pill-core'], opp: ['Opp.','pill-opp'] }[t] || [t,''];
+            return '<span class="tier-pill ' + cfg[1] + '">' + cfg[0] + '</span>';
+          }).join('');
+
+          let statusBadge = '';
+          if (account) {
+            const st = (account.actions && account.actions[a.id] && account.actions[a.id].status) || 'not-started';
+            statusBadge = '<button class="action-status-btn status-' + st + '" '
+              + 'onclick="event.stopPropagation();cycleActionStatus(\'' + accountId + '\''  + ',' + a.id + ',this)" '
+              + 'title="Cliquer pour changer le statut">'
+              + '<span class="status-dot ' + STATUS_DOT[st] + '"></span>' + STATUS_LABELS[st]
+              + '</button>';
+          }
+
+          const tip = TIPS[a.id] ? '<div class="tips-box"><strong>Conseil&nbsp;:</strong> ' + TIPS[a.id] + '</div>' : '';
+
+          html += '<div class="action-ref-card" id="acard-' + a.id + '">'
+            + '<div class="action-ref-head" onclick="toggleCard(' + a.id + ')">'
+            + '<div class="action-ref-num">' + a.id + '</div>'
+            + '<div class="action-ref-title">' + a.name + '<small>' + tierPills + '</small></div>'
+            + statusBadge
+            + '<span class="chevron-icon">&#9662;</span>'
+            + '</div>'
+            + '<div class="action-ref-body">'
+            + '<p style="font-size:13.5px;color:#333;line-height:1.6;margin-bottom:10px;">' + a.def + '</p>'
+            + tip
+            + '</div>'
+            + '</div>';
+        });
+      });
+
+      container.innerHTML = html || '<div class="card"><div class="card-body text-center" style="padding:40px;color:#aaa;">Aucune action ne correspond aux filtres sélectionnés.</div></div>';
+    });
+
+      container.innerHTML = html || `<div class="card"><div class="card-body text-center" style="padding:40px;color:#aaa;">Aucune action ne correspond aux filtres sélectionnés.</div></div>`;
+    }
+
+    function toggleCard(id) {
+      const card = document.getElementById(`acard-${id}`);
+      card.classList.toggle('open');
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.action-ref-card').forEach(c => c.classList.add('open'));
+    }
+    function collapseAll() {
+      document.querySelectorAll('.action-ref-card').forEach(c => c.classList.remove('open'));
+    }
+
+    function applyFilters() { renderActions(); }
+
+    function clearFilters() {
+      document.getElementById('filterSearch').value = '';
+      document.getElementById('filterGroup').value = '';
+      document.getElementById('filterTier').value = '';
+      renderActions();
+    }
+
+    async function initActions() {
+      if (!(await requireAuth())) return;
+      await initData();
+      loadAccountSelector();
+      renderActions();
+    }
+    initActions();
+  </script>
+</body>
+</html>
+
+

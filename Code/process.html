@@ -1,0 +1,570 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procédure Account Management - Dolfines</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .proc-toc { background: rgba(13,45,78,0.92); backdrop-filter:blur(8px); border-radius: 10px; padding: 18px 22px; margin-bottom: 24px; }
+    .proc-toc h3 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 12px; letter-spacing: .3px; }
+    .proc-toc ol { padding-left: 18px; }
+    .proc-toc li { margin-bottom: 5px; }
+    .proc-toc a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; }
+    .proc-toc a:hover { color: var(--accent); }
+    .proc-layout { display: grid; grid-template-columns: 220px 1fr; gap: 20px; align-items: start; }
+    .proc-nav { position: sticky; top: 84px; background: rgba(13,45,78,0.92); backdrop-filter:blur(8px); border-radius: 10px; padding: 14px 0; }
+    .proc-nav h4 { color: rgba(255,255,255,.5); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; padding: 0 16px 8px; }
+    .proc-nav a { display: block; padding: 8px 16px; color: rgba(255,255,255,.7); text-decoration: none; font-size: 12.5px; border-left: 3px solid transparent; transition: all .15s; line-height: 1.4; }
+    .proc-nav a:hover, .proc-nav a.active { color: white; background: rgba(255,255,255,.07); border-left-color: var(--accent); }
+    .proc-nav .nav-num { color: var(--accent); font-weight: 700; margin-right: 4px; }
+    .proc-section { scroll-margin-top: 84px; }
+    .proc-section-hdr {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-radius: 10px 10px 0 0;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .proc-section-hdr:hover { filter: brightness(1.1); }
+    .proc-section-body {
+      background: white;
+      border-radius: 0 0 10px 10px;
+      padding: 22px 24px;
+      border: 1px solid #e5e9ef;
+      border-top: none;
+    }
+    .proc-h4 { color: var(--primary); font-size: 14px; font-weight: 700; margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--accent); display: inline-block; }
+    .proc-p { font-size: 13.5px; line-height: 1.7; margin-bottom: 10px; color: #333; }
+    .proc-ul, .proc-ol { padding-left: 20px; margin-bottom: 12px; }
+    .proc-ul li, .proc-ol li { font-size: 13.5px; line-height: 1.65; margin-bottom: 5px; color: #333; }
+    .proc-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; border-radius: 8px; overflow: hidden; }
+    .proc-table th { background: var(--primary); color: white; padding: 10px 14px; text-align: left; }
+    .proc-table td { padding: 10px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
+    .proc-table tr:nth-child(even) td { background: #f8f9fa; }
+    .action-proc-card {
+      border: 1.5px solid #e5e9ef;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .action-proc-head {
+      background: #f0f4f8;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13.5px;
+      border-bottom: 1px solid #e5e9ef;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .action-proc-body { padding: 14px 16px; display: none; font-size: 13px; }
+    .action-proc-card.open .action-proc-body { display: block; }
+    .action-proc-card.open .action-proc-head { background: #e0eaf5; }
+    .num-circle {
+      background: var(--accent);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .good-practice { background: rgba(46,168,75,.06); border-left: 3px solid var(--success); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 8px 0; }
+    .common-mistake { background: rgba(214,48,49,.06); border-left: 3px solid var(--danger); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 8px 0; }
+    .minimum-std { background: rgba(9,132,227,.06); border-left: 3px solid var(--in-progress); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 8px 0; }
+    .box-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+    .chevron-sm { margin-left: auto; font-size: 11px; transition: transform .2s; color: #888; }
+    .action-proc-card.open .chevron-sm { transform: rotate(180deg); }
+    .ref-link { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .ref-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="bg-cover"></div>
+  <div class="bg-overlay"></div>
+  <div id="headerMount"></div>
+  <div id="sidebarMount"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <span class="icon">&#128214;</span>`n      <div>`n        <h1>Procédure Account Management</h1>
+        <p>DOL-QMS - Procédure de gestion des comptes clients Dolfines (v4)</p>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:8px;">
+        <button class="btn btn-outline btn-sm" style="color:white;border-color:rgba(255,255,255,0.4);" onclick="expandAll()">+ Tout déplier</button>
+        <button class="btn btn-outline btn-sm" style="color:white;border-color:rgba(255,255,255,0.4);" onclick="collapseAll()">- Tout replier</button>
+      </div>
+    </div>
+
+    <div class="proc-layout">
+      <!-- Navigation sidebar -->
+      <nav class="proc-nav">
+        <h4>Sommaire</h4>
+        <a href="#sec1" onclick="openSection('sec1')"><span class="nav-num">1.</span> Objet</a>
+        <a href="#sec2" onclick="openSection('sec2')"><span class="nav-num">2.</span> Champ d'application</a>
+        <a href="#sec3" onclick="openSection('sec3')"><span class="nav-num">3.</span> Typologie clients</a>
+        <a href="#sec4" onclick="openSection('sec4')"><span class="nav-num">4.</span> Ownership & Rôles</a>
+        <a href="#sec5" onclick="openSection('sec5')"><span class="nav-num">5.</span> 25 Actions opérationnelles</a>
+        <a href="#sec5-1"><span class="nav-num" style="font-size:10px;"></span> -&gt; Setup & Assessment</a>
+        <a href="#sec5-2"><span class="nav-num" style="font-size:10px;"></span> -&gt; Planning & Governance</a>
+        <a href="#sec5-3"><span class="nav-num" style="font-size:10px;"></span> -&gt; Intelligence & Mapping</a>
+        <a href="#sec5-4"><span class="nav-num" style="font-size:10px;"></span> -&gt; Relationship Mgmt</a>
+        <a href="#sec5-5"><span class="nav-num" style="font-size:10px;"></span> -&gt; BD & Growth</a>
+        <a href="#sec5-6"><span class="nav-num" style="font-size:10px;"></span> -&gt; Commercial</a>
+        <a href="#sec5-7"><span class="nav-num" style="font-size:10px;"></span> -&gt; Operations & CRM</a>
+        <a href="#sec6" onclick="openSection('sec6')"><span class="nav-num">6.</span> Clôture de compte</a>
+        <a href="#sec7" onclick="openSection('sec7')"><span class="nav-num">7.</span> KPIs & Amélioration</a>
+      </nav>
+
+      <!-- Procedure content -->
+      <div>
+
+        <!-- 1. Objet -->
+        <div class="proc-section card mb-16" id="sec1">
+          <div class="proc-section-hdr" onclick="toggleSection('sec1')">
+            <span>1.</span> Objet <span class="chevron-sm" id="chev-sec1">&#9662;</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec1">
+            <p class="proc-p">Cette procÃ©dure dÃ©finit comment DOLFINES gÃ¨re ses comptes clients de maniÃ¨re structurÃ©e, cohÃ©rente et proactive, afin de :</p>
+            <ul class="proc-ul">
+              <li>DÃ©velopper des relations clients Ã  long terme</li>
+              <li>Maximiser les opportunitÃ©s commerciales et les revenus</li>
+              <li>AmÃ©liorer la satisfaction et la fidÃ©lisation des clients</li>
+              <li>Assurer une propriÃ©tÃ© claire des comptes dans l'organisation</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. Champ d'application -->
+        <div class="proc-section card mb-16" id="sec2">
+          <div class="proc-section-hdr" onclick="toggleSection('sec2')">
+            <span>2.</span> Champ d'application <span class="chevron-sm" id="chev-sec2">&#9662;</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec2">
+            <p class="proc-p">Cette procÃ©dure s'applique Ã  <strong>tous les comptes sÃ©lectionnÃ©s</strong>, toutes lignes de service et entitÃ©s confondues.</p>
+            <table class="proc-table">
+              <thead><tr><th>Type de client</th><th>DÃ©finition</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Client actuel</strong></td><td>Client facturÃ© par Dolfines au moins une fois dans les 12 derniers mois.</td></tr>
+                <tr><td><strong>Client prÃ©cÃ©dent</strong></td><td>Client non facturÃ© depuis plus de 12 mois.</td></tr>
+                <tr><td><strong>Nouveau client</strong></td><td>Nouveau client avec moins de 3 ans d'activitÃ©, prÃ©cÃ©demment enregistrÃ© comme "prospect".</td></tr>
+                <tr><td><strong>Prospect</strong></td><td>Client que Dolfines n'a jamais facturÃ©.</td></tr>
+              </tbody>
+            </table>
+            <div class="alert alert-info" style="margin-top:12px;">
+              â„¹ï¸ La pÃ©riode de 3 ans pour les nouveaux clients reflÃ¨te la reconnaissance de l'effort de chasse commerciale. Les proposals gÃ©nÃ©rÃ©es durant cette pÃ©riode sont comptabilisÃ©es comme gains pour la personne qui a initiÃ© le client.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Typologie clients / ICP -->
+        <div class="proc-section card mb-16" id="sec3">
+          <div class="proc-section-hdr" onclick="toggleSection('sec3')">
+            <span>3.</span> Typologie clients â€“ Ideal Customer Profile (ICP) <span class="chevron-sm" id="chev-sec3">&#9662;</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec3">
+            <p class="proc-p">L'ICP est la base de tout bon Account Management. Il permet d'Ã©valuer et de prioriser les comptes clÃ©s. Cet outil doit Ãªtre utilisÃ© par <strong>tous les collaborateurs Dolfines</strong> impliquÃ©s dans la gestion des comptes.</p>
+            <table class="proc-table">
+              <thead><tr><th>Fit</th><th>Typologie du compte</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Excellent</td><td><span style="background:#eef2ff;color:#272A5A;border:1px solid #c5cdf5;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:800;">Key Account</span></td><td>386â€“630</td></tr>
+                <tr><td>Good</td><td><span style="background:#eef2ff;color:#272A5A;border:1px solid #c5cdf5;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:800;">Key Account</span></td><td>264â€“385</td></tr>
+                <tr><td>Medium</td><td><span style="background:#eff6ff;color:#1863DC;border:1px solid #bdd8fb;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:700;">Core Account</span></td><td>211â€“263</td></tr>
+                <tr><td>Low</td><td><span style="background:#f0fdf4;color:#1aaa55;border:1px solid #bbf0cf;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:700;">Opportunistic</span></td><td>141â€“210</td></tr>
+                <tr><td>Poor</td><td><span style="background:#f0fdf4;color:#1aaa55;border:1px solid #bbf0cf;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:700;">Opportunistic</span></td><td>0â€“140</td></tr>
+              </tbody>
+            </table>
+            <p class="proc-p">Le score ICP dÃ©termine :</p>
+            <ul class="proc-ul">
+              <li>La prioritÃ© du compte pour la gestion du temps</li>
+              <li>Le niveau d'effort Ã  investir</li>
+              <li>La frÃ©quence d'engagement</li>
+            </ul>
+            <p class="proc-p">Pour les <strong>Prospects</strong>, l'ICP est estimÃ© (Ã©valuation qualitative) pour permettre la priorisation.</p>
+            <div style="text-align:center;margin-top:16px;">
+              <a href="ideal-client-profile.html" class="btn btn-primary">Calculer un ICP</a>
+              <a href="dropdown-values.html" class="btn btn-outline" style="margin-left:10px;">Voir les valeurs de référence</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Ownership & Rôles -->
+        <div class="proc-section card mb-16" id="sec4">
+          <div class="proc-section-hdr" onclick="toggleSection('sec4')">
+            <span>4.</span> Account Ownership & Rôles <span class="chevron-sm" id="chev-sec4">&#9662;</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec4">
+            <div class="alert alert-info mb-16">Principe fondamental : Tous les membres de l'Ã©quipe partagent la mÃªme responsabilitÃ© dans les activitÃ©s d'account management, qu'ils soient BD, BLM ou PM.
+            </div>
+            <p class="proc-h4" style="display:block;">4.1 RÃ´les et domaines d'expertise</p>
+            <table class="proc-table">
+              <thead><tr><th>RÃ´le</th><th>Domaines d'expertise</th><th>Demandes de support typiques</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Business Developer (BD)</strong></td>
+                  <td>Relation client, stratÃ©gie commerciale, identification d'opportunitÃ©s, dÃ©veloppement de propositions, tarification, nÃ©gociation</td>
+                  <td>StratÃ©gie de proposition, dÃ©cisions de tarification, nÃ©gociations complexes, cross-selling</td>
+                </tr>
+                <tr>
+                  <td><strong>Business Line Manager (BLM)</strong></td>
+                  <td>Planification stratÃ©gique, expertise services techniques, coordination transversale, revues annuelles de compte, intelligence marchÃ©</td>
+                  <td>Revues stratÃ©giques, discussions techniques, prÃ©sentations de services, validation ICP</td>
+                </tr>
+                <tr>
+                  <td><strong>Project Manager (PM)</strong></td>
+                  <td>Livraison de projet, excellence opÃ©rationnelle, gestion de la relation sur site, suivi de satisfaction, feedback consultants</td>
+                  <td>ExÃ©cution de projet, debriefs consultants, suivi de satisfaction, problÃ¨mes opÃ©rationnels</td>
+                </tr>
+                <tr>
+                  <td><strong>Top Management</strong></td>
+                  <td>Sponsorship exÃ©cutif pour les comptes stratÃ©giques, construction de relations haut niveau, dÃ©cisions stratÃ©giques</td>
+                  <td>RÃ©unions exÃ©cutives, grandes nÃ©gociations, partenariats stratÃ©giques</td>
+                </tr>
+                <tr>
+                  <td><strong>Consultants</strong></td>
+                  <td>Interface client pendant l'exÃ©cution, livraison technique, collecte d'informations terrain</td>
+                  <td>Feedback client, intelligence concurrentielle, opportunitÃ©s futures</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="proc-h4" style="display:block;">4.2 Attribution des comptes</p>
+            <p class="proc-p">Chaque compte est attribuÃ© Ã  un <strong>Account Manager principal</strong>, quel que soit son titre (BD, BLM, PM). L'attribution est basÃ©e sur :</p>
+            <ul class="proc-ul">
+              <li>Les relations client existantes</li>
+              <li>La couverture gÃ©ographique</li>
+              <li>La correspondance d'expertise technique</li>
+              <li>La charge de travail et la capacitÃ© actuelles</li>
+            </ul>
+            <p class="proc-h4" style="display:block;">4.3 Tracking Sheet â€“ Utilisation</p>
+            <table class="proc-table">
+              <thead><tr><th>Ã‰tape</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1. CrÃ©er l'entrÃ©e</strong></td><td>Ajouter le compte dans l'Account Tracker. Remplir : Nom, Tier, Score ICP, Responsable, Date de mÃ j.</td></tr>
+                <tr><td><strong>2. Statuts des actions</strong></td><td>âœ“ Done / âš  In Progress / âœ— Not Started / N/A</td></tr>
+                <tr><td><strong>3. Notes dÃ©taillÃ©es</strong></td><td>Utiliser Account Detail pour tracker status, date de mÃ j, liens CRM, notes clÃ©s.</td></tr>
+                <tr><td><strong>4. Taux de complÃ©tion</strong></td><td>Key >90% Â· Core >70% Â· Opportunistic >50%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 5. 25 Actions -->
+        <div class="proc-section card mb-16" id="sec5">
+          <div class="proc-section-hdr" onclick="toggleSection('sec5')">
+            <span>5.</span> 25 Actions Account Management â€“ Guide opÃ©rationnel <span class="chevron-sm" id="chev-sec5">â–¼</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec5">
+
+            <!-- 5.1 -->
+            <div id="sec5-1" style="scroll-margin-top:84px;">
+              <div class="proc-h4">5.1 Account Setup & Assessment (#1â€“4)</div>
+
+              <div class="action-proc-card" id="pc-1">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-1')">
+                  <span class="num-circle">1</span> Client Classification
+                  <span class="chevron-sm" style="color:#888;">â–¼</span>
+                </div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> Assurer un positionnement stratÃ©gique correct dÃ¨s le dÃ©part.</p>
+                  <p><strong>Responsable :</strong> Account Manager &nbsp;|&nbsp; <strong>Quand :</strong> Ã€ la crÃ©ation du compte ou lors d'une rÃ©vision (obligatoire avant tout objectif).</p>
+                  <div class="minimum-std"><div class="box-title" style="color:var(--in-progress);">Standard minimum</div>
+                    <ul style="padding-left:16px;margin:0;"><li>Statut CRM mis Ã  jour</li><li>DerniÃ¨re date de projet vÃ©rifiÃ©e</li><li>Historique des revenus vÃ©rifiÃ©</li></ul>
+                  </div>
+                  <div class="good-practice"><div class="box-title" style="color:var(--success);">Bonne pratique</div>Revalider le statut annuellement. Si aucune activitÃ© >12 mois â†’ passer en "Previous".</div>
+                  <div class="common-mistake"><div class="box-title" style="color:var(--danger);">Erreur courante</div>Laisser les prospects classÃ©s comme "Current". Ne pas mettre Ã  jour aprÃ¨s inactivitÃ©.</div>
+                </div>
+              </div>
+
+              <div class="action-proc-card" id="pc-2">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-2')">
+                  <span class="num-circle">2</span> ICP Calculation (Current / New / Previous)
+                  <span class="chevron-sm" style="color:#888;">â–¼</span>
+                </div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> Quantifier l'attractivitÃ© stratÃ©gique.</p>
+                  <p><strong>Quand :</strong> Dans les 30 jours suivant la classification ou la signature d'un nouveau contrat.</p>
+                  <div class="minimum-std"><div class="box-title" style="color:var(--in-progress);">Standard minimum</div>
+                    <ul style="padding-left:16px;margin:0;"><li>ModÃ¨le ICP officiel utilisÃ©</li><li>Fichier joint dans le CRM</li><li>Score justifiÃ© (court commentaire)</li></ul>
+                  </div>
+                  <div class="good-practice"><div class="box-title" style="color:var(--success);">Bonne pratique</div>Utiliser des critÃ¨res objectifs (potentiel de revenus, adÃ©quation gÃ©ographique, potentiel rÃ©current, fiabilitÃ© de paiement). Ajuster l'ICP si nÃ©cessaire.</div>
+                  <div class="common-mistake"><div class="box-title" style="color:var(--danger);">Erreur courante</div>Gonfler l'ICP sur la base du "feeling". Oublier de mettre Ã  jour aprÃ¨s changement.</div>
+                  <div style="margin-top:12px;"><a href="ideal-client-profile.html" class="ref-link">Calculer l'ICP maintenant</a></div>
+                </div>
+              </div>
+
+              <div class="action-proc-card" id="pc-3">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-3')">
+                  <span class="num-circle">3</span> ICP Estimation (Prospects)
+                  <span class="chevron-sm" style="color:#888;">â–¼</span>
+                </div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> Prioriser l'effort de dÃ©veloppement commercial.</p>
+                  <p><strong>Quand :</strong> Ã€ la crÃ©ation du prospect.</p>
+                  <div class="minimum-std"><div class="box-title" style="color:var(--in-progress);">Standard minimum</div>
+                    <ul style="padding-left:16px;margin:0;"><li>Tier estimÃ© dÃ©fini</li><li>Justification Ã©crite (1â€“2 lignes)</li></ul>
+                  </div>
+                  <div class="good-practice"><div class="box-title" style="color:var(--success);">Bonne pratique</div>Baser les commentaires sur des informations publiques. Mettre Ã  jour une fois le premier projet sÃ©curisÃ©.</div>
+                </div>
+              </div>
+
+              <div class="action-proc-card" id="pc-4">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-4')">
+                  <span class="num-circle">4</span> Key Account Classification
+                  <span class="chevron-sm" style="color:#888;">â–¼</span>
+                </div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> DÃ©finir le niveau d'effort et de gouvernance.</p>
+                  <table class="proc-table" style="margin-top:10px;">
+                    <thead><tr><th>Tier</th><th>Engagement minimal</th><th>Revue</th><th>Objectif croissance</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Key</strong></td><td>Trimestriel</td><td>Revue annuelle obligatoire</td><td>Croissance agressive</td></tr>
+                      <tr><td><strong>Core</strong></td><td>Semestriel</td><td>Revue annuelle optionnelle</td><td>Croissance stable</td></tr>
+                      <tr><td><strong>Opportunistic</strong></td><td>Annuel</td><td>Pas de revue formelle</td><td>RÃ©actif</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5.2 -->
+            <div id="sec5-2" style="scroll-margin-top:84px;margin-top:16px;">
+              <div class="proc-h4">5.2 Strategic Planning & Governance (#5â€“7)</div>
+              <div class="action-proc-card" id="pc-5">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-5')"><span class="num-circle">5</span> Project &amp; Opportunity Mapping <span class="chevron-sm">â–¼</span></div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> Avoir une visibilitÃ© prospective pour anticiper les besoins clients.</p>
+                  <p><strong>Responsable :</strong> Account Manager (support PM) &nbsp;|&nbsp; <strong>FrÃ©quence :</strong> Mensuel (Key), Trimestriel (Core)</p>
+                  <div class="minimum-std"><div class="box-title" style="color:var(--in-progress);">Standard minimum</div><ul style="padding-left:16px;margin:0;"><li>Tous les projets en cours listÃ©s</li><li>Phases futures connues identifiÃ©es</li><li>Fourchette de valeur estimÃ©e ajoutÃ©e</li></ul></div>
+                  <div class="good-practice"><div class="box-title" style="color:var(--success);">Bonne pratique</div>Inclure le calendrier de dÃ©cision. Identifier le positionnement concurrentiel interne. Mettre en Ã©vidence le point d'entrÃ©e pour la prochaine phase.</div>
+                  <div class="common-mistake"><div class="box-title" style="color:var(--danger);">Erreur courante</div>Ne mapper que les projets confirmÃ©s. Ignorer le pipeline en phase initiale.</div>
+                </div>
+              </div>
+              <div class="action-proc-card" id="pc-6">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-6')"><span class="num-circle">6</span> Annual Revenue Target Definition <span class="chevron-sm">â–¼</span></div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> CrÃ©er une responsabilisation.</p>
+                  <p><strong>Responsable :</strong> Account Manager, Validation : BLM (Key) &nbsp;|&nbsp; <strong>FrÃ©quence :</strong> RÃ©vision mi-annÃ©e autorisÃ©e</p>
+                  <div class="minimum-std"><div class="box-title" style="color:var(--in-progress);">Standard minimum</div><ul style="padding-left:16px;margin:0;"><li>Objectif de revenus clair</li><li>Justification de croissance documentÃ©e</li></ul></div>
+                  <div class="good-practice"><div class="box-title" style="color:var(--success);">Bonne pratique</div>Ambitieux mais rÃ©aliste. LiÃ© aux opportunitÃ©s cartographiÃ©es.</div>
+                  <div class="common-mistake"><div class="box-title" style="color:var(--danger);">Erreur courante</div>Fixer un objectif arbitraire dÃ©connectÃ© du pipeline.</div>
+                </div>
+              </div>
+              <div class="action-proc-card" id="pc-7">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-7')"><span class="num-circle">7</span> Annual Strategic Account Review <span class="chevron-sm">â–¼</span></div>
+                <div class="action-proc-body">
+                  <p><strong>Objectif :</strong> RÃ©Ã©valuer le positionnement Ã  long terme.</p>
+                  <p><strong>Participants :</strong> Account Manager + BLM + Head of Strategy &nbsp;|&nbsp; <strong>Quand :</strong> Q4</p>
+                  <div class="minimum-std"><div class="box-title" style="color:var(--in-progress);">ðŸ“‹ La revue doit couvrir</div><ol style="padding-left:16px;margin:0;"><li>RÃ©Ã©valuation ICP</li><li>Revenus vs objectif</li><li>Analyse victoires/dÃ©faites</li><li>Analyse concurrentielle</li><li>Objectifs stratÃ©giques annÃ©e suivante</li></ol></div>
+                  <div class="good-practice"><div class="box-title" style="color:var(--success);">Bonne pratique</div>Planifier avec le Responsable de StratÃ©gie en Q4. PrÃ©parer une prÃ©sentation complÃ¨te.</div>
+                  <div class="common-mistake"><div class="box-title" style="color:var(--danger);">Erreur courante</div>Transformer la revue en point de statut opÃ©rationnel. Pas de stratÃ©gie prospective dÃ©finie.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5.3 -->
+            <div id="sec5-3" style="scroll-margin-top:84px;margin-top:16px;">
+              <div class="proc-h4">5.3 Account Intelligence & Mapping (#8â€“11)</div>
+              <p class="proc-p">Ces actions visent Ã  comprendre la structure de pouvoir du client et Ã  anticiper les opportunitÃ©s.</p>
+              <div class="alert alert-warning">
+                ðŸ’¡ <strong>Rappel :</strong> Ne cartographiez pas seulement les contacts opÃ©rationnels. Identifiez les dÃ©cideurs qui peuvent attribuer des contrats et approuver les budgets.
+              </div>
+              <p class="proc-p"><strong>#8 â€“ Organisation mapping :</strong> Cartographier siÃ¨ge, filiales, entitÃ©s, rÃ©gions, dÃ©cideurs. Standard min. : siÃ¨ge, entitÃ©s rÃ©gionales, structure achat, depts techniques.</p>
+              <p class="proc-p"><strong>#9 â€“ Competitor identification :</strong> Identifier l'incumbent, sa stratÃ©gie prix, sa profondeur relationnelle. Mise Ã  jour trimestrielle (Key).</p>
+              <p class="proc-p"><strong>#10 â€“ Market intelligence :</strong> Collecter lors de rÃ©unions : tendances secteur, rÃ©glementation, stratÃ©gie client, M&A. Min. 2 insights/an pour les Core.</p>
+              <p class="proc-p"><strong>#11 â€“ Key contacts :</strong> Min. 3 contacts clÃ©s (dÃ©cision / technique / achat). Key : min. 5 contacts.</p>
+            </div>
+
+            <!-- 5.4 -->
+            <div id="sec5-4" style="scroll-margin-top:84px;margin-top:16px;">
+              <div class="proc-h4">5.4 Relationship Management (#12â€“15)</div>
+              <p class="proc-p"><strong>#12 â€“ RÃ©unions formelles :</strong> Key/Core â†’ Trimestriel/Semestriel Â· Opportunistic â†’ Annuel. Agenda : bilan relationnel, projets en cours, besoins futurs, feedback, discussion cross-services. CR obligatoire dans les 24h.</p>
+              <p class="proc-p"><strong>#13 â€“ Executive sponsorship :</strong> Correspondre les niveaux de senioritÃ©. Min. 1 rÃ©union stratÃ©gique/an pour les Key. Focus : vision long terme, pas les dÃ©tails opÃ©rationnels.</p>
+              <p class="proc-p"><strong>#14 â€“ Satisfaction client :</strong> Participation obligatoire aux rÃ©unions de clÃ´ture. Question de satisfaction posÃ©e. Feedback consignÃ©. Si score sous seuil â†’ intervention BLM requise.</p>
+              <p class="proc-p"><strong>#15 â€“ Feedback consultants :</strong> DÃ©briefs sous 7 jours aprÃ¨s fin de projet. Questions : signaux d'insatisfaction ? Concurrents prÃ©sents ? Besoins futurs mentionnÃ©s ? QualitÃ© relationnelle ?</p>
+            </div>
+
+            <!-- 5.5 -->
+            <div id="sec5-5" style="scroll-margin-top:84px;margin-top:16px;">
+              <div class="proc-h4">5.5 Business Development & Growth (#16â€“20)</div>
+              <p class="proc-p"><strong>#16 â€“ Demandes de rÃ©fÃ©rences :</strong> AprÃ¨s les projets rÃ©ussis. Standard min. : confirmation verbale + approbation Ã©crite pour utilisation logo/tÃ©moignage.</p>
+              <p class="proc-p"><strong>#17 â€“ Identification d'opportunitÃ©s :</strong> Pendant et aprÃ¨s projet. Obligatoire : crÃ©er un Lead CRM immÃ©diatement.</p>
+              <p class="proc-p"><strong>#18 â€“ Introductions cross-entitÃ©s :</strong> 1. Identifier l'affiliÃ©. 2. Demander introduction. 3. Suivi dans 3 jours. 4. Enregistrer CRM.</p>
+              <p class="proc-p"><strong>#19 â€“ Cross-selling :</strong> Pertinence avant tout. Proposer introduction Ã  l'expert. Utiliser case study. Ã‰viter de submerger avec tous les services d'un coup.</p>
+              <p class="proc-p"><strong>#20 â€“ Suivi leads/conversions :</strong> Revue mensuelle pour Key. Suivre : taux de conversion, goulots d'Ã©tranglement, durÃ©e par Ã©tape.</p>
+            </div>
+
+            <!-- 5.6 -->
+            <div id="sec5-6" style="scroll-margin-top:84px;margin-top:16px;">
+              <div class="proc-h4">5.6 Commercial & Contracts (#21â€“24)</div>
+              <p class="proc-p"><strong>#21 â€“ StratÃ©gie de proposition/tarification :</strong> Avant soumission : stratÃ©gie de victoire, analyse prix-pour-gagner, diffÃ©renciation. Validation BLM + Management pour les offres stratÃ©giques.</p>
+              <p class="proc-p"><strong>#22 â€“ Support Ã  la nÃ©gociation :</strong> PrÃ©parer : point de rupture, plan de concessions, offre alternative.</p>
+              <p class="proc-p"><strong>#23 â€“ Contrats cadres :</strong> Passer du modÃ¨le transactionnel au modÃ¨le rÃ©current. Identifier retainers, accords pluriannuels.</p>
+              <p class="proc-p"><strong>#24 â€“ Enregistrement procurement :</strong> Portail fournisseur, lignes de service, dates de renouvellement suivies.</p>
+            </div>
+
+            <!-- 5.7 -->
+            <div id="sec5-7" style="scroll-margin-top:84px;margin-top:16px;">
+              <div class="proc-h4">5.7 Operations & CRM Discipline (#25)</div>
+              <div class="action-proc-card open" id="pc-25">
+                <div class="action-proc-head" onclick="toggleProcCard('pc-25')">
+                  <span class="num-circle">25</span> CRM Update & Tracking Sheet Maintenance
+                  <span class="chevron-sm" style="color:#888;">â–¼</span>
+                </div>
+                <div class="action-proc-body">
+                  <div class="alert alert-warning" style="margin-bottom:12px;">
+                    ðŸš¨ <strong>RÃ¨gle d'or :</strong> Si ce n'est pas dans le CRM â†’ Ã§a n'a pas eu lieu. Si ce n'est pas dans votre Tracking Sheet â†’ vous ne pouvez pas suivre votre progression.
+                  </div>
+                  <p><strong>Exigences CRM (Obligatoires) :</strong></p>
+                  <ul style="padding-left:18px;">
+                    <li>Consigner toutes les rÃ©unions dans les 24h</li>
+                    <li>Consigner les appels importants et dÃ©cisions clÃ©s</li>
+                    <li>CrÃ©er des leads immÃ©diatement Ã  leur identification</li>
+                    <li>Mettre Ã  jour les informations de contact lors de changements</li>
+                    <li>Mise Ã  jour CRM hebdomadaire requise</li>
+                  </ul>
+                  <p style="margin-top:10px;"><strong>Exigences Tracking Sheet (Obligatoires) :</strong></p>
+                  <ul style="padding-left:18px;">
+                    <li>Mettre Ã  jour le statut immÃ©diatement aprÃ¨s complÃ©tion</li>
+                    <li>Ajouter des notes dÃ©taillÃ©es dans l'onglet Account Detail</li>
+                    <li>Uploader la feuille mise Ã  jour dans le CRM : mensuel (Key), trimestriel (Core)</li>
+                    <li>Maintenir >90% de taux de complÃ©tion pour les Key accounts</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 6. ClÃ´ture -->
+        <div class="proc-section card mb-16" id="sec6">
+          <div class="proc-section-hdr" onclick="toggleSection('sec6')">
+            <span>6.</span> Clôture de compte & Exit <span class="chevron-sm" id="chev-sec6">â–¼</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec6">
+            <div class="proc-h4">6.1 Quand clÃ´turer un compte</div>
+            <ul class="proc-ul">
+              <li>Aucune facturation depuis 12+ mois</li>
+              <li>Le client a cessÃ© ses activitÃ©s (faillite, acquisition, dissolution)</li>
+              <li>DÃ©cision stratÃ©gique de quitter la relation (risque, conformitÃ©, rentabilitÃ©)</li>
+              <li>Le client met fin explicitement Ã  la relation</li>
+            </ul>
+            <div class="proc-h4">6.2 Processus de clÃ´ture</div>
+            <p class="proc-p"><strong>Responsable :</strong> Account Manager &nbsp;|&nbsp; <strong>Validation :</strong> Direction (pour Key/Core)</p>
+            <ol class="proc-ol">
+              <li>ComplÃ©ter le rÃ©sumÃ© final du compte (historique, leÃ§ons apprises, potentiel futur)</li>
+              <li>Mettre Ã  jour le statut CRM en "Previous Client"</li>
+              <li>Archiver la version finale du tracking sheet dans le CRM</li>
+              <li>Archiver la documentation du compte</li>
+              <li>Notifier les parties prenantes internes</li>
+            </ol>
+            <div class="proc-h4">6.3 RÃ©activation de compte</div>
+            <p class="proc-p">Les anciens clients peuvent Ãªtre rÃ©activÃ©s si un nouveau contrat est sÃ©curisÃ©. La rÃ©activation requiert :</p>
+            <ul class="proc-ul">
+              <li>Revue des informations archivÃ©es et du tracking sheet</li>
+              <li>Nouveau calcul ICP</li>
+              <li>RÃ©attribution du compte</li>
+              <li>Mise Ã  jour statut CRM â†’ "Current Client"</li>
+              <li>Nouveau tracking sheet crÃ©Ã©</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 7. KPIs -->
+        <div class="proc-section card mb-16" id="sec7">
+          <div class="proc-section-hdr" onclick="toggleSection('sec7')">
+            <span>7.</span> EfficacitÃ© de la procÃ©dure & AmÃ©lioration continue <span class="chevron-sm" id="chev-sec7">â–¼</span>
+          </div>
+          <div class="proc-section-body open" id="body-sec7">
+            <div class="proc-h4">7.2 Indicateurs de performance clÃ©s (KPIs)</div>
+            <div class="grid-3" style="gap:14px;margin-top:12px;">
+              <div style="background:#f8f9fa;border-radius:8px;padding:14px;border-top:3px solid var(--accent);">
+                <strong style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;">SantÃ© des comptes</strong>
+                <ul style="padding-left:14px;margin-top:8px;font-size:13px;">
+                  <li>Croissance des revenus par tier</li>
+                  <li>Taux de fidÃ©lisation client</li>
+                  <li>Valeur vie client moyenne</li>
+                  <li>Scores de satisfaction</li>
+                </ul>
+              </div>
+              <div style="background:#f8f9fa;border-radius:8px;padding:14px;border-top:3px solid var(--in-progress);">
+                <strong style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;">ConformitÃ© procÃ©dure</strong>
+                <ul style="padding-left:14px;margin-top:8px;font-size:13px;">
+                  <li>% comptes avec score ICP Ã  jour</li>
+                  <li>% revues stratÃ©giques annuelles Key</li>
+                  <li>Taux de complÃ©tion tracking sheet</li>
+                  <li>Score complÃ©tude CRM</li>
+                </ul>
+              </div>
+              <div style="background:#f8f9fa;border-radius:8px;padding:14px;border-top:3px solid var(--success);">
+                <strong style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;">DÃ©veloppement commercial</strong>
+                <ul style="padding-left:14px;margin-top:8px;font-size:13px;">
+                  <li>Taux de conversion des leads par tier</li>
+                  <li>Taux de succÃ¨s cross-selling</li>
+                  <li>Conversion contrats cadres</li>
+                  <li>Win rate sur les offres stratÃ©giques</li>
+                </ul>
+              </div>
+            </div>
+            <div class="proc-h4">7.3 AmÃ©lioration continue</div>
+            <p class="proc-p">Tous les collaborateurs sont encouragÃ©s Ã  proposer des amÃ©liorations. Soumettez vos suggestions au Responsable de StratÃ©gie avec : description du problÃ¨me, solution proposÃ©e, impact attendu.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    (async () => {
+      if (!(await requireAuth())) return;
+      document.getElementById('headerMount').innerHTML = buildHeader('Procédure');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('process.html');
+    })();
+    function toggleSection(id) {
+      const body = document.getElementById('body-' + id);
+      const chev = document.getElementById('chev-' + id);
+      if (!body) return;
+      const isOpen = body.style.display !== 'none';
+      body.style.display = isOpen ? 'none' : 'block';
+      if (chev) chev.textContent = isOpen ? '▶' : '▼';
+    }
+
+    function toggleProcCard(id) {
+      const card = document.getElementById(id);
+      card.classList.toggle('open');
+    }
+
+    function openSection(id) {
+      const body = document.getElementById('body-' + id);
+      if (body) body.style.display = 'block';
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.proc-section-body').forEach(b => b.style.display = 'block');
+      document.querySelectorAll('.action-proc-body').forEach(b => { b.style.display = 'block'; b.closest('.action-proc-card').classList.add('open'); });
+    }
+    function collapseAll() {
+      document.querySelectorAll('.proc-section-body').forEach(b => b.style.display = 'none');
+      document.querySelectorAll('.action-proc-body').forEach(b => { b.style.display = 'none'; b.closest('.action-proc-card').classList.remove('open'); });
+    }
+  </script>
+</body>
+</html>
+
+

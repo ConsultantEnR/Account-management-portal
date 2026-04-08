@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valeurs de Référence – Dolfines AM Portal</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .ref-grid-wrap { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .ref-table th { background: var(--primary); color: white; padding: 9px 12px; text-align: left; font-size: 12px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+    .ref-table tr:last-child td { border-bottom: none; }
+    .ref-table tr:nth-child(even) td { background: #fafbfc; }
+    .score-chip {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      border-radius: 10px;
+      padding: 2px 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .icp-range-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .icp-range-table th { background: var(--primary); color: white; padding: 10px 14px; }
+    .icp-range-table td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+    .icp-range-table tr:last-child td { border-bottom: none; }
+    .search-bar { margin-bottom: 18px; }
+    .section-title { font-size: 13px; font-weight: 700; color: var(--primary); background: #f0f4f8; padding: 10px 14px; border-radius: 6px 6px 0 0; border-bottom: 2px solid var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="bg-cover"></div>
+  <div class="bg-overlay"></div>
+  <div id="headerMount"></div>
+  <div id="sidebarMount"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <span class="icon">📑</span>
+      <div>
+        <h1>Valeurs de Référence</h1>
+        <p>Toutes les listes déroulantes et scores utilisés dans le calcul ICP et les formulaires</p>
+      </div>
+    </div>
+
+    <div class="alert alert-info mb-24">
+      ℹ️ Cette page est en <strong>lecture seule</strong>. Elle liste toutes les valeurs possibles pour chaque critère et leurs scores associés, tels que définis dans l'onglet "Dropdown List Values" du fichier Excel de référence.
+    </div>
+
+    <!-- ICP Scoring ranges -->
+    <div class="card mb-24">
+      <div class="card-header"><span class="icon">🏆</span> Classification ICP – Niveaux et scores</div>
+      <div class="card-body">
+        <table class="icp-range-table">
+          <thead>
+            <tr>
+              <th>Fit</th>
+              <th>Tier</th>
+              <th>Score min</th>
+              <th>Score max</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eef2ff;">
+              <td style="font-weight:700;color:#272A5A;">Excellent Fit</td>
+              <td><span style="background:#eef2ff;color:#272A5A;border:1px solid #c5cdf5;padding:2px 10px;border-radius:12px;font-weight:800;font-size:12px;">Key</span></td>
+              <td style="font-weight:700;">386</td>
+              <td style="font-weight:700;">630</td>
+              <td>Clients très alignés avec votre profil idéal. Fort potentiel de succès à long terme.</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:#272A5A;">Good Fit</td>
+              <td><span style="background:#eef2ff;color:#272A5A;border:1px solid #c5cdf5;padding:2px 10px;border-radius:12px;font-weight:800;font-size:12px;">Key</span></td>
+              <td style="font-weight:700;">264</td>
+              <td style="font-weight:700;">385</td>
+              <td>Bon match avec quelques axes d'amélioration. Fort potentiel commercial.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td style="font-weight:700;color:#1863DC;">Moderate Fit</td>
+              <td><span style="background:#eff6ff;color:#1863DC;border:1px solid #bdd8fb;padding:2px 10px;border-radius:12px;font-weight:700;font-size:12px;">Core</span></td>
+              <td style="font-weight:700;">211</td>
+              <td style="font-weight:700;">263</td>
+              <td>Alignement modéré, quelques lacunes notables. Gérable mais nécessite des efforts.</td>
+            </tr>
+            <tr style="background:#f0fdf4;">
+              <td style="font-weight:700;color:#1aaa55;">Low Fit</td>
+              <td><span style="background:#f0fdf4;color:#1aaa55;border:1px solid #bbf0cf;padding:2px 10px;border-radius:12px;font-weight:700;font-size:12px;">Opp.</span></td>
+              <td style="font-weight:700;">141</td>
+              <td style="font-weight:700;">210</td>
+              <td>Désalignements significatifs. Peut être difficile à travailler avec.</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;color:#6b7280;">Poor Fit</td>
+              <td><span style="background:#f8f9fa;color:#6b7280;border:1px solid #ddd;padding:2px 10px;border-radius:12px;font-weight:700;font-size:12px;">Opp.</span></td>
+              <td style="font-weight:700;">0</td>
+              <td style="font-weight:700;">140</td>
+              <td>Client peu aligné, peu intéressant à long terme.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Criteria reference tables -->
+    <div class="ref-grid-wrap" id="refGridContainer"></div>
+
+    <!-- Status values reference -->
+    <div class="card mt-24" style="margin-top:20px;">
+      <div class="card-header"><span class="icon">🔖</span> Valeurs de Statut – Actions</div>
+      <div class="card-body">
+        <table class="ref-table">
+          <thead><tr><th>Statut</th><th>Icône</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>✓ Done</td><td>✅</td><td>Action complétée avec succès.</td></tr>
+            <tr><td>⚠ In Progress</td><td>🔄</td><td>Action démarrée mais non finalisée.</td></tr>
+            <tr><td>✗ Not Started</td><td>❌</td><td>Action pas encore initiée.</td></tr>
+            <tr><td>N/A</td><td>—</td><td>Action non applicable à ce compte / tier.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tier applicability reference -->
+    <div class="card" style="margin-top:20px;">
+      <div class="card-header"><span class="icon">🎯</span> Applicabilité des actions par Tier</div>
+      <div class="card-body">
+        <div class="alert alert-warning" style="margin-bottom:16px;">
+          ⚠️ Les actions marquées comme obligatoires pour un tier donné doivent être complétées pour atteindre les objectifs de taux de complétion (Key >90%, Core >70%, Opportunistic >50%).
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="ref-table">
+            <thead><tr><th>#</th><th>Action</th><th>Groupe</th><th>Key</th><th>Core</th><th>Opportunistic</th></tr></thead>
+            <tbody id="tierApplicabilityBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    async function init() {
+      if (!(await requireAuth())) return;
+      document.getElementById('headerMount').innerHTML = buildHeader('Valeurs de Référence');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('dropdown-values.html');
+      buildRefCards();
+      buildTierTable();
+    }
+    init();
+
+    /* ── Build criteria reference cards ── */
+    function buildRefCards() {
+      const container = document.getElementById('refGridContainer');
+      let html = '';
+      ICP_CRITERIA.forEach(c => {
+        html += `
+        <div class="card" style="margin-bottom:0;">
+          <div class="section-title">🎯 ${c.label}</div>
+          <div style="overflow:hidden;">
+            <table class="ref-table">
+              <thead><tr><th>Valeur</th><th style="text-align:right;">Score</th></tr></thead>
+              <tbody>
+                ${c.options.map(o => `
+                <tr>
+                  <td>${o.value}</td>
+                  <td style="text-align:right;"><span class="score-chip">${o.score}</span></td>
+                </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+          <div style="background:#f8f9fa;padding:8px 12px;font-size:12px;color:#888;border-top:1px solid #eee;">
+            Pondérations disponibles :
+            ${c.importanceOptions.map(o => `<strong>${o.value}</strong> (×${o.score})`).join(' · ')}
+          </div>
+        </div>`;
+      });
+      container.innerHTML = html;
+    }
+
+    /* ── Build tier applicability table ── */
+    function buildTierTable() {
+      const tbody = document.getElementById('tierApplicabilityBody');
+      tbody.innerHTML = ACTIONS.map(a => `
+        <tr>
+          <td style="font-weight:700;">#${a.id}</td>
+          <td style="font-weight:600;">${a.name}</td>
+          <td style="font-size:12px;color:#888;">${a.group.replace('Account ','').replace('Strategic ','')}</td>
+          <td style="text-align:center;">${a.tiers.includes('key') ? '✅' : '—'}</td>
+          <td style="text-align:center;">${a.tiers.includes('core') ? '✅' : '—'}</td>
+          <td style="text-align:center;">${a.tiers.includes('opp') ? '✅' : '—'}</td>
+        </tr>
+      `).join('');
+    }
+
+  </script>
+</body>
+</html>

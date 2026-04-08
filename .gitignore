@@ -1,0 +1,15 @@
+# Fichiers sensibles et temporaires
+.env
+.env.local
+.env.production
+
+# Données temporaires / binaires lourds
+*.xlsx
+*.pdf
+*.docx
+tmp_*/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
