@@ -58,7 +58,7 @@ CREATE INDEX IF NOT EXISTS accounts_user_id_idx ON public.accounts (user_id);
 --
 -- SELECT auth.create_user(
 --   '{"email": "dylan.charron@dolfines.com",
---     "password": "Dolfine2026!",
+--     "password": "Dolfines2026!",
 --     "user_metadata": {"full_name": "Dylan Charron"}}'::jsonb
 -- );
 -- (répéter pour chaque utilisateur)
