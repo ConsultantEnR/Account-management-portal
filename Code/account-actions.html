@@ -148,15 +148,6 @@
   <script src="../js/config.js"></script>
   <script src="../js/app.js"></script>
   <script>
-    async function init() {
-      if (!(await requireAuth())) return;
-      await initData();
-      document.getElementById('headerMount').innerHTML = buildHeader('Account Actions');
-      document.getElementById('sidebarMount').innerHTML = buildSidebar('account-actions.html');
-    }
-    init();
-  </script>
-  <script>
     // Populate group filter
     const groupSel = document.getElementById('filterGroup');
     ACTION_GROUPS.forEach(g => {
@@ -289,9 +280,6 @@
       });
 
       container.innerHTML = html || '<div class="card"><div class="card-body text-center" style="padding:40px;color:#aaa;">Aucune action ne correspond aux filtres sélectionnés.</div></div>';
-    });
-
-      container.innerHTML = html || `<div class="card"><div class="card-body text-center" style="padding:40px;color:#aaa;">Aucune action ne correspond aux filtres sélectionnés.</div></div>`;
     }
 
     function toggleCard(id) {
@@ -315,13 +303,15 @@
       renderActions();
     }
 
-    async function initActions() {
+    async function init() {
       if (!(await requireAuth())) return;
       await initData();
+      document.getElementById('headerMount').innerHTML = buildHeader('Account Actions');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('account-actions.html');
       loadAccountSelector();
       renderActions();
     }
-    initActions();
+    init();
   </script>
 </body>
 </html>
