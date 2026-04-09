@@ -159,36 +159,19 @@
   <script src="../js/config.js"></script>
   <script src="../js/app.js"></script>
   <script>
-    async function init() {
-      if (!(await requireAuth())) return;
-      await initData();
-      document.getElementById('headerMount').innerHTML = buildHeader('Ideal Client Profile');
-      document.getElementById('sidebarMount').innerHTML = buildSidebar('ideal-client-profile.html');
-
-    // Populate account selector
     function populateAccountSel() {
       const sel = document.getElementById('accountLinkSel');
       const accounts = getAccounts();
       sel.innerHTML = '<option value="">— Calculer sans lier —</option>' +
         accounts.map(a => `<option value="${a.id}">${a.accountName} (${a.tier})</option>`).join('');
     }
-    populateAccountSel();
 
-    // Check URL param
-    const urlParams = new URLSearchParams(window.location.search);
-    const preId = urlParams.get('id');
-    if (preId) {
-      document.getElementById('accountLinkSel').value = preId;
-    }
-
-    /* ── Build criteria rows ── */
     function buildCriteriaTable() {
       const tbody = document.getElementById('criteriaBody');
       let html = '';
-      ICP_CRITERIA.forEach((c, idx) => {
+      ICP_CRITERIA.forEach((c) => {
         const valOpts = c.options.map(o => `<option value="${o.score}" data-label="${o.value}">${o.value}</option>`).join('');
         const impOpts = c.importanceOptions.map(o => `<option value="${o.score}" data-label="${o.value}">${o.value}</option>`).join('');
-
         html += `
         <tr>
           <td class="criteria-name">${c.label}</td>
@@ -206,7 +189,6 @@
           <td class="score-col"><span id="sc-${c.key}">0</span></td>
         </tr>`;
       });
-      // Total row
       html += `
       <tr class="score-row-total">
         <td colspan="3" style="text-align:right;font-size:14px;">SCORE ICP TOTAL</td>
@@ -220,8 +202,7 @@
       const impEl = document.getElementById(`imp-${key}`);
       const valScore = parseInt(valEl.value) || 0;
       const impScore = parseInt(impEl.value) || 1;
-      const score = valScore * impScore;
-      document.getElementById(`sc-${key}`).textContent = score;
+      document.getElementById(`sc-${key}`).textContent = valScore * impScore;
       updateTotal();
     }
 
@@ -243,12 +224,10 @@
       const pct = Math.min((total / 630) * 100, 100);
       document.getElementById('icpBarFill').style.width = pct + '%';
 
-      // Bar color by tier
       const colors = { Key: '#272A5A', Core: '#1863DC', Opportunistic: '#1aaa55' };
       document.getElementById('icpBarFill').style.background = colors[info.tier] || 'var(--accent)';
     }
 
-    /* ── Load ICP from account ── */
     function loadICPFromAccount() {
       const id = document.getElementById('accountLinkSel').value;
       if (!id) { showToast('Sélectionnez un compte à charger.', 'warning'); return; }
@@ -269,7 +248,6 @@
       showToast('✅ ICP chargé depuis le compte.', 'success');
     }
 
-    /* ── Save ICP to account ── */
     async function saveICPToAccount() {
       const id = document.getElementById('accountLinkSel').value;
       if (!id) {
@@ -316,8 +294,15 @@
       showToast('🔄 Formulaire réinitialisé.', 'info');
     }
 
+    async function init() {
+      if (!(await requireAuth())) return;
+      await initData();
+      document.getElementById('headerMount').innerHTML = buildHeader('Ideal Client Profile');
+      document.getElementById('sidebarMount').innerHTML = buildSidebar('ideal-client-profile.html');
       buildCriteriaTable();
       populateAccountSel();
+      const urlParams = new URLSearchParams(window.location.search);
+      const preId = urlParams.get('id');
       if (preId) {
         document.getElementById('accountLinkSel').value = preId;
         loadICPFromAccount();
