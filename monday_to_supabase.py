@@ -51,6 +51,17 @@ def list_monday_boards():
 CONTACT_TABLE_NAME = "contacts"
 ACCOUNT_TABLE_NAME = "accounts"
 
+ACCOUNT_MANAGER_TITLES = [
+    "Account Manager",
+    "Responsable Commercial",
+    "Responsable Client",
+    "Account Owner",
+    "Commercial",
+    "Owner",
+    "Personne",
+    "Personnes",
+]
+
 # Mappings de noms Monday vers emails/email vers user_ids
 PERSON_NAME_TO_EMAIL = {
     "Hend OTHMANI": "hend.othmani@dolfines.com",
@@ -233,15 +244,7 @@ def parse_person_column(item, column_title):
 
 
 def get_account_manager_values(item):
-    possible_titles = [
-        "Account Manager",
-        "Responsable Commercial",
-        "Responsable Client",
-        "Account Owner",
-        "Commercial",
-        "Owner"
-    ]
-    for title in possible_titles:
+    for title in ACCOUNT_MANAGER_TITLES:
         values = parse_person_column(item, title)
         if values:
             return values
@@ -301,15 +304,7 @@ def collect_board_manager_emails(board_id):
         return found_emails
 
     for item in boards["items"]:
-        possible_titles = [
-            "Account Manager",
-            "Responsable Commercial",
-            "Responsable Client",
-            "Account Owner",
-            "Commercial",
-            "Owner"
-        ]
-        for title in possible_titles:
+        for title in ACCOUNT_MANAGER_TITLES:
             email = get_column_email(item, title)
             if email:
                 found_emails.add(email.lower())
