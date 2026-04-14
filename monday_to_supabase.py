@@ -1,6 +1,8 @@
-﻿import requests
+﻿import argparse
+import requests
 import json
 import re
+import time
 from supabase import create_client, Client
 
 # Configuration Monday.com
@@ -473,23 +475,41 @@ def import_contacts(supabase: Client, test_mode: bool):
     print(f"Contacts importés: {inserted}/{len(contacts_data['items'])} (missing_user={missing_user})")
 
 
-def main():
-    print("Démarrage du script Monday → Supabase...")
-    TEST_MODE = False
+def sync_loop(supabase: Client, interval_seconds: int, test_mode: bool):
+    iteration = 1
+    while True:
+        print(f"\n=== Synchronisation Monday → Supabase : cycle {iteration} ===")
+        print("Import clients...")
+        import_clients(supabase, test_mode)
+        print("Import contacts...")
+        import_contacts(supabase, test_mode)
+        print(f"Cycle {iteration} terminé. Prochaine synchronisation dans {interval_seconds} secondes.")
+        iteration += 1
+        time.sleep(interval_seconds)
 
+
+def main():
+    parser = argparse.ArgumentParser(description="Importer ou synchroniser les données Monday vers Supabase.")
+    parser.add_argument("--watch", action="store_true", help="Exécuter en boucle continue pour synchronisation.")
+    parser.add_argument("--interval", type=int, default=300, help="Intervalle en secondes entre deux synchronisations quand --watch est actif. (défaut 300)")
+    parser.add_argument("--test", action="store_true", help="Mode test : n'écrit pas dans Supabase.")
+    args = parser.parse_args()
+
+    print("Démarrage du script Monday → Supabase...")
     supabase = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
     print("Supabase initialisé avec service role.")
 
     get_user_mapping(supabase)
     print("Mapping utilisateurs chargé:", USER_MAPPING)
 
-    print("Import clients...")
-    import_clients(supabase, TEST_MODE)
-
-    print("Import contacts...")
-    import_contacts(supabase, TEST_MODE)
-
-    print("Import terminé.")
+    if args.watch:
+        sync_loop(supabase, args.interval, args.test)
+    else:
+        print("Import clients...")
+        import_clients(supabase, args.test)
+        print("Import contacts...")
+        import_contacts(supabase, args.test)
+        print("Import terminé.")
 
 
 if __name__ == "__main__":
