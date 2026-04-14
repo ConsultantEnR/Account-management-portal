@@ -41,6 +41,8 @@ CREATE POLICY "users_own_accounts"
 
 -- 3. Index pour les performances
 CREATE INDEX IF NOT EXISTS accounts_user_id_idx ON public.accounts (user_id);
+CREATE INDEX IF NOT EXISTS accounts_assigned_user_ids_idx
+  ON public.accounts USING GIN (assigned_user_ids);
 
 -- =====================================================
 -- 4. Table des contacts
@@ -48,6 +50,7 @@ CREATE INDEX IF NOT EXISTS accounts_user_id_idx ON public.accounts (user_id);
 CREATE TABLE IF NOT EXISTS public.contacts (
   id              TEXT        PRIMARY KEY,
   user_id         UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  assigned_user_ids UUID[]    NOT NULL DEFAULT '{}',
   name            TEXT        NOT NULL,
   account_manager TEXT,
   email           TEXT,
@@ -59,19 +62,27 @@ CREATE TABLE IF NOT EXISTS public.contacts (
   updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 5. Row Level Security pour contacts (chaque user voit uniquement ses contacts)
+-- 5. Row Level Security pour contacts (owner OU utilisateur assigné)
 ALTER TABLE public.contacts ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS "users_own_contacts" ON public.contacts;
 CREATE POLICY "users_own_contacts"
   ON public.contacts
   FOR ALL
-  USING  (auth.uid() = user_id)
-  WITH CHECK (auth.uid() = user_id);
+  USING  (
+    auth.uid() = user_id
+    OR auth.uid() = ANY (assigned_user_ids)
+  )
+  WITH CHECK (
+    auth.uid() = user_id
+    OR auth.uid() = ANY (assigned_user_ids)
+  );
 
 -- 6. Index pour les performances
 CREATE INDEX IF NOT EXISTS contacts_user_id_idx ON public.contacts (user_id);
 CREATE INDEX IF NOT EXISTS contacts_name_idx ON public.contacts (name);
+CREATE INDEX IF NOT EXISTS contacts_assigned_user_ids_idx
+  ON public.contacts USING GIN (assigned_user_ids);
 
 -- =====================================================
 -- INSTRUCTIONS

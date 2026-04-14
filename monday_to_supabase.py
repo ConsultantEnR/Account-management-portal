@@ -403,6 +403,18 @@ def import_clients(supabase: Client, test_mode: bool):
     clients_data = get_monday_data(CLIENTS_BOARD_ID, query_fields)
     print(f"Réponse clients: {len(clients_data['items'])} items récupérés.")
 
+    # Debug: afficher tous les champs disponibles pour le premier item
+    if clients_data['items']:
+        print("DEBUG: Structure du premier item Monday:")
+        first_item = clients_data['items'][0]
+        print(f"  ID: {first_item['id']}")
+        print(f"  Name: {first_item['name']}")
+        print("  Column values:")
+        for col in first_item.get('column_values', []):
+            column_title = col.get('column', {}).get('title', 'Unknown')
+            text_value = col.get('text', '')
+            print(f"    {column_title}: '{text_value}'")
+
     inserted = 0
     missing_user = 0
     for item in clients_data["items"]:
@@ -410,6 +422,10 @@ def import_clients(supabase: Client, test_mode: bool):
         account_manager_value = ", ".join(account_manager_values) if account_manager_values else None
         user_ids = resolve_account_manager_user_ids(account_manager_value)
         primary_user_id = user_ids[0] if user_ids else None
+
+        # Debug log pour voir ce qui est lu
+        print(f"DEBUG: Compte '{item['name']}' - Responsable lu: '{account_manager_value}' - User IDs résolus: {user_ids}")
+
         account = {
             "id": item["id"],
             "account_name": item["name"],
@@ -455,6 +471,7 @@ def import_contacts(supabase: Client, test_mode: bool):
             "id": item["id"],
             "name": item["name"],
             "user_id": primary_user_id,
+            "assigned_user_ids": user_ids,
             "account_manager": account_manager_value,
         }
         if not primary_user_id:
