@@ -2,5 +2,11 @@
 -- À exécuter dans Supabase SQL Editor si la table accounts existe déjà.
 
 ALTER POLICY "users_own_accounts" ON public.accounts
-  USING (auth.uid() IS NOT NULL)
-  WITH CHECK (auth.uid() IS NOT NULL);
+  USING (
+    auth.uid() = user_id
+    OR auth.uid() = ANY (assigned_user_ids)
+  )
+  WITH CHECK (
+    auth.uid() = user_id
+    OR auth.uid() = ANY (assigned_user_ids)
+  );
