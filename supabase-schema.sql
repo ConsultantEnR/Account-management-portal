@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS public.accounts (
 -- 2. Row Level Security (chaque user voit uniquement ses comptes)
 ALTER TABLE public.accounts ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "users_own_accounts" ON public.accounts;
 CREATE POLICY "users_own_accounts"
   ON public.accounts
   FOR ALL
@@ -61,6 +62,7 @@ CREATE TABLE IF NOT EXISTS public.contacts (
 -- 5. Row Level Security pour contacts (chaque user voit uniquement ses contacts)
 ALTER TABLE public.contacts ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "users_own_contacts" ON public.contacts;
 CREATE POLICY "users_own_contacts"
   ON public.contacts
   FOR ALL

@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS public.contacts (
 -- Row Level Security pour contacts
 ALTER TABLE public.contacts ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "users_own_contacts" ON public.contacts;
 CREATE POLICY "users_own_contacts"
   ON public.contacts
   FOR ALL
