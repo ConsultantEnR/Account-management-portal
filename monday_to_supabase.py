@@ -52,6 +52,11 @@ ACCOUNT_TABLE_NAME = "accounts"
 # Mappings de noms Monday vers emails/email vers user_ids
 PERSON_NAME_TO_EMAIL = {
     "Hend OTHMANI": "hend.othmani@dolfines.com",
+    "Laetitia DAPREMONT": "laetitia.dapremont@aegide-international.com",
+    "Dylan CHARRON": "dylan.charron@dolfines.com",
+    "Nicolas LECOEUR": "nicolas.lecoeur@8p2.fr",
+    "Ines DECHAUT": "ines.dechaut@aegide-international.com",
+
     # Ajoutez d'autres mappings si nécessaire.
 }
 
@@ -188,7 +193,44 @@ def get_column_json(item, column_title):
         return None
 
 
-def get_account_manager_value(item):
+def split_person_list(value: str):
+    if not value:
+        return []
+    separators = [",", ";", "/", "|", "\n"]
+    parts = [value]
+    for sep in separators:
+        next_parts = []
+        for part in parts:
+            next_parts.extend([p.strip() for p in part.split(sep) if p.strip()])
+        parts = next_parts
+    return parts
+
+
+def parse_person_column(item, column_title):
+    col = get_column(item, column_title)
+    if not col:
+        return []
+
+    json_value = get_column_json(item, column_title)
+    if isinstance(json_value, dict):
+        persons = json_value.get("personsAndTeams") or []
+        if isinstance(persons, list) and persons:
+            parsed = []
+            for person in persons:
+                if not isinstance(person, dict):
+                    continue
+                if person.get("email"):
+                    parsed.append(person["email"])
+                elif person.get("name"):
+                    parsed.append(person["name"])
+            if parsed:
+                return parsed
+
+    text_value = get_column_text(item, column_title)
+    return split_person_list(text_value) if text_value else []
+
+
+def get_account_manager_values(item):
     possible_titles = [
         "Account Manager",
         "Responsable Commercial",
@@ -198,10 +240,15 @@ def get_account_manager_value(item):
         "Owner"
     ]
     for title in possible_titles:
-        value = get_column_text(item, title)
-        if value:
-            return value
-    return None
+        values = parse_person_column(item, title)
+        if values:
+            return values
+    return []
+
+
+def get_account_manager_value(item):
+    values = get_account_manager_values(item)
+    return ", ".join(values) if values else None
 
 
 def extract_emails(value: str):
@@ -283,32 +330,57 @@ def print_manager_emails():
         print("Aucun email détecté dans les colonnes de manager/owner. Si ces colonnes sont des personnes Monday, elles ne fournissent souvent pas l'email directement.")
 
 
-def resolve_account_manager_user_id(account_manager_value):
+def resolve_account_manager_user_ids(account_manager_value):
     if not account_manager_value:
-        return None
-    value = account_manager_value.strip()
-    lower_value = value.lower()
-    if "@" in lower_value:
-        return USER_MAPPING.get(lower_value)
+        return []
 
-    email = PERSON_NAME_TO_EMAIL.get(value)
-    if email:
-        return USER_MAPPING.get(email.lower())
+    user_ids = []
+    values = split_person_list(account_manager_value)
+    for raw_value in values:
+        if not raw_value:
+            continue
 
-    normalized_value = normalize_name(value)
-    if normalized_value in USER_NAME_MAPPING:
-        return USER_MAPPING.get(USER_NAME_MAPPING[normalized_value])
+        lower_value = raw_value.lower()
+        matched_user_id = None
 
-    tokens = normalized_value.split()
-    for name_key, email in USER_NAME_MAPPING.items():
-        if all(token in name_key for token in tokens):
-            return USER_MAPPING.get(email)
+        if "@" in lower_value:
+            matched_user_id = USER_MAPPING.get(lower_value)
 
-    for user_email, user_id in USER_MAPPING.items():
-        if all(token in user_email for token in tokens):
-            return user_id
+        if not matched_user_id:
+            mapped_email = PERSON_NAME_TO_EMAIL.get(raw_value)
+            if mapped_email:
+                matched_user_id = USER_MAPPING.get(mapped_email.lower())
 
-    return None
+        if not matched_user_id:
+            normalized_value = normalize_name(raw_value)
+            if normalized_value in USER_NAME_MAPPING:
+                matched_user_id = USER_MAPPING.get(USER_NAME_MAPPING[normalized_value])
+
+        if not matched_user_id:
+            normalized_value = normalize_name(raw_value)
+            tokens = normalized_value.split()
+            for name_key, email in USER_NAME_MAPPING.items():
+                if all(token in name_key for token in tokens):
+                    matched_user_id = USER_MAPPING.get(email)
+                    break
+
+        if not matched_user_id:
+            normalized_value = normalize_name(raw_value)
+            tokens = normalized_value.split()
+            for user_email, user_id in USER_MAPPING.items():
+                if all(token in user_email for token in tokens):
+                    matched_user_id = user_id
+                    break
+
+        if matched_user_id and matched_user_id not in user_ids:
+            user_ids.append(matched_user_id)
+
+    return user_ids
+
+
+def resolve_account_manager_user_id(account_manager_value):
+    user_ids = resolve_account_manager_user_ids(account_manager_value)
+    return user_ids[0] if user_ids else None
 
 
 def upsert_into_supabase(supabase: Client, data, table):
@@ -337,15 +409,18 @@ def import_clients(supabase: Client, test_mode: bool):
     inserted = 0
     missing_user = 0
     for item in clients_data["items"]:
-        account_manager_value = get_account_manager_value(item)
-        user_id = resolve_account_manager_user_id(account_manager_value)
+        account_manager_values = get_account_manager_values(item)
+        account_manager_value = ", ".join(account_manager_values) if account_manager_values else None
+        user_ids = resolve_account_manager_user_ids(account_manager_value)
+        primary_user_id = user_ids[0] if user_ids else None
         account = {
             "id": item["id"],
             "account_name": item["name"],
-            "user_id": user_id,
+            "user_id": primary_user_id,
+            "assigned_user_ids": user_ids,
             "account_owner": account_manager_value,
         }
-        if not user_id:
+        if not primary_user_id:
             missing_user += 1
             print(f"WARN: Aucun user_id trouvé pour Account Manager '{account_manager_value}' sur le compte '{item['name']}'")
             continue
@@ -375,15 +450,17 @@ def import_contacts(supabase: Client, test_mode: bool):
     inserted = 0
     missing_user = 0
     for item in contacts_data["items"]:
-        account_manager_value = get_account_manager_value(item)
-        user_id = resolve_account_manager_user_id(account_manager_value)
+        account_manager_values = get_account_manager_values(item)
+        account_manager_value = ", ".join(account_manager_values) if account_manager_values else None
+        user_ids = resolve_account_manager_user_ids(account_manager_value)
+        primary_user_id = user_ids[0] if user_ids else None
         contact = {
             "id": item["id"],
             "name": item["name"],
-            "user_id": user_id,
+            "user_id": primary_user_id,
             "account_manager": account_manager_value,
         }
-        if not user_id:
+        if not primary_user_id:
             missing_user += 1
             print(f"WARN: Aucun user_id trouvé pour Account Manager '{account_manager_value}' sur le contact '{item['name']}'")
             continue

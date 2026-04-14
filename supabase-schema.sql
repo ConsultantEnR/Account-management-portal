@@ -7,6 +7,7 @@
 CREATE TABLE IF NOT EXISTS public.accounts (
   id              TEXT        PRIMARY KEY,
   user_id         UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  assigned_user_ids UUID[]    NOT NULL DEFAULT '{}',
   account_name    TEXT        NOT NULL,
   tier            TEXT,
   icp_score       INTEGER,
@@ -28,8 +29,14 @@ ALTER TABLE public.accounts ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "users_own_accounts"
   ON public.accounts
   FOR ALL
-  USING  (auth.uid() = user_id)
-  WITH CHECK (auth.uid() = user_id);
+  USING  (
+    auth.uid() = user_id
+    OR auth.uid() = ANY (assigned_user_ids)
+  )
+  WITH CHECK (
+    auth.uid() = user_id
+    OR auth.uid() = ANY (assigned_user_ids)
+  );
 
 -- 3. Index pour les performances
 CREATE INDEX IF NOT EXISTS accounts_user_id_idx ON public.accounts (user_id);
