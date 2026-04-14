@@ -1,0 +1,873 @@
+﻿D├®marrage du script Monday ÔåÆ Supabase...
+Supabase initialis├® avec service role.
+R├®cup├®r├® 13 utilisateurs Supabase.
+Mapping utilisateurs charg├®: {'adrien.bourdon@dolfines.com': 'b89bdef8-db3b-4e29-8314-b203367f508b', 'julia.lefloch@aegide-international.com': '7629a9d0-0191-4acb-8a02-bcbe544110c8', 'dimitri.fay@dolfines.com': '2c818d47-d3e9-4df1-a1f2-4c1f2f53d008', 'khalil.badri@aegide-international.com': '505e3f62-995f-4018-bffe-24a7aa34c0de', 'raphael.gabriels@dolfines.com': '0ffb370a-8e13-4c88-b02e-72b2429a14bf', 'hugo.pagola@aegide-international.com': '6044ce77-d5a5-4e8d-bfae-8b2d8d98bc56', 'pierre.develay@dolfines.com': '3e65a824-11d4-446d-a9ce-6b1e8eeb0f09', 'richard.musi@8p2.fr': '57b143ee-256a-457d-81a8-d5ee0f642790', 'nicolas.lecoeur@8p2.fr': 'df039584-5f13-4b2d-ac8a-5cfa78d980ca', 'laetitia.dapremont@aegide-international.com': 'f549b773-4129-4313-bc83-59f03a95bbf3', 'ines.dechaut@aegide-international.com': '1a7ae1e6-2f78-4e37-8b89-c61c0a4ea216', 'hend.othmani@dolfines.com': '80fac0af-2b67-4f31-9377-00d2428b4e6b', 'dylan.charron@dolfines.com': '23b3ec42-851e-43a9-a754-c1688b29b348'}
+Import clients...
+R├®ponse clients: 5 items r├®cup├®r├®s.
+Upsert dans accounts: 18210355856 (OK)
+Upsert dans accounts: 18210355980 (OK)
+Upsert dans accounts: 18210356112 (OK)
+Upsert dans accounts: 18210356225 (OK)
+Upsert dans accounts: 18210356377 (OK)
+Import contacts...
+R├®ponse contacts: 500 items r├®cup├®r├®s.
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Fabrice Galmard'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11742667593, null, Fabrice Galmard, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:35.721979+00, 2026-04-14 14:17:35.721979+00).'}
+Upsert dans contacts: 11718901065 (OK)
+Upsert dans contacts: 11718758022 (OK)
+Upsert dans contacts: 11718691158 (OK)
+Upsert dans contacts: 11711746793 (OK)
+Upsert dans contacts: 11710893277 (OK)
+Upsert dans contacts: 11710861746 (OK)
+Upsert dans contacts: 11710760935 (OK)
+Upsert dans contacts: 11710597618 (OK)
+Upsert dans contacts: 11710472024 (OK)
+Upsert dans contacts: 11710352161 (OK)
+Upsert dans contacts: 11717691035 (OK)
+Upsert dans contacts: 11708513464 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira, nuno.correia@dolfines.com' sur le contact 'Soledad Enriquez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11661123613, null, Soledad Enriquez, Celio Mauro Aguiar Ferreira, nuno.correia@dolfines.com, null, null, null, null, null, 2026-04-14 14:17:36.58254+00, 2026-04-14 14:17:36.58254+00).'}
+Upsert dans contacts: 11613489591 (OK)
+Upsert dans contacts: 11613346274 (OK)
+Upsert dans contacts: 11613312702 (OK)
+Upsert dans contacts: 11613290707 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Felipe Pinto'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11580201579, null, Felipe Pinto, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:37.038359+00, 2026-04-14 14:17:37.038359+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Enrique Barrios'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11579811801, null, Enrique Barrios, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:37.106493+00, 2026-04-14 14:17:37.106493+00).'}
+Upsert dans contacts: 11518359434 (OK)
+Upsert dans contacts: 11482384229 (OK)
+Upsert dans contacts: 11478327499 (OK)
+Upsert dans contacts: 11478238977 (OK)
+Upsert dans contacts: 11478149707 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Cristina Ramos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11579725402, null, Cristina Ramos, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:37.508965+00, 2026-04-14 14:17:37.508965+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Cristiano Azeredo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11456990314, null, Cristiano Azeredo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:37.572253+00, 2026-04-14 14:17:37.572253+00).'}
+Upsert dans contacts: 11435292607 (OK)
+Upsert dans contacts: 11421178210 (OK)
+Upsert dans contacts: 11421137329 (OK)
+Upsert dans contacts: 11414571239 (OK)
+Upsert dans contacts: 11414578242 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Pantxika Etcheverry'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11412936152, null, Pantxika Etcheverry, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:38.008552+00, 2026-04-14 14:17:38.008552+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Felipe Fernandes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11355174817, null, Felipe Fernandes, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:38.070218+00, 2026-04-14 14:17:38.070218+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'S├®bastien Muneret'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11350858987, null, S├®bastien Muneret, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:38.134099+00, 2026-04-14 14:17:38.134099+00).'}
+Upsert dans contacts: 11338911058 (OK)
+Upsert dans contacts: 11323957923 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Elio Garcia'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11295124429, null, Elio Garcia, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:38.328052+00, 2026-04-14 14:17:38.328052+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Robert Tuinfort'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11287036946, null, Robert Tuinfort, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:38.393667+00, 2026-04-14 14:17:38.393667+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'antoine.louvat@dolfines.com' sur le contact 'Alan McGregor'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11257480846, null, Alan McGregor, antoine.louvat@dolfines.com, null, null, null, null, null, 2026-04-14 14:17:38.4673+00, 2026-04-14 14:17:38.4673+00).'}
+Upsert dans contacts: 11106867435 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Scott'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11101379527, null, Scott, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:38.601478+00, 2026-04-14 14:17:38.601478+00).'}
+Upsert dans contacts: 11082324941 (OK)
+Upsert dans contacts: 11081104505 (OK)
+Upsert dans contacts: 11046295207 (OK)
+Upsert dans contacts: 11046231970 (OK)
+Upsert dans contacts: 11036824099 (OK)
+Upsert dans contacts: 11036800750 (OK)
+Upsert dans contacts: 18318753435 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jean Michel Bonnet'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10992372734, null, Jean Michel Bonnet, null, null, null, null, null, null, 2026-04-14 14:17:39.127676+00, 2026-04-14 14:17:39.127676+00).'}
+Upsert dans contacts: 10943991100 (OK)
+Upsert dans contacts: 10943987053 (OK)
+Upsert dans contacts: 10943706463 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Eduardo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10924670216, null, Eduardo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:39.414409+00, 2026-04-14 14:17:39.414409+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Soufien Deraoui'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10918682409, null, Soufien Deraoui, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:39.482654+00, 2026-04-14 14:17:39.482654+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Natan Battisti'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10911005654, null, Natan Battisti, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:39.548655+00, 2026-04-14 14:17:39.548655+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Christine BOURET'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10907414117, null, Christine BOURET, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:39.615588+00, 2026-04-14 14:17:39.615588+00).'}
+Upsert dans contacts: 10907403930 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Benjamin Baricos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10891433317, null, Benjamin Baricos, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:39.742156+00, 2026-04-14 14:17:39.742156+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Guenevere Alberg'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10861173969, null, Guenevere Alberg, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:39.830138+00, 2026-04-14 14:17:39.830138+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Renato Crovetto'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10861089559, null, Renato Crovetto, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:39.904735+00, 2026-04-14 14:17:39.904735+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Dragan Garabiljevic'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10861083183, null, Dragan Garabiljevic, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:39.96572+00, 2026-04-14 14:17:39.96572+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Martin Joseph'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10861076823, null, Martin Joseph, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.026538+00, 2026-04-14 14:17:40.026538+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Eduardo Rodriguez Tamayo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10777180002, null, Eduardo Rodriguez Tamayo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.099545+00, 2026-04-14 14:17:40.099545+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Andre Marques'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10776241794, null, Andre Marques, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.163996+00, 2026-04-14 14:17:40.163996+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Hercules Medeiros'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10765161817, null, Hercules Medeiros, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.225324+00, 2026-04-14 14:17:40.225324+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Natan Alves'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10764729401, null, Natan Alves, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.287057+00, 2026-04-14 14:17:40.287057+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'laetitia.dapremont@aegide-international.com, Nicolas Lecoeur' sur le contact 'Romain COLAS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10763332928, null, Romain COLAS, laetitia.dapremont@aegide-international.com, Nicolas Lecoeur, null, null, null, null, null, 2026-04-14 14:17:40.346155+00, 2026-04-14 14:17:40.346155+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Lise DUPUY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10745784060, null, Lise DUPUY, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:40.415824+00, 2026-04-14 14:17:40.415824+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Mamadou SAKHO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10745704783, null, Mamadou SAKHO, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:40.487952+00, 2026-04-14 14:17:40.487952+00).'}
+Upsert dans contacts: 10723544600 (OK)
+Upsert dans contacts: 10723537965 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Mariela Garcia'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10707833163, null, Mariela Garcia, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.679522+00, 2026-04-14 14:17:40.679522+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Fran├ºois Pernot'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10667762884, null, Fran├ºois Pernot, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:40.743204+00, 2026-04-14 14:17:40.743204+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, Maxime Plantey' sur le contact 'Herv├® JACQUES'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10651779558, null, Herv├® JACQUES, Dylan Charron, Maxime Plantey, null, null, null, null, null, 2026-04-14 14:17:40.809657+00, 2026-04-14 14:17:40.809657+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, Maxime Plantey' sur le contact 'Thomas NOYER'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10651807289, null, Thomas NOYER, Dylan Charron, Maxime Plantey, null, null, null, null, null, 2026-04-14 14:17:40.881668+00, 2026-04-14 14:17:40.881668+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Maria Lujan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10652846898, null, Maria Lujan, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:40.944408+00, 2026-04-14 14:17:40.944408+00).'}
+Upsert dans contacts: 10646893931 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Rafael Fumis'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10646564155, null, Rafael Fumis, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.074666+00, 2026-04-14 14:17:41.074666+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Carlos Padilla'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10641246324, null, Carlos Padilla, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.138016+00, 2026-04-14 14:17:41.138016+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Nadege DEMARIA-WICKY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10636450400, null, Nadege DEMARIA-WICKY, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:41.20201+00, 2026-04-14 14:17:41.20201+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Marion Di Naro'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10636366261, null, Marion Di Naro, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:41.265056+00, 2026-04-14 14:17:41.265056+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Stephane Emery Mbiguino'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10634080145, null, Stephane Emery Mbiguino, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:41.330742+00, 2026-04-14 14:17:41.330742+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Ihuaku Ugwu'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10627028869, null, Ihuaku Ugwu, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.395857+00, 2026-04-14 14:17:41.395857+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Maria Lujan Pe├▒a'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18387989677, null, Maria Lujan Pe├▒a, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.468595+00, 2026-04-14 14:17:41.468595+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Dalton Campbell'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18387985544, null, Dalton Campbell, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.52848+00, 2026-04-14 14:17:41.52848+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Marcelo Gomez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18387809340, null, Marcelo Gomez, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.594009+00, 2026-04-14 14:17:41.594009+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Shanette Rayside'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18381943601, null, Shanette Rayside, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.656142+00, 2026-04-14 14:17:41.656142+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Rafael Lucho'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18381915031, null, Rafael Lucho, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.728054+00, 2026-04-14 14:17:41.728054+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Andrea Marchioti'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18381551522, null, Andrea Marchioti, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.791581+00, 2026-04-14 14:17:41.791581+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Leandro Boeira'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18379024259, null, Leandro Boeira, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.860891+00, 2026-04-14 14:17:41.860891+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Leonardo Duque'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18371371853, null, Leonardo Duque, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:41.919737+00, 2026-04-14 14:17:41.919737+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Moustapha DIOP'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18380774107, null, Moustapha DIOP, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:41.989347+00, 2026-04-14 14:17:41.989347+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Denise Santos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18369569437, null, Denise Santos, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.056139+00, 2026-04-14 14:17:42.056139+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Ana Aderne'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18356119522, null, Ana Aderne, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.119386+00, 2026-04-14 14:17:42.119386+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Shiyao Lai'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18355603066, null, Shiyao Lai, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.180974+00, 2026-04-14 14:17:42.180974+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'C├óndido Matheus'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18335142373, null, C├óndido Matheus, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.252639+00, 2026-04-14 14:17:42.252639+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Jos├® Chuyes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18332725889, null, Jos├® Chuyes, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.35229+00, 2026-04-14 14:17:42.35229+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Caleb Castillo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18332341616, null, Caleb Castillo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.418014+00, 2026-04-14 14:17:42.418014+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'M├®lanie SERIN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18318058846, null, M├®lanie SERIN, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:42.481236+00, 2026-04-14 14:17:42.481236+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Assami ILBOUDO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18317049091, null, Assami ILBOUDO, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:42.548376+00, 2026-04-14 14:17:42.548376+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Hermann Wilfried KARAMO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18309679413, null, Hermann Wilfried KARAMO, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:42.610325+00, 2026-04-14 14:17:42.610325+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Christine Alleke'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18309654721, null, Christine Alleke, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:42.677176+00, 2026-04-14 14:17:42.677176+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Isabelle YAU - parti en retraite'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18309475184, null, Isabelle YAU - parti en retraite, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:42.740024+00, 2026-04-14 14:17:42.740024+00).'}
+Upsert dans contacts: 18307354882 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Noel Nze Koubdje'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18288742682, null, Noel Nze Koubdje, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:42.876433+00, 2026-04-14 14:17:42.876433+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Luis Reyes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18262289898, null, Luis Reyes, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:42.940922+00, 2026-04-14 14:17:42.940922+00).'}
+Upsert dans contacts: 18201081805 (OK)
+Upsert dans contacts: 18181583852 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Steven Langballe'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18170245492, null, Steven Langballe, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:43.139661+00, 2026-04-14 14:17:43.139661+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Paulo ALFRADIQUE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18169771174, null, Paulo ALFRADIQUE, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:43.204405+00, 2026-04-14 14:17:43.204405+00).'}
+Upsert dans contacts: 18137493328 (OK)
+Upsert dans contacts: 18137426913 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, Pierre DEVELAY' sur le contact 'Henry CHIMEKA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18128514887, null, Henry CHIMEKA, Dylan Charron, Pierre DEVELAY, null, null, null, null, null, 2026-04-14 14:17:43.406772+00, 2026-04-14 14:17:43.406772+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, Pierre DEVELAY' sur le contact 'Diego Barrero Borge'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18128276050, null, Diego Barrero Borge, Dylan Charron, Pierre DEVELAY, null, null, null, null, null, 2026-04-14 14:17:43.467525+00, 2026-04-14 14:17:43.467525+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Barakissa Fofana'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18104212143, null, Barakissa Fofana, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:43.53608+00, 2026-04-14 14:17:43.53608+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Camille Cremona'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18103864198, null, Camille Cremona, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:43.597997+00, 2026-04-14 14:17:43.597997+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Ozgur Erdem'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18103200041, null, Ozgur Erdem, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:43.660537+00, 2026-04-14 14:17:43.660537+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Dadi Abraham'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18094849903, null, Dadi Abraham, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:43.724936+00, 2026-04-14 14:17:43.724936+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira, nuno.correia@dolfines.com' sur le contact 'Jo├úo Alves'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18076017891, null, Jo├úo Alves, Celio Mauro Aguiar Ferreira, nuno.correia@dolfines.com, null, null, null, null, null, 2026-04-14 14:17:43.790324+00, 2026-04-14 14:17:43.790324+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira, nuno.correia@dolfines.com' sur le contact 'Francisco Chagas'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18075945492, null, Francisco Chagas, Celio Mauro Aguiar Ferreira, nuno.correia@dolfines.com, null, null, null, null, null, 2026-04-14 14:17:43.85241+00, 2026-04-14 14:17:43.85241+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, Maxime Plantey' sur le contact 'J├®r├┤me SOLAS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18043592184, null, J├®r├┤me SOLAS, Dylan Charron, Maxime Plantey, null, null, null, null, null, 2026-04-14 14:17:43.909187+00, 2026-04-14 14:17:43.909187+00).'}
+Upsert dans contacts: 18040751593 (OK)
+Upsert dans contacts: 18040713831 (OK)
+Upsert dans contacts: 18040613471 (OK)
+Upsert dans contacts: 18040590967 (OK)
+Upsert dans contacts: 18040582278 (OK)
+Upsert dans contacts: 18040454957 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Joel SHAJI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18012200979, null, Joel SHAJI, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:44.394294+00, 2026-04-14 14:17:44.394294+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Sebastien NICOLAON'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18012196200, null, Sebastien NICOLAON, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:44.455935+00, 2026-04-14 14:17:44.455935+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'M ANTICS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18012181401, null, M ANTICS, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:44.511835+00, 2026-04-14 14:17:44.511835+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'DJOBOH AZIA MARLENE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10070923970, null, DJOBOH AZIA MARLENE, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:44.574093+00, 2026-04-14 14:17:44.574093+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Leonardo Feferkorn'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10050856984, null, Leonardo Feferkorn, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:44.633889+00, 2026-04-14 14:17:44.633889+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Rafael Cabral'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10050720060, null, Rafael Cabral, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:44.703026+00, 2026-04-14 14:17:44.703026+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Adrien Bourdon-Feniou' sur le contact 'Fadi SALIBA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10036640172, null, Fadi SALIBA, Adrien Bourdon-Feniou, null, null, null, null, null, 2026-04-14 14:17:44.765554+00, 2026-04-14 14:17:44.765554+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Tibou NIANG'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10036439342, null, Tibou NIANG, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:44.832204+00, 2026-04-14 14:17:44.832204+00).'}
+Upsert dans contacts: 10036332842 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Andr├® Marinho'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10028408610, null, Andr├® Marinho, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:44.963984+00, 2026-04-14 14:17:44.963984+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Christian Mamboundou'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10028206838, null, Christian Mamboundou, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:45.028175+00, 2026-04-14 14:17:45.028175+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Olivier Dotta'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (10028189921, null, Olivier Dotta, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:45.092812+00, 2026-04-14 14:17:45.092812+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Alex Costa'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9846310988, null, Alex Costa, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.153419+00, 2026-04-14 14:17:45.153419+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ajouter name'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11421143175, null, Ajouter name, null, null, null, null, null, null, 2026-04-14 14:17:45.220716+00, 2026-04-14 14:17:45.220716+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Pierre Leblanc'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9516921567, null, Pierre Leblanc, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.291189+00, 2026-04-14 14:17:45.291189+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Weverton Nazario'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9823753530, null, Weverton Nazario, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.351015+00, 2026-04-14 14:17:45.351015+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ajouter name'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (11708522477, null, Ajouter name, null, null, null, null, null, null, 2026-04-14 14:17:45.413829+00, 2026-04-14 14:17:45.413829+00).'}
+Upsert dans contacts: 18318830295 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Tamer Assem'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9498223034, null, Tamer Assem, null, null, null, null, null, null, 2026-04-14 14:17:45.5445+00, 2026-04-14 14:17:45.5445+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Gl├íucia Helena de Carvalho'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9819141745, null, Gl├íucia Helena de Carvalho, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.605732+00, 2026-04-14 14:17:45.605732+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Bulent DUMAN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972638, null, Bulent DUMAN, null, null, null, null, null, null, 2026-04-14 14:17:45.666831+00, 2026-04-14 14:17:45.666831+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Clyde Griffith'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9818782194, null, Clyde Griffith, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.734999+00, 2026-04-14 14:17:45.734999+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Driss NOUNES'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972601, null, Driss NOUNES, null, null, null, null, null, null, 2026-04-14 14:17:45.796886+00, 2026-04-14 14:17:45.796886+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'James Hill'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9776329656, null, James Hill, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.862022+00, 2026-04-14 14:17:45.862022+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Punit Punit Sinojiya'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971923, null, Punit Punit Sinojiya, null, null, null, null, null, null, 2026-04-14 14:17:45.922653+00, 2026-04-14 14:17:45.922653+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Keith Kennedy'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9776280928, null, Keith Kennedy, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:45.992038+00, 2026-04-14 14:17:45.992038+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jim Tharayil'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972097, null, Jim Tharayil, null, null, null, null, null, null, 2026-04-14 14:17:46.055694+00, 2026-04-14 14:17:46.055694+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Roc├¡o Juarez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9776248468, null, Roc├¡o Juarez, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.119408+00, 2026-04-14 14:17:46.119408+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marcelle Kenie Fang'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971272, null, Marcelle Kenie Fang, null, null, null, null, null, null, 2026-04-14 14:17:46.17956+00, 2026-04-14 14:17:46.17956+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Michael Lowrey'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9776203555, null, Michael Lowrey, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.239012+00, 2026-04-14 14:17:46.239012+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jerome LEGRAS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973069, null, Jerome LEGRAS, null, null, null, null, null, null, 2026-04-14 14:17:46.299431+00, 2026-04-14 14:17:46.299431+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Maria Gomez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9776109185, null, Maria Gomez, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.410842+00, 2026-04-14 14:17:46.410842+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Claudio ELOY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973233, null, Claudio ELOY, null, null, null, null, null, null, 2026-04-14 14:17:46.499678+00, 2026-04-14 14:17:46.499678+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Kasi Steel'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9759049524, null, Kasi Steel, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.559339+00, 2026-04-14 14:17:46.559339+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Maxence Mirabeau'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972969, null, Maxence Mirabeau, null, null, null, null, null, null, 2026-04-14 14:17:46.62449+00, 2026-04-14 14:17:46.62449+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Blake Burns'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9758919388, null, Blake Burns, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.686534+00, 2026-04-14 14:17:46.686534+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Farid AOULAD'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8528124680, null, Farid AOULAD, null, null, null, null, null, null, 2026-04-14 14:17:46.765108+00, 2026-04-14 14:17:46.765108+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Gustavo Castro'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9758610797, null, Gustavo Castro, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.826755+00, 2026-04-14 14:17:46.826755+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Bruno SIQUEIRA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973034, null, Bruno SIQUEIRA, null, null, null, null, null, null, 2026-04-14 14:17:46.889426+00, 2026-04-14 14:17:46.889426+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Rafael Pinaud'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9737917707, null, Rafael Pinaud, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:46.95606+00, 2026-04-14 14:17:46.95606+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Yerece Da Silva PEREIRA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972833, null, Yerece Da Silva PEREIRA, null, null, null, null, null, null, 2026-04-14 14:17:47.019707+00, 2026-04-14 14:17:47.019707+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Carlos Rechelo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9631887565, null, Carlos Rechelo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:47.083846+00, 2026-04-14 14:17:47.083846+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Roohollah Mahani'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972972, null, Roohollah Mahani, null, null, null, null, null, null, 2026-04-14 14:17:47.145096+00, 2026-04-14 14:17:47.145096+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Tabata VILLOTE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9631844002, null, Tabata VILLOTE, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:47.210174+00, 2026-04-14 14:17:47.210174+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Domingo VILLANUEVA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972189, null, Domingo VILLANUEVA, null, null, null, null, null, null, 2026-04-14 14:17:47.27635+00, 2026-04-14 14:17:47.27635+00).'}
+Upsert dans contacts: 9601119922 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Foudil Cheglibi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971571, null, Foudil Cheglibi, null, null, null, null, null, null, 2026-04-14 14:17:47.417714+00, 2026-04-14 14:17:47.417714+00).'}
+Upsert dans contacts: 9631496907 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jean-Daniel BLASCO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971448, null, Jean-Daniel BLASCO, null, null, null, null, null, null, 2026-04-14 14:17:47.540775+00, 2026-04-14 14:17:47.540775+00).'}
+Upsert dans contacts: 9550723483 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Aubin LECOMPTE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971500, null, Aubin LECOMPTE, null, null, null, null, null, null, 2026-04-14 14:17:47.681522+00, 2026-04-14 14:17:47.681522+00).'}
+Upsert dans contacts: 9550607351 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Tamer MEKAWY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971298, null, Tamer MEKAWY, null, null, null, null, null, null, 2026-04-14 14:17:47.813144+00, 2026-04-14 14:17:47.813144+00).'}
+Upsert dans contacts: 9542871866 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Gloren Reyes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971256, null, Gloren Reyes, null, null, null, null, null, null, 2026-04-14 14:17:47.958946+00, 2026-04-14 14:17:47.958946+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Mirna Cardoso'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9533052931, null, Mirna Cardoso, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:48.023132+00, 2026-04-14 14:17:48.023132+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'AgIly SHABAN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972732, null, AgIly SHABAN, null, null, null, null, null, null, 2026-04-14 14:17:48.087694+00, 2026-04-14 14:17:48.087694+00).'}
+Upsert dans contacts: 9890714712 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Laszlo Bobaly'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973105, null, Laszlo Bobaly, null, null, null, null, null, null, 2026-04-14 14:17:48.219098+00, 2026-04-14 14:17:48.219098+00).'}
+Upsert dans contacts: 9532522382 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Henry RIANO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972557, null, Henry RIANO, null, null, null, null, null, null, 2026-04-14 14:17:48.344844+00, 2026-04-14 14:17:48.344844+00).'}
+Upsert dans contacts: 9530020584 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Obinna OBIKA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972523, null, Obinna OBIKA, null, null, null, null, null, null, 2026-04-14 14:17:48.481174+00, 2026-04-14 14:17:48.481174+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marc DAHM'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972462, null, Marc DAHM, null, null, null, null, null, null, 2026-04-14 14:17:48.548804+00, 2026-04-14 14:17:48.548804+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Andr├® Salgado'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9516115346, null, Andr├® Salgado, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:48.618118+00, 2026-04-14 14:17:48.618118+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Amit GUPTA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972136, null, Amit GUPTA, null, null, null, null, null, null, 2026-04-14 14:17:48.6818+00, 2026-04-14 14:17:48.6818+00).'}
+Upsert dans contacts: 9512517700 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Muhammad Sikandar Saleem Khan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972100, null, Muhammad Sikandar Saleem Khan, null, null, null, null, null, null, 2026-04-14 14:17:48.816081+00, 2026-04-14 14:17:48.816081+00).'}
+Upsert dans contacts: 9512499547 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Syed Azfar Ali'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972015, null, Syed Azfar Ali, null, null, null, null, null, null, 2026-04-14 14:17:48.971649+00, 2026-04-14 14:17:48.971649+00).'}
+Upsert dans contacts: 9512109844 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Sadik HASHIM ELSADIK'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971959, null, Sadik HASHIM ELSADIK, null, null, null, null, null, null, 2026-04-14 14:17:49.112241+00, 2026-04-14 14:17:49.112241+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ahmed FAISAL'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971661, null, Ahmed FAISAL, null, null, null, null, null, null, 2026-04-14 14:17:49.17356+00, 2026-04-14 14:17:49.17356+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Ahmed Morsy' sur le contact 'Ayman Ashour'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9498101628, null, Ayman Ashour, Ahmed Morsy, null, null, null, null, null, 2026-04-14 14:17:49.236806+00, 2026-04-14 14:17:49.236806+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mohamed MOSTAFA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971613, null, Mohamed MOSTAFA, null, null, null, null, null, null, 2026-04-14 14:17:49.306407+00, 2026-04-14 14:17:49.306407+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Francois Challamel'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9055692867, null, Francois Challamel, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:49.376304+00, 2026-04-14 14:17:49.376304+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Muratbek OSPANOV'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971564, null, Muratbek OSPANOV, null, null, null, null, null, null, 2026-04-14 14:17:49.449914+00, 2026-04-14 14:17:49.449914+00).'}
+Upsert dans contacts: 9467704660 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Brahim Sdiri'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971499, null, Brahim Sdiri, null, null, null, null, null, null, 2026-04-14 14:17:49.591726+00, 2026-04-14 14:17:49.591726+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Franck LOUAZEL'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9467630341, null, Franck LOUAZEL, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:49.658766+00, 2026-04-14 14:17:49.658766+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Kartik Ravintharan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971317, null, Kartik Ravintharan, null, null, null, null, null, null, 2026-04-14 14:17:49.720917+00, 2026-04-14 14:17:49.720917+00).'}
+Upsert dans contacts: 9467575371 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Nguyen Anh Tuan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972651, null, Nguyen Anh Tuan, null, null, null, null, null, null, 2026-04-14 14:17:49.849881+00, 2026-04-14 14:17:49.849881+00).'}
+Upsert dans contacts: 9467535426 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'V.K. Saju'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972626, null, V.K. Saju, null, null, null, null, null, null, 2026-04-14 14:17:49.984181+00, 2026-04-14 14:17:49.984181+00).'}
+Upsert dans contacts: 9461755835 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jonathan VINE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972544, null, Jonathan VINE, null, null, null, null, null, null, 2026-04-14 14:17:50.149936+00, 2026-04-14 14:17:50.149936+00).'}
+Upsert dans contacts: 9461728057 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mourad BOUKETTAYA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972498, null, Mourad BOUKETTAYA, null, null, null, null, null, null, 2026-04-14 14:17:50.28599+00, 2026-04-14 14:17:50.28599+00).'}
+Upsert dans contacts: 9461682351 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jerome ALRIC'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972451, null, Jerome ALRIC, null, null, null, null, null, null, 2026-04-14 14:17:50.420038+00, 2026-04-14 14:17:50.420038+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Mario Delgadillo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9418210673, null, Mario Delgadillo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:50.480435+00, 2026-04-14 14:17:50.480435+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Khaled Saleh Al Messabi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972406, null, Khaled Saleh Al Messabi, null, null, null, null, null, null, 2026-04-14 14:17:50.543832+00, 2026-04-14 14:17:50.543832+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira, Elio Delgado-Garc├¡a' sur le contact 'Wellyngton Rocha'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9410509715, null, Wellyngton Rocha, Celio Mauro Aguiar Ferreira, Elio Delgado-Garc├¡a, null, null, null, null, null, 2026-04-14 14:17:50.615127+00, 2026-04-14 14:17:50.615127+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Dileep Chandran Chandrashekar Nair'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972250, null, Dileep Chandran Chandrashekar Nair, null, null, null, null, null, null, 2026-04-14 14:17:50.688106+00, 2026-04-14 14:17:50.688106+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Loic GUILBERT'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9394518472, null, Loic GUILBERT, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:50.758023+00, 2026-04-14 14:17:50.758023+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mohamed Shehata Taleb Mohamed'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972160, null, Mohamed Shehata Taleb Mohamed, null, null, null, null, null, null, 2026-04-14 14:17:50.816648+00, 2026-04-14 14:17:50.816648+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Alex KASENGO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9394342496, null, Alex KASENGO, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:50.88151+00, 2026-04-14 14:17:50.88151+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mehadji LAKHDAR'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972098, null, Mehadji LAKHDAR, null, null, null, null, null, null, 2026-04-14 14:17:50.961205+00, 2026-04-14 14:17:50.961205+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Dylan Charron' sur le contact 'Mahaman Manirou HALADOU'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9394136892, null, Mahaman Manirou HALADOU, elise.marin@aegide-international.com, Dylan Charron, null, null, null, null, null, 2026-04-14 14:17:51.028424+00, 2026-04-14 14:17:51.028424+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Manuel Berm├║dez de Castro'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8425845427, null, Manuel Berm├║dez de Castro, null, null, null, null, null, null, 2026-04-14 14:17:51.090439+00, 2026-04-14 14:17:51.090439+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Ahmed Morsy' sur le contact 'MERT ODYAKMAZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9391628835, null, MERT ODYAKMAZ, Ahmed Morsy, null, null, null, null, null, 2026-04-14 14:17:51.155153+00, 2026-04-14 14:17:51.155153+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Albert COBO MOLINA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972044, null, Albert COBO MOLINA, null, null, null, null, null, null, 2026-04-14 14:17:51.234954+00, 2026-04-14 14:17:51.234954+00).'}
+Upsert dans contacts: 9371334232 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Massimo ROSSETTI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8394781799, null, Massimo ROSSETTI, null, null, null, null, null, null, 2026-04-14 14:17:51.362382+00, 2026-04-14 14:17:51.362382+00).'}
+Upsert dans contacts: 9371206071 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Pablo ├ülvarez (B2B Hamici Samir)'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971940, null, Pablo ├ülvarez (B2B Hamici Samir), null, null, null, null, null, null, 2026-04-14 14:17:51.497207+00, 2026-04-14 14:17:51.497207+00).'}
+Upsert dans contacts: 9371149637 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Robert LUCAS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971873, null, Robert LUCAS, null, null, null, null, null, null, 2026-04-14 14:17:51.627362+00, 2026-04-14 14:17:51.627362+00).'}
+Upsert dans contacts: 9371074959 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Rehan HANAPI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971808, null, Rehan HANAPI, null, null, null, null, null, null, 2026-04-14 14:17:51.765265+00, 2026-04-14 14:17:51.765265+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Gilberto Rafainer'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9355267709, null, Gilberto Rafainer, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:51.831352+00, 2026-04-14 14:17:51.831352+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Nicolas CARESTIA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971757, null, Nicolas CARESTIA, null, null, null, null, null, null, 2026-04-14 14:17:51.905806+00, 2026-04-14 14:17:51.905806+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Jos├® Maria Miranda'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9355040340, null, Jos├® Maria Miranda, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:51.967393+00, 2026-04-14 14:17:51.967393+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Felix MEYER'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971686, null, Felix MEYER, null, null, null, null, null, null, 2026-04-14 14:17:52.031046+00, 2026-04-14 14:17:52.031046+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Marcelo Sena'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9352770314, null, Marcelo Sena, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:52.11647+00, 2026-04-14 14:17:52.11647+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Sami EDAYEKH'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971586, null, Sami EDAYEKH, null, null, null, null, null, null, 2026-04-14 14:17:52.188328+00, 2026-04-14 14:17:52.188328+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Deniel Monteiro'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9352326337, null, Deniel Monteiro, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:52.261179+00, 2026-04-14 14:17:52.261179+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Sandrine CHANOT'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8265663444, null, Sandrine CHANOT, null, null, null, null, null, null, 2026-04-14 14:17:52.32818+00, 2026-04-14 14:17:52.32818+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Cesar Menguita'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9351806657, null, Cesar Menguita, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:52.410555+00, 2026-04-14 14:17:52.410555+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Bogdan CAZACU'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971508, null, Bogdan CAZACU, null, null, null, null, null, null, 2026-04-14 14:17:52.4724+00, 2026-04-14 14:17:52.4724+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Donat NKUNA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9320369939, null, Donat NKUNA, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:52.535746+00, 2026-04-14 14:17:52.535746+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Balaji PARTHASARATHY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (7634084203, null, Balaji PARTHASARATHY, null, null, null, null, null, null, 2026-04-14 14:17:52.606214+00, 2026-04-14 14:17:52.606214+00).'}
+Upsert dans contacts: 9309578373 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Rico ANDERS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971440, null, Rico ANDERS, null, null, null, null, null, null, 2026-04-14 14:17:52.759427+00, 2026-04-14 14:17:52.759427+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Adrien Bourdon-Feniou, Dylan Charron' sur le contact 'Wajdi AL MANIFI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9299615135, null, Wajdi AL MANIFI, Adrien Bourdon-Feniou, Dylan Charron, null, null, null, null, null, 2026-04-14 14:17:52.825554+00, 2026-04-14 14:17:52.825554+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Poonam menaria'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (7276292430, null, Poonam menaria, null, null, null, null, null, null, 2026-04-14 14:17:52.897568+00, 2026-04-14 14:17:52.897568+00).'}
+Upsert dans contacts: 9288836884 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Klaus KRUSCHE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971323, null, Klaus KRUSCHE, null, null, null, null, null, null, 2026-04-14 14:17:53.033424+00, 2026-04-14 14:17:53.033424+00).'}
+Upsert dans contacts: 9281308545 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mohamed HASAN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (7276248475, null, Mohamed HASAN, null, null, null, null, null, null, 2026-04-14 14:17:53.168639+00, 2026-04-14 14:17:53.168639+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Ahmed Morsy' sur le contact 'Mohamed Ashour'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9231706699, null, Mohamed Ashour, Ahmed Morsy, null, null, null, null, null, 2026-04-14 14:17:53.234439+00, 2026-04-14 14:17:53.234439+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'J├®r├®mie NEILLO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973029, null, J├®r├®mie NEILLO, null, null, null, null, null, null, 2026-04-14 14:17:53.297595+00, 2026-04-14 14:17:53.297595+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Renato Crovetto'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9211918301, null, Renato Crovetto, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:53.359823+00, 2026-04-14 14:17:53.359823+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ding Xiubao (Paul)'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (7276219634, null, Ding Xiubao (Paul), null, null, null, null, null, null, 2026-04-14 14:17:53.422658+00, 2026-04-14 14:17:53.422658+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Mark Kwasi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9211612450, null, Mark Kwasi, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:53.50067+00, 2026-04-14 14:17:53.50067+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'MÔÇÖbarek MAAFRI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973018, null, MÔÇÖbarek MAAFRI, null, null, null, null, null, null, 2026-04-14 14:17:53.575103+00, 2026-04-14 14:17:53.575103+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Segun Owolabi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9211461988, null, Segun Owolabi, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:53.643899+00, 2026-04-14 14:17:53.643899+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdullah AL DHAHOURI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (7112412561, null, Abdullah AL DHAHOURI, null, null, null, null, null, null, 2026-04-14 14:17:53.713907+00, 2026-04-14 14:17:53.713907+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Usman Mohamed'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9211386638, null, Usman Mohamed, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:53.773137+00, 2026-04-14 14:17:53.773137+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ali BOUBENIA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973010, null, Ali BOUBENIA, null, null, null, null, null, null, 2026-04-14 14:17:53.835927+00, 2026-04-14 14:17:53.835927+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Nicholas Deygoo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9211308968, null, Nicholas Deygoo, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:53.899243+00, 2026-04-14 14:17:53.899243+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Luis Aleta'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (7084965522, null, Luis Aleta, null, null, null, null, null, null, 2026-04-14 14:17:53.964665+00, 2026-04-14 14:17:53.964665+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Leigh Foreman'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9211078437, null, Leigh Foreman, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.032217+00, 2026-04-14 14:17:54.032217+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Meziane AKILAL'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972992, null, Meziane AKILAL, null, null, null, null, null, null, 2026-04-14 14:17:54.093771+00, 2026-04-14 14:17:54.093771+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Robert E. Hanes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9210965936, null, Robert E. Hanes, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.169666+00, 2026-04-14 14:17:54.169666+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Paulo Barros'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9210909792, null, Paulo Barros, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.237808+00, 2026-04-14 14:17:54.237808+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Danilo Monteiro'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9419557233, null, Danilo Monteiro, null, null, null, null, null, null, 2026-04-14 14:17:54.30012+00, 2026-04-14 14:17:54.30012+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Fadi FAHMY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972980, null, Fadi FAHMY, null, null, null, null, null, null, 2026-04-14 14:17:54.370291+00, 2026-04-14 14:17:54.370291+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Zachary Gordon'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9210836245, null, Zachary Gordon, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.440437+00, 2026-04-14 14:17:54.440437+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Danilo Cerqueira'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6957580777, null, Danilo Cerqueira, null, null, null, null, null, null, 2026-04-14 14:17:54.502159+00, 2026-04-14 14:17:54.502159+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'No├® Lopez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9210783922, null, No├® Lopez, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.568925+00, 2026-04-14 14:17:54.568925+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'ðÆð░ð╗ðÁðÁð▓ ðáÐâÐüÐéð░ð╝ ðáð©ð╝ð¥ð▓ð©Ðç (Rustam Valeev)'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971600, null, ðÆð░ð╗ðÁðÁð▓ ðáÐâÐüÐéð░ð╝ ðáð©ð╝ð¥ð▓ð©Ðç (Rustam Valeev), null, null, null, null, null, null, 2026-04-14 14:17:54.635026+00, 2026-04-14 14:17:54.635026+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Joelson Mendes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9182049931, null, Joelson Mendes, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.707706+00, 2026-04-14 14:17:54.707706+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdoallah Juma Almalti'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6886184567, null, Abdoallah Juma Almalti, null, null, null, null, null, null, 2026-04-14 14:17:54.778922+00, 2026-04-14 14:17:54.778922+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Naser al-Barazi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9181212017, null, Naser al-Barazi, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:54.838999+00, 2026-04-14 14:17:54.838999+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jean-Christophe GAVREL'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971273, null, Jean-Christophe GAVREL, null, null, null, null, null, null, 2026-04-14 14:17:54.903663+00, 2026-04-14 14:17:54.903663+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'antoine.louvat@dolfines.com' sur le contact 'Mohammad YASEEN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9144984773, null, Mohammad YASEEN, antoine.louvat@dolfines.com, null, null, null, null, null, 2026-04-14 14:17:54.984928+00, 2026-04-14 14:17:54.984928+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Daniel Ponce'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6886161539, null, Daniel Ponce, null, null, null, null, null, null, 2026-04-14 14:17:55.056188+00, 2026-04-14 14:17:55.056188+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Benoit Beaujouan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9134012530, null, Benoit Beaujouan, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:55.138289+00, 2026-04-14 14:17:55.138289+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Robert Adam CLYDE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971670, null, Robert Adam CLYDE, null, null, null, null, null, null, 2026-04-14 14:17:55.229484+00, 2026-04-14 14:17:55.229484+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Elisa Gallet'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9133881808, null, Elisa Gallet, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:55.29755+00, 2026-04-14 14:17:55.29755+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ghassen LAOUINI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971887, null, Ghassen LAOUINI, null, null, null, null, null, null, 2026-04-14 14:17:55.371045+00, 2026-04-14 14:17:55.371045+00).'}
+Upsert dans contacts: 9108844859 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Guillaume TARNAUD'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972020, null, Guillaume TARNAUD, null, null, null, null, null, null, 2026-04-14 14:17:55.524226+00, 2026-04-14 14:17:55.524226+00).'}
+Upsert dans contacts: 9108746817 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ria Afresa'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6547860222, null, Ria Afresa, null, null, null, null, null, null, 2026-04-14 14:17:55.675903+00, 2026-04-14 14:17:55.675903+00).'}
+Upsert dans contacts: 9108735992 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Hourizi MOHAMED'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972206, null, Hourizi MOHAMED, null, null, null, null, null, null, 2026-04-14 14:17:55.834597+00, 2026-04-14 14:17:55.834597+00).'}
+Upsert dans contacts: 9108258215 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Salah alashab'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6353875353, null, Salah alashab, null, null, null, null, null, null, 2026-04-14 14:17:55.975026+00, 2026-04-14 14:17:55.975026+00).'}
+Upsert dans contacts: 9108221549 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Augusto CANCIO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972666, null, Augusto CANCIO, null, null, null, null, null, null, 2026-04-14 14:17:56.107318+00, 2026-04-14 14:17:56.107318+00).'}
+Upsert dans contacts: 9108199480 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marcus WERNECK'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6303522286, null, Marcus WERNECK, null, null, null, null, null, null, 2026-04-14 14:17:56.233489+00, 2026-04-14 14:17:56.233489+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Roland Renaud'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9079363397, null, Roland Renaud, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:56.301233+00, 2026-04-14 14:17:56.301233+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Chevaillier Jean-Baptiste'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972455, null, Chevaillier Jean-Baptiste, null, null, null, null, null, null, 2026-04-14 14:17:56.372818+00, 2026-04-14 14:17:56.372818+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Jimmy Klinger'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9079340320, null, Jimmy Klinger, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:56.441189+00, 2026-04-14 14:17:56.441189+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Peter MASCHING'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (6235164008, null, Peter MASCHING, null, null, null, null, null, null, 2026-04-14 14:17:56.508816+00, 2026-04-14 14:17:56.508816+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Helene Bes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9079248506, null, Helene Bes, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:56.57658+00, 2026-04-14 14:17:56.57658+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Deepak BHATT'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972699, null, Deepak BHATT, null, null, null, null, null, null, 2026-04-14 14:17:56.644334+00, 2026-04-14 14:17:56.644334+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Bilal Foul'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9079193069, null, Bilal Foul, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:56.707037+00, 2026-04-14 14:17:56.707037+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Anuar SATPAYEV'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5937454716, null, Anuar SATPAYEV, null, null, null, null, null, null, 2026-04-14 14:17:56.770168+00, 2026-04-14 14:17:56.770168+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Janette Kimbler'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9079150849, null, Janette Kimbler, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:56.830941+00, 2026-04-14 14:17:56.830941+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marcio GON├çALVES'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972724, null, Marcio GON├çALVES, null, null, null, null, null, null, 2026-04-14 14:17:56.895344+00, 2026-04-14 14:17:56.895344+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Sebastien Coffigniez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9079124858, null, Sebastien Coffigniez, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:56.958218+00, 2026-04-14 14:17:56.958218+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Janvier Avit'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5937419688, null, Janvier Avit, null, null, null, null, null, null, 2026-04-14 14:17:57.034339+00, 2026-04-14 14:17:57.034339+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Training Aegide, 8.2 France' sur le contact 'Maeva Deguette'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9067805830, null, Maeva Deguette, Training Aegide, 8.2 France, null, null, null, null, null, 2026-04-14 14:17:57.098664+00, 2026-04-14 14:17:57.098664+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jorge USTARIZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972775, null, Jorge USTARIZ, null, null, null, null, null, null, 2026-04-14 14:17:57.166515+00, 2026-04-14 14:17:57.166515+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Training Aegide, 8.2 France' sur le contact 'Laetitia Perouse de Montclos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9067727757, null, Laetitia Perouse de Montclos, Training Aegide, 8.2 France, null, null, null, null, null, 2026-04-14 14:17:57.233743+00, 2026-04-14 14:17:57.233743+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Amira Elmenshawy'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5872540631, null, Amira Elmenshawy, null, null, null, null, null, null, 2026-04-14 14:17:57.299857+00, 2026-04-14 14:17:57.299857+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Vinicius Passos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9031029149, null, Vinicius Passos, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:57.367768+00, 2026-04-14 14:17:57.367768+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mario DELGADILLO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972827, null, Mario DELGADILLO, null, null, null, null, null, null, 2026-04-14 14:17:57.435417+00, 2026-04-14 14:17:57.435417+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, laetitia.dapremont@aegide-international.com' sur le contact 'Christophe PARDIEU'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (9019428949, null, Christophe PARDIEU, Dylan Charron, laetitia.dapremont@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:57.502484+00, 2026-04-14 14:17:57.502484+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Tulio Ferreira'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5868181084, null, Tulio Ferreira, null, null, null, null, null, null, 2026-04-14 14:17:57.567112+00, 2026-04-14 14:17:57.567112+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Marcio Santin'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8986499899, null, Marcio Santin, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:57.634661+00, 2026-04-14 14:17:57.634661+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jessica CHAVES'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972843, null, Jessica CHAVES, null, null, null, null, null, null, 2026-04-14 14:17:57.702278+00, 2026-04-14 14:17:57.702278+00).'}
+Upsert dans contacts: 8936160688 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Elhadi A Sharif'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5816645552, null, Elhadi A Sharif, null, null, null, null, null, null, 2026-04-14 14:17:57.848386+00, 2026-04-14 14:17:57.848386+00).'}
+Upsert dans contacts: 8935929446 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Milton GORENA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972873, null, Milton GORENA, null, null, null, null, null, null, 2026-04-14 14:17:58.038511+00, 2026-04-14 14:17:58.038511+00).'}
+Upsert dans contacts: 8935739469 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Poozhithara ABDURAHMAN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5809583712, null, Poozhithara ABDURAHMAN, null, null, null, null, null, null, 2026-04-14 14:17:58.3685+00, 2026-04-14 14:17:58.3685+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Adam Naaman'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8934024360, null, Adam Naaman, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:17:58.469376+00, 2026-04-14 14:17:58.469376+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Olivier REBIBO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972911, null, Olivier REBIBO, null, null, null, null, null, null, 2026-04-14 14:17:58.567446+00, 2026-04-14 14:17:58.567446+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdeldjalil Soheib Defilia'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5809296261, null, Abdeldjalil Soheib Defilia, null, null, null, null, null, null, 2026-04-14 14:17:58.637686+00, 2026-04-14 14:17:58.637686+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Andrew Hepburn'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8924677902, null, Andrew Hepburn, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:58.712603+00, 2026-04-14 14:17:58.712603+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marcos GEREZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972593, null, Marcos GEREZ, null, null, null, null, null, null, 2026-04-14 14:17:58.784731+00, 2026-04-14 14:17:58.784731+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Claudio Guan├úes'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8924657115, null, Claudio Guan├úes, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:58.856683+00, 2026-04-14 14:17:58.856683+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Simone Trimarco'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5809095248, null, Simone Trimarco, null, null, null, null, null, null, 2026-04-14 14:17:58.922456+00, 2026-04-14 14:17:58.922456+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Luciano CALZA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971430, null, Luciano CALZA, null, null, null, null, null, null, 2026-04-14 14:17:58.988515+00, 2026-04-14 14:17:58.988515+00).'}
+Upsert dans contacts: 8904634559 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Lofti Eshekhe'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5809051669, null, Lofti Eshekhe, null, null, null, null, null, null, 2026-04-14 14:17:59.125816+00, 2026-04-14 14:17:59.125816+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Victor Soriano'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8894892696, null, Victor Soriano, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:59.192908+00, 2026-04-14 14:17:59.192908+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mario PAZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971829, null, Mario PAZ, null, null, null, null, null, null, 2026-04-14 14:17:59.254663+00, 2026-04-14 14:17:59.254663+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'MARCIO SANTOS'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8829866565, null, MARCIO SANTOS, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:59.323954+00, 2026-04-14 14:17:59.323954+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Anand GV'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5808946789, null, Anand GV, null, null, null, null, null, null, 2026-04-14 14:17:59.386811+00, 2026-04-14 14:17:59.386811+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Paul Goodfellow'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8829638222, null, Paul Goodfellow, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:17:59.449704+00, 2026-04-14 14:17:59.449704+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Raul KRASUK'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972491, null, Raul KRASUK, null, null, null, null, null, null, 2026-04-14 14:17:59.512364+00, 2026-04-14 14:17:59.512364+00).'}
+Upsert dans contacts: 8806101767 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Fernando Ortiz'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5808905947, null, Fernando Ortiz, null, null, null, null, null, null, 2026-04-14 14:17:59.657129+00, 2026-04-14 14:17:59.657129+00).'}
+Upsert dans contacts: 8806064339 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mart├¡n P├®rez Mayo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972618, null, Mart├¡n P├®rez Mayo, null, null, null, null, null, null, 2026-04-14 14:17:59.811023+00, 2026-04-14 14:17:59.811023+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Hend OTHMANI, Dylan Charron' sur le contact 'Christophe Philippe'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8804229350, null, Christophe Philippe, Hend OTHMANI, Dylan Charron, null, null, null, null, null, 2026-04-14 14:17:59.944053+00, 2026-04-14 14:17:59.944053+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Qasim Abid'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5808855447, null, Qasim Abid, null, null, null, null, null, null, 2026-04-14 14:18:00.008176+00, 2026-04-14 14:18:00.008176+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Adrien Fabiani'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788371874, null, Adrien Fabiani, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:00.078037+00, 2026-04-14 14:18:00.078037+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Herv├® GERBAUX'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (18317147604, null, Herv├® GERBAUX, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:18:00.147634+00, 2026-04-14 14:18:00.147634+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Yanira RAMIREZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972687, null, Yanira RAMIREZ, null, null, null, null, null, null, 2026-04-14 14:18:00.231279+00, 2026-04-14 14:18:00.231279+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Mr Gallais'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788331368, null, Mr Gallais, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:00.297451+00, 2026-04-14 14:18:00.297451+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Hakim Yuan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5808825753, null, Hakim Yuan, null, null, null, null, null, null, 2026-04-14 14:18:00.375506+00, 2026-04-14 14:18:00.375506+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Alison Nuzzo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788308346, null, Alison Nuzzo, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:00.440846+00, 2026-04-14 14:18:00.440846+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Gilberto RAFAINER'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972784, null, Gilberto RAFAINER, null, null, null, null, null, null, 2026-04-14 14:18:00.511715+00, 2026-04-14 14:18:00.511715+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Patrice Meschkutat'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788266643, null, Patrice Meschkutat, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:00.577905+00, 2026-04-14 14:18:00.577905+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mohamed Abdel Azim Adam M.Sc.'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (5808584055, null, Mohamed Abdel Azim Adam M.Sc., null, null, null, null, null, null, 2026-04-14 14:18:00.640938+00, 2026-04-14 14:18:00.640938+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Jean Emmanuel Blottiere'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788144939, null, Jean Emmanuel Blottiere, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:00.703869+00, 2026-04-14 14:18:00.703869+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Diego ECHENIQUE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971665, null, Diego ECHENIQUE, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:00.770877+00, 2026-04-14 14:18:00.770877+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Celine Fran├ºais'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788070237, null, Celine Fran├ºais, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:00.844859+00, 2026-04-14 14:18:00.844859+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Antonio Lameira'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4231201130, null, Antonio Lameira, null, null, null, null, null, null, 2026-04-14 14:18:00.907245+00, 2026-04-14 14:18:00.907245+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Hend OTHMANI, elise.marin@aegide-international.com' sur le contact 'Elina DE LA REBERDIERE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8788032954, null, Elina DE LA REBERDIERE, Hend OTHMANI, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:18:00.973023+00, 2026-04-14 14:18:00.973023+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ricardo BERRA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971803, null, Ricardo BERRA, null, null, null, null, null, null, 2026-04-14 14:18:01.04233+00, 2026-04-14 14:18:01.04233+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Hend OTHMANI' sur le contact 'Franck Leturc'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8787978385, null, Franck Leturc, elise.marin@aegide-international.com, Hend OTHMANI, null, null, null, null, null, 2026-04-14 14:18:01.113523+00, 2026-04-14 14:18:01.113523+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jose Maria'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4230494268, null, Jose Maria, null, null, null, null, null, null, 2026-04-14 14:18:01.178532+00, 2026-04-14 14:18:01.178532+00).'}
+Upsert dans contacts: 8787641915 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marcio Santos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971971, null, Marcio Santos, null, null, null, null, null, null, 2026-04-14 14:18:01.312385+00, 2026-04-14 14:18:01.312385+00).'}
+Upsert dans contacts: 8787580493 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Rahul Ratnapal'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4152312713, null, Rahul Ratnapal, null, null, null, null, null, null, 2026-04-14 14:18:01.446258+00, 2026-04-14 14:18:01.446258+00).'}
+Upsert dans contacts: 8787196209 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Fernando SOLANET'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972041, null, Fernando SOLANET, null, null, null, null, null, null, 2026-04-14 14:18:01.586972+00, 2026-04-14 14:18:01.586972+00).'}
+Upsert dans contacts: 8787023585 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Alfan'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4114212374, null, Alfan, null, null, null, null, null, null, 2026-04-14 14:18:01.715829+00, 2026-04-14 14:18:01.715829+00).'}
+Upsert dans contacts: 8786976678 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Eduardo Caballero'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972127, null, Eduardo Caballero, null, null, null, null, null, null, 2026-04-14 14:18:01.844775+00, 2026-04-14 14:18:01.844775+00).'}
+Upsert dans contacts: 8786873929 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Alex SOUSA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972546, null, Alex SOUSA, null, null, null, null, null, null, 2026-04-14 14:18:01.996507+00, 2026-04-14 14:18:01.996507+00).'}
+Upsert dans contacts: 8786645288 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Doug Greig'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4114063817, null, Doug Greig, null, null, null, null, null, null, 2026-04-14 14:18:02.140305+00, 2026-04-14 14:18:02.140305+00).'}
+Upsert dans contacts: 8786590924 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Fabian BOYANO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972594, null, Fabian BOYANO, null, null, null, null, null, null, 2026-04-14 14:18:02.282953+00, 2026-04-14 14:18:02.282953+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Hend OTHMANI, thibaut.jobard@8p2.fr' sur le contact 'Guy Laufer'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8786540108, null, Guy Laufer, Hend OTHMANI, thibaut.jobard@8p2.fr, null, null, null, null, null, 2026-04-14 14:18:02.348242+00, 2026-04-14 14:18:02.348242+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Kees VAN DE VREDE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4098618003, null, Kees VAN DE VREDE, null, null, null, null, null, null, 2026-04-14 14:18:02.409829+00, 2026-04-14 14:18:02.409829+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Hend OTHMANI, elise.marin@aegide-international.com' sur le contact 'Tonia Bianco'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8786492870, null, Tonia Bianco, Hend OTHMANI, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:18:02.475751+00, 2026-04-14 14:18:02.475751+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Edgar OSORIO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972634, null, Edgar OSORIO, null, null, null, null, null, null, 2026-04-14 14:18:02.538413+00, 2026-04-14 14:18:02.538413+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com, Dylan Charron' sur le contact 'Marine GUIOT'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8785883710, null, Marine GUIOT, elise.marin@aegide-international.com, Dylan Charron, null, null, null, null, null, 2026-04-14 14:18:02.602453+00, 2026-04-14 14:18:02.602453+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ali Mhamdi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4049941499, null, Ali Mhamdi, null, null, null, null, null, null, 2026-04-14 14:18:02.665537+00, 2026-04-14 14:18:02.665537+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Stephaine HERRERA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972810, null, Stephaine HERRERA, null, null, null, null, null, null, 2026-04-14 14:18:02.731635+00, 2026-04-14 14:18:02.731635+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, elise.marin@aegide-international.com' sur le contact 'Benoit COINTET'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8784544957, null, Benoit COINTET, Dylan Charron, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:18:02.80245+00, 2026-04-14 14:18:02.80245+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Khalid Elnour Abd Alla'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4049758076, null, Khalid Elnour Abd Alla, null, null, null, null, null, null, 2026-04-14 14:18:02.86808+00, 2026-04-14 14:18:02.86808+00).'}
+Upsert dans contacts: 8784527860 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdulazeez RAYIN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972848, null, Abdulazeez RAYIN, null, null, null, null, null, null, 2026-04-14 14:18:03.001343+00, 2026-04-14 14:18:03.001343+00).'}
+Upsert dans contacts: 8784469032 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ahmed MORSY'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4049738961, null, Ahmed MORSY, null, null, null, null, null, null, 2026-04-14 14:18:03.155194+00, 2026-04-14 14:18:03.155194+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'elise.marin@aegide-international.com' sur le contact 'Fr├®d├®ric GARCIN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8784461193, null, Fr├®d├®ric GARCIN, elise.marin@aegide-international.com, null, null, null, null, null, 2026-04-14 14:18:03.232021+00, 2026-04-14 14:18:03.232021+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Pedro Viveros'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973130, null, Pedro Viveros, null, null, null, null, null, null, 2026-04-14 14:18:03.298223+00, 2026-04-14 14:18:03.298223+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Revson De Souza Bezerra'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8776257497, null, Revson De Souza Bezerra, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:03.362654+00, 2026-04-14 14:18:03.362654+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Nguyen Thi Kim Ngoc'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4049722549, null, Nguyen Thi Kim Ngoc, null, null, null, null, null, null, 2026-04-14 14:18:03.430688+00, 2026-04-14 14:18:03.430688+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Hanief PawirotaroenoNew name'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8744701343, null, Hanief PawirotaroenoNew name, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:03.492725+00, 2026-04-14 14:18:03.492725+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mariano Romero de Haz'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973149, null, Mariano Romero de Haz, null, null, null, null, null, null, 2026-04-14 14:18:03.554228+00, 2026-04-14 14:18:03.554228+00).'}
+Upsert dans contacts: 8732636667 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Simran KAUR'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (4049711841, null, Simran KAUR, null, null, null, null, null, null, 2026-04-14 14:18:03.689927+00, 2026-04-14 14:18:03.689927+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Diego Vicke'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8713392796, null, Diego Vicke, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:03.753576+00, 2026-04-14 14:18:03.753576+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Juan Ignacio MAESTRI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971349, null, Juan Ignacio MAESTRI, null, null, null, null, null, null, 2026-04-14 14:18:03.819832+00, 2026-04-14 14:18:03.819832+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'MAURICIO DAVIDOVICH'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8711866014, null, MAURICIO DAVIDOVICH, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:03.886026+00, 2026-04-14 14:18:03.886026+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Fiaz Mahamood'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3875162714, null, Fiaz Mahamood, null, null, null, null, null, null, 2026-04-14 14:18:03.950092+00, 2026-04-14 14:18:03.950092+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Jos├® Antonio De Biase'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8711567287, null, Jos├® Antonio De Biase, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:04.021694+00, 2026-04-14 14:18:04.021694+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Aida Tanirbergenova'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971432, null, Aida Tanirbergenova, null, null, null, null, null, null, 2026-04-14 14:18:04.088217+00, 2026-04-14 14:18:04.088217+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Anderson Santos'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8702915867, null, Anderson Santos, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:04.153774+00, 2026-04-14 14:18:04.153774+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mohammad Alawneh'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3875138299, null, Mohammad Alawneh, null, null, null, null, null, null, 2026-04-14 14:18:04.217492+00, 2026-04-14 14:18:04.217492+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Kimberly Monteyne'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8702816799, null, Kimberly Monteyne, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:04.285021+00, 2026-04-14 14:18:04.285021+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Antonio CUICA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971632, null, Antonio CUICA, null, null, null, null, null, null, 2026-04-14 14:18:04.350116+00, 2026-04-14 14:18:04.350116+00).'}
+Upsert dans contacts: 8670500701 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Michael Piber'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3813014598, null, Michael Piber, null, null, null, null, null, null, 2026-04-14 14:18:04.477668+00, 2026-04-14 14:18:04.477668+00).'}
+Upsert dans contacts: 8670461743 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Bartosz MIROWSKI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972988, null, Bartosz MIROWSKI, null, null, null, null, null, null, 2026-04-14 14:18:04.609056+00, 2026-04-14 14:18:04.609056+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Maxime Plantey' sur le contact 'Fran├ºois MARTIN'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8656608977, null, Fran├ºois MARTIN, Maxime Plantey, null, null, null, null, null, 2026-04-14 14:18:04.679956+00, 2026-04-14 14:18:04.679956+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Saku VK'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3804419510, null, Saku VK, null, null, null, null, null, null, 2026-04-14 14:18:04.774465+00, 2026-04-14 14:18:04.774465+00).'}
+Upsert dans contacts: 8582477496 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdelaziz BOUAKKAZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973009, null, Abdelaziz BOUAKKAZ, null, null, null, null, null, null, 2026-04-14 14:18:04.916467+00, 2026-04-14 14:18:04.916467+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Wafik SELIM'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3803862162, null, Wafik SELIM, null, null, null, null, null, null, 2026-04-14 14:18:04.979387+00, 2026-04-14 14:18:04.979387+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Daniela Makowisk'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8561789274, null, Daniela Makowisk, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:05.049621+00, 2026-04-14 14:18:05.049621+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Emidio DERAMO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973020, null, Emidio DERAMO, null, null, null, null, null, null, 2026-04-14 14:18:05.114323+00, 2026-04-14 14:18:05.114323+00).'}
+Upsert dans contacts: 8561501124 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Othman BOUSHOFA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3789448791, null, Othman BOUSHOFA, null, null, null, null, null, null, 2026-04-14 14:18:05.242747+00, 2026-04-14 14:18:05.242747+00).'}
+Upsert dans contacts: 8561475640 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Mohamed Lakehal'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973143, null, Mohamed Lakehal, null, null, null, null, null, null, 2026-04-14 14:18:05.368265+00, 2026-04-14 14:18:05.368265+00).'}
+Upsert dans contacts: 8560417357 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Till Huesecken'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3789439823, null, Till Huesecken, null, null, null, null, null, null, 2026-04-14 14:18:05.491968+00, 2026-04-14 14:18:05.491968+00).'}
+Upsert dans contacts: 9107214911 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Okezie NWOSU'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973195, null, Okezie NWOSU, null, null, null, null, null, null, 2026-04-14 14:18:05.623274+00, 2026-04-14 14:18:05.623274+00).'}
+Upsert dans contacts: 8560339456 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Namer SALEH'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3789407737, null, Namer SALEH, null, null, null, null, null, null, 2026-04-14 14:18:05.760604+00, 2026-04-14 14:18:05.760604+00).'}
+Upsert dans contacts: 8560336662 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jesus G. Valenzuela M.'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230973218, null, Jesus G. Valenzuela M., null, null, null, null, null, null, 2026-04-14 14:18:05.882289+00, 2026-04-14 14:18:05.882289+00).'}
+Upsert dans contacts: 8560204155 (OK)
+Upsert dans contacts: 3789396507 (OK)
+Upsert dans contacts: 8560193073 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Sujith SP'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972619, null, Sujith SP, null, null, null, null, null, null, 2026-04-14 14:18:06.153816+00, 2026-04-14 14:18:06.153816+00).'}
+Upsert dans contacts: 8560158175 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ann Marjorie Ferrera'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3317168030, null, Ann Marjorie Ferrera, null, null, null, null, null, null, 2026-04-14 14:18:06.276827+00, 2026-04-14 14:18:06.276827+00).'}
+Upsert dans contacts: 8560148736 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdulfatah R. Mohalhel'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971265, null, Abdulfatah R. Mohalhel, null, null, null, null, null, null, 2026-04-14 14:18:06.410489+00, 2026-04-14 14:18:06.410489+00).'}
+Upsert dans contacts: 8560113984 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Carolina MORALES'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3309162634, null, Carolina MORALES, null, null, null, null, null, null, 2026-04-14 14:18:06.539425+00, 2026-04-14 14:18:06.539425+00).'}
+Upsert dans contacts: 8560106705 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jean Calvi'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971426, null, Jean Calvi, null, null, null, null, null, null, 2026-04-14 14:18:06.665112+00, 2026-04-14 14:18:06.665112+00).'}
+Upsert dans contacts: 8560091969 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Abdelhak NEZLI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3270445693, null, Abdelhak NEZLI, null, null, null, null, null, null, 2026-04-14 14:18:06.797085+00, 2026-04-14 14:18:06.797085+00).'}
+Upsert dans contacts: 8560087715 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'OTHMANI-MARABOUT Abdelhafid'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3270558062, null, OTHMANI-MARABOUT Abdelhafid, null, null, null, null, null, null, 2026-04-14 14:18:06.925826+00, 2026-04-14 14:18:06.925826+00).'}
+Upsert dans contacts: 8560076604 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'David Bravo'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971921, null, David Bravo, null, null, null, null, null, null, 2026-04-14 14:18:07.054808+00, 2026-04-14 14:18:07.054808+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Celio Mauro Aguiar Ferreira' sur le contact 'Ximena Kinderknecht'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8537789847, null, Ximena Kinderknecht, Celio Mauro Aguiar Ferreira, null, null, null, null, null, 2026-04-14 14:18:07.121189+00, 2026-04-14 14:18:07.121189+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Marco Fernandez'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3270439840, null, Marco Fernandez, null, null, null, null, null, null, 2026-04-14 14:18:07.184411+00, 2026-04-14 14:18:07.184411+00).'}
+Upsert dans contacts: 8536674182 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jesus PEREIRA'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972223, null, Jesus PEREIRA, null, null, null, null, null, null, 2026-04-14 14:18:07.306657+00, 2026-04-14 14:18:07.306657+00).'}
+Upsert dans contacts: 8536657600 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Miguel BRADSHAW'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3270436180, null, Miguel BRADSHAW, null, null, null, null, null, null, 2026-04-14 14:18:07.429187+00, 2026-04-14 14:18:07.429187+00).'}
+Upsert dans contacts: 8536639995 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Claudio Sternberg'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972326, null, Claudio Sternberg, null, null, null, null, null, null, 2026-04-14 14:18:07.559827+00, 2026-04-14 14:18:07.559827+00).'}
+Upsert dans contacts: 8536535157 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Randy DITMORE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3186771051, null, Randy DITMORE, null, null, null, null, null, null, 2026-04-14 14:18:07.68148+00, 2026-04-14 14:18:07.68148+00).'}
+Upsert dans contacts: 8536510199 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Scott Lind'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972419, null, Scott Lind, null, null, null, null, null, null, 2026-04-14 14:18:07.808839+00, 2026-04-14 14:18:07.808839+00).'}
+Upsert dans contacts: 8536503120 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'A.Bouakkaz'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3159548145, null, A.Bouakkaz, null, null, null, null, null, null, 2026-04-14 14:18:07.936357+00, 2026-04-14 14:18:07.936357+00).'}
+Upsert dans contacts: 8536291112 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Eduardo Estrella'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972457, null, Eduardo Estrella, null, null, null, null, null, null, 2026-04-14 14:18:08.082115+00, 2026-04-14 14:18:08.082115+00).'}
+Upsert dans contacts: 8536278740 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'V.K. Saju'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3159534075, null, V.K. Saju, null, null, null, null, null, null, 2026-04-14 14:18:08.211675+00, 2026-04-14 14:18:08.211675+00).'}
+Upsert dans contacts: 8536257737 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Jacques Salies'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972500, null, Jacques Salies, null, null, null, null, null, null, 2026-04-14 14:18:08.335467+00, 2026-04-14 14:18:08.335467+00).'}
+Upsert dans contacts: 8536255179 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Merkhat Brekeyev'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3159523929, null, Merkhat Brekeyev, null, null, null, null, null, null, 2026-04-14 14:18:08.465422+00, 2026-04-14 14:18:08.465422+00).'}
+Upsert dans contacts: 8536198130 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'John Tominey'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972661, null, John Tominey, null, null, null, null, null, null, 2026-04-14 14:18:08.617808+00, 2026-04-14 14:18:08.617808+00).'}
+Upsert dans contacts: 8536189573 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Harsh TIWARI'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3159509238, null, Harsh TIWARI, null, null, null, null, null, null, 2026-04-14 14:18:08.762016+00, 2026-04-14 14:18:08.762016+00).'}
+Upsert dans contacts: 8536162052 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Leidy DOMINGUEZ'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972691, null, Leidy DOMINGUEZ, null, null, null, null, null, null, 2026-04-14 14:18:08.894672+00, 2026-04-14 14:18:08.894672+00).'}
+Upsert dans contacts: 8536158978 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ali Abdalla'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (3101556151, null, Ali Abdalla, null, null, null, null, null, null, 2026-04-14 14:18:09.015608+00, 2026-04-14 14:18:09.015608+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'Dylan Charron, Maxime Plantey' sur le contact 'Nicolas ROCHE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (8536128508, null, Nicolas ROCHE, Dylan Charron, Maxime Plantey, null, null, null, null, null, 2026-04-14 14:18:09.075457+00, 2026-04-14 14:18:09.075457+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Candido Neto'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972736, null, Candido Neto, null, null, null, null, null, null, 2026-04-14 14:18:09.139579+00, 2026-04-14 14:18:09.139579+00).'}
+Upsert dans contacts: 8536096643 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Ahmed Fathy Salem '
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2907619056, null, Ahmed Fathy Salem , null, null, null, null, null, null, 2026-04-14 14:18:09.270111+00, 2026-04-14 14:18:09.270111+00).'}
+Upsert dans contacts: 8536082577 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'J├®sus Valenzuela'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230972765, null, J├®sus Valenzuela, null, null, null, null, null, null, 2026-04-14 14:18:09.39601+00, 2026-04-14 14:18:09.39601+00).'}
+Upsert dans contacts: 8536077498 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Uwe Hellner'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2893193609, null, Uwe Hellner, null, null, null, null, null, null, 2026-04-14 14:18:09.514289+00, 2026-04-14 14:18:09.514289+00).'}
+Upsert dans contacts: 8535963742 (OK)
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'David LABESQUE'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2230971834, null, David LABESQUE, null, null, null, null, null, null, 2026-04-14 14:18:09.637598+00, 2026-04-14 14:18:09.637598+00).'}
+WARN: Aucun user_id trouv├® pour Account Manager 'None' sur le contact 'Procurement KJO'
+Erreur upsert Supabase (contacts): {'message': 'null value in column "user_id" of relation "contacts" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (2893175703, null, Procurement KJO, null, null, null, null, null, null, 2026-04-14 14:18:09.701111+00, 2026-04-14 14:18:09.701111+00).'}
+Upsert dans contacts: 8535930365 (OK)
+Import termin├®.
