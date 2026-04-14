@@ -56,10 +56,21 @@ PERSON_NAME_TO_EMAIL = {
 }
 
 USER_MAPPING = {}
+USER_NAME_MAPPING = {}
+
+
+def normalize_name(text: str | None):
+    if not text:
+        return ""
+    normalized = text.strip().lower()
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return normalized
 
 
 def get_user_mapping(supabase: Client):
     USER_MAPPING.clear()
+    USER_NAME_MAPPING.clear()
     try:
         result = supabase.auth.admin.list_users()
         users = None
@@ -78,11 +89,21 @@ def get_user_mapping(supabase: Client):
             if isinstance(user, dict):
                 email = user.get("email")
                 user_id = user.get("id")
+                metadata = user.get("user_metadata") or {}
             else:
                 email = getattr(user, "email", None)
                 user_id = getattr(user, "id", None)
+                metadata = getattr(user, "user_metadata", None) or {}
+
             if email and user_id:
-                USER_MAPPING[email] = str(user_id)
+                lower_email = email.lower()
+                USER_MAPPING[lower_email] = str(user_id)
+                display_name = metadata.get("full_name") if isinstance(metadata, dict) else None
+                if display_name:
+                    USER_NAME_MAPPING[normalize_name(display_name)] = lower_email
+                else:
+                    local_part = lower_email.split("@")[0].replace(".", " ").replace("_", " ")
+                    USER_NAME_MAPPING[normalize_name(local_part)] = lower_email
 
         print(f"Récupéré {len(USER_MAPPING)} utilisateurs Supabase.")
     except Exception as e:
@@ -90,6 +111,10 @@ def get_user_mapping(supabase: Client):
         USER_MAPPING.update({
             "dylan.charron@dolfines.com": "uuid-dylan",
             "hend.othmani@dolfines.com": "uuid-hend",
+        })
+        USER_NAME_MAPPING.update({
+            "dylan charron": "dylan.charron@dolfines.com",
+            "hend othmani": "hend.othmani@dolfines.com",
         })
 
 
@@ -124,7 +149,7 @@ def get_monday_data(board_id, query_fields):
     return {"items": items, "raw": result}
 
 
-def normalize_column_title(title: str):
+def normalize_column_title(title: str | None):
     return title.strip().lower() if title else ""
 
 
@@ -179,27 +204,110 @@ def get_account_manager_value(item):
     return None
 
 
+def extract_emails(value: str):
+    if not value:
+        return []
+    return re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", value)
+
+
+def get_column_email(item, column_title):
+    raw_text = get_column_text(item, column_title)
+    if raw_text:
+        emails = extract_emails(raw_text)
+        if emails:
+            return emails[0]
+
+    json_value = get_column_json(item, column_title)
+    if isinstance(json_value, dict):
+        for key in ("email", "emails", "text"):
+            if key in json_value and isinstance(json_value[key], str):
+                emails = extract_emails(json_value[key])
+                if emails:
+                    return emails[0]
+        if "personsAndTeams" in json_value:
+            persons = json_value.get("personsAndTeams")
+            if isinstance(persons, list):
+                for person in persons:
+                    if isinstance(person, dict):
+                        email = person.get("email")
+                        if email:
+                            return email
+    return None
+
+
+def collect_board_manager_emails(board_id):
+    query_fields = """
+    column_values {
+        id
+        column {
+            title
+        }
+        text
+        value
+    }
+    """
+    boards = get_monday_data(board_id, query_fields)
+    found_emails = set()
+    if not boards or not boards.get("items"):
+        return found_emails
+
+    for item in boards["items"]:
+        possible_titles = [
+            "Account Manager",
+            "Responsable Commercial",
+            "Responsable Client",
+            "Account Owner",
+            "Commercial",
+            "Owner"
+        ]
+        for title in possible_titles:
+            email = get_column_email(item, title)
+            if email:
+                found_emails.add(email.lower())
+
+    return found_emails
+
+
+def print_manager_emails():
+    print("Emails trouvés pour les managers / owners sur le board Clients :")
+    clients_emails = collect_board_manager_emails(CLIENTS_BOARD_ID)
+    for email in sorted(clients_emails):
+        print(f"- {email}")
+
+    print("\nEmails trouvés pour les managers / owners sur le board Contacts :")
+    contacts_emails = collect_board_manager_emails(CONTACTS_BOARD_ID)
+    for email in sorted(contacts_emails):
+        print(f"- {email}")
+
+    if not clients_emails and not contacts_emails:
+        print("Aucun email détecté dans les colonnes de manager/owner. Si ces colonnes sont des personnes Monday, elles ne fournissent souvent pas l'email directement.")
+
+
 def resolve_account_manager_user_id(account_manager_value):
     if not account_manager_value:
         return None
     value = account_manager_value.strip()
-    if "@" in value:
-        return USER_MAPPING.get(value)
+    lower_value = value.lower()
+    if "@" in lower_value:
+        return USER_MAPPING.get(lower_value)
 
     email = PERSON_NAME_TO_EMAIL.get(value)
     if email:
-        return USER_MAPPING.get(email)
+        return USER_MAPPING.get(email.lower())
 
-    normalized_parts = [p for p in re.split(r"[^\w]+", value.lower()) if p]
+    normalized_value = normalize_name(value)
+    if normalized_value in USER_NAME_MAPPING:
+        return USER_MAPPING.get(USER_NAME_MAPPING[normalized_value])
+
+    tokens = normalized_value.split()
+    for name_key, email in USER_NAME_MAPPING.items():
+        if all(token in name_key for token in tokens):
+            return USER_MAPPING.get(email)
+
     for user_email, user_id in USER_MAPPING.items():
-        lower_email = user_email.lower()
-        if all(part in lower_email for part in normalized_parts):
+        if all(token in user_email for token in tokens):
             return user_id
 
-    normalized_value = value.lower().replace(" ", ".")
-    for user_email, user_id in USER_MAPPING.items():
-        if normalized_value in user_email.lower():
-            return user_id
     return None
 
 
