@@ -29,14 +29,8 @@ ALTER TABLE public.accounts ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "users_own_accounts"
   ON public.accounts
   FOR ALL
-  USING  (
-    auth.uid() = user_id
-    OR auth.uid() = ANY (assigned_user_ids)
-  )
-  WITH CHECK (
-    auth.uid() = user_id
-    OR auth.uid() = ANY (assigned_user_ids)
-  );
+  USING  (auth.uid() IS NOT NULL)
+  WITH CHECK (auth.uid() IS NOT NULL);
 
 -- 3. Index pour les performances
 CREATE INDEX IF NOT EXISTS accounts_user_id_idx ON public.accounts (user_id);
