@@ -3,6 +3,7 @@ import requests
 import json
 import re
 import time
+import unicodedata
 from supabase import create_client, Client
 
 # Configuration Monday.com
@@ -64,13 +65,44 @@ ACCOUNT_MANAGER_TITLES = [
 
 # Mappings de noms Monday vers emails/email vers user_ids
 PERSON_NAME_TO_EMAIL = {
-    "Hend OTHMANI": "hend.othmani@dolfines.com",
-    "Laetitia DAPREMONT": "laetitia.dapremont@aegide-international.com",
-    "Dylan CHARRON": "dylan.charron@dolfines.com",
-    "Nicolas LECOEUR": "nicolas.lecoeur@8p2.fr",
-    "Ines DECHAUT": "ines.dechaut@aegide-international.com",
-
-    # Ajoutez d'autres mappings si nécessaire.
+    # Format Monday « Prénom NOM » (nom en majuscules)
+    "Hend OTHMANI":           "hend.othmani@dolfines.com",
+    "Dylan CHARRON":          "dylan.charron@dolfines.com",
+    "Ines DECHAUT":           "ines.dechaut@aegide-international.com",
+    "Laetitia DAPREMONT":     "laetitia.dapremont@aegide-international.com",
+    "Nicolas LECOEUR":        "nicolas.lecoeur@8p2.fr",
+    "Richard MUSI":           "richard.musi@8p2.fr",
+    "Pierre DEVELAY":         "pierre.develay@dolfines.com",
+    "Hugo PAGOLA":            "hugo.pagola@aegide-international.com",
+    "Raphael GABRIELS":       "raphael.gabriels@dolfines.com",
+    "Raphaël GABRIELS":       "raphael.gabriels@dolfines.com",
+    "Khalil BADRI":           "khalil.badri@aegide-international.com",
+    "Julia LEFLOCH":          "julia.lefloch@aegide-international.com",
+    "Julia LE FLOCH":         "julia.lefloch@aegide-international.com",
+    "Dimitri FAY":            "dimitri.fay@dolfines.com",
+    "Adrien BOURDON":         "adrien.bourdon@dolfines.com",
+    "Elise MARIN":            "elise.marin@aegide-international.com",
+    "Élise MARIN":            "elise.marin@aegide-international.com",
+    "Maxime PLANTEY":         "maxime.plantey@dolfines.com",
+    # Variantes capitalisées (Prénom Nom)
+    "Hend Othmani":           "hend.othmani@dolfines.com",
+    "Dylan Charron":          "dylan.charron@dolfines.com",
+    "Ines Dechaut":           "ines.dechaut@aegide-international.com",
+    "Laetitia Dapremont":     "laetitia.dapremont@aegide-international.com",
+    "Nicolas Lecoeur":        "nicolas.lecoeur@8p2.fr",
+    "Richard Musi":           "richard.musi@8p2.fr",
+    "Pierre Develay":         "pierre.develay@dolfines.com",
+    "Hugo Pagola":            "hugo.pagola@aegide-international.com",
+    "Raphael Gabriels":       "raphael.gabriels@dolfines.com",
+    "Raphaël Gabriels":       "raphael.gabriels@dolfines.com",
+    "Khalil Badri":           "khalil.badri@aegide-international.com",
+    "Julia Lefloch":          "julia.lefloch@aegide-international.com",
+    "Julia Le Floch":         "julia.lefloch@aegide-international.com",
+    "Dimitri Fay":            "dimitri.fay@dolfines.com",
+    "Adrien Bourdon":         "adrien.bourdon@dolfines.com",
+    "Elise Marin":            "elise.marin@aegide-international.com",
+    "Élise Marin":            "elise.marin@aegide-international.com",
+    "Maxime Plantey":         "maxime.plantey@dolfines.com",
 }
 
 USER_MAPPING = {}
@@ -80,7 +112,10 @@ USER_NAME_MAPPING = {}
 def normalize_name(text: str | None):
     if not text:
         return ""
-    normalized = text.strip().lower()
+    # Strip accents (é→e, ë→e, î→i, etc.) before regex so "Raphaël" → "raphael"
+    normalized = unicodedata.normalize("NFD", text.strip())
+    normalized = "".join(c for c in normalized if unicodedata.category(c) != "Mn")
+    normalized = normalized.lower()
     normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
     normalized = re.sub(r"\s+", " ", normalized).strip()
     return normalized
@@ -347,6 +382,15 @@ def resolve_account_manager_user_ids(account_manager_value):
             mapped_email = PERSON_NAME_TO_EMAIL.get(raw_value)
             if mapped_email:
                 matched_user_id = USER_MAPPING.get(mapped_email.lower())
+
+        # Lookup normalisé dans PERSON_NAME_TO_EMAIL (insensible à la casse/accents/format)
+        if not matched_user_id:
+            normalized_value = normalize_name(raw_value)
+            for name_key, email in PERSON_NAME_TO_EMAIL.items():
+                if normalize_name(name_key) == normalized_value:
+                    matched_user_id = USER_MAPPING.get(email.lower())
+                    if matched_user_id:
+                        break
 
         if not matched_user_id:
             normalized_value = normalize_name(raw_value)
