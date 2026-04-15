@@ -2,6 +2,7 @@
 -- Migration : accès admin pour PDG et Head of Strategy & Sales
 -- adrien.bourdon@dolfines.com  (PDG)
 -- pierre.develay@dolfines.com  (Head of Strategy & Sales)
+-- alexia.leclerc@dolfines.com
 --
 -- Ces deux utilisateurs voient l'ensemble des comptes et contacts.
 -- Approche : flag app_metadata.role = 'admin' + RLS adaptée.
@@ -12,7 +13,8 @@ UPDATE auth.users
 SET raw_app_meta_data = raw_app_meta_data || '{"role": "admin"}'::jsonb
 WHERE email IN (
   'adrien.bourdon@dolfines.com',
-  'pierre.develay@dolfines.com'
+  'pierre.develay@dolfines.com',
+  'alexia.leclerc@dolfines.com'
 );
 
 -- 2. RLS accounts : owner, assigné, OU admin
