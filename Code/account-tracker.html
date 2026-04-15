@@ -56,7 +56,6 @@
         <h1>Account Tracker</h1>
         <p>Vue d'ensemble de tous les comptes et de l'avancement des 25 actions</p>
       </div>
-      <button class="btn btn-primary" style="margin-left:auto;" onclick="openNewAccountModal()">+ Nouveau compte</button>
     </div>
 
     <section class="section-intro">
@@ -394,14 +393,6 @@
 
 
     /* â”€â”€ Modal â”€â”€ */
-    function openNewAccountModal() {
-      editingId = null;
-      document.getElementById('modalTitle').textContent = 'Nouveau compte';
-      ['f_name','f_owner','f_icp','f_target','f_achieved','f_comments'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('f_tier').value = 'Key';
-      document.getElementById('accountModal').classList.add('open');
-    }
-
     function openEditModal(id) {
       const acc = getAccountById(id);
       if (!acc) return;
