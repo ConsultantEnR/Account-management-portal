@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS public.accounts (
   created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 2. Row Level Security (chaque user voit uniquement ses comptes)
+-- 2. Row Level Security (owner, assigné, ou admin)
 ALTER TABLE public.accounts ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS "users_own_accounts" ON public.accounts;
@@ -33,10 +33,12 @@ CREATE POLICY "users_own_accounts"
   USING  (
     auth.uid() = user_id
     OR auth.uid() = ANY (assigned_user_ids)
+    OR (auth.jwt() -> 'app_metadata' ->> 'role') = 'admin'
   )
   WITH CHECK (
     auth.uid() = user_id
     OR auth.uid() = ANY (assigned_user_ids)
+    OR (auth.jwt() -> 'app_metadata' ->> 'role') = 'admin'
   );
 
 -- 3. Index pour les performances
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS public.contacts (
   updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 5. Row Level Security pour contacts (owner OU utilisateur assigné)
+-- 5. Row Level Security pour contacts (owner, assigné, ou admin)
 ALTER TABLE public.contacts ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS "users_own_contacts" ON public.contacts;
@@ -72,10 +74,12 @@ CREATE POLICY "users_own_contacts"
   USING  (
     auth.uid() = user_id
     OR auth.uid() = ANY (assigned_user_ids)
+    OR (auth.jwt() -> 'app_metadata' ->> 'role') = 'admin'
   )
   WITH CHECK (
     auth.uid() = user_id
     OR auth.uid() = ANY (assigned_user_ids)
+    OR (auth.jwt() -> 'app_metadata' ->> 'role') = 'admin'
   );
 
 -- 6. Index pour les performances
