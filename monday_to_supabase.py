@@ -66,6 +66,9 @@ ACCOUNT_MANAGER_TITLES = [
 # Mappings de noms Monday vers emails/email vers user_ids
 PERSON_NAME_TO_EMAIL = {
     # Format Monday « Prénom NOM » (nom en majuscules)
+    "Celio Mauro Aguiar Ferreira": "celio.aguiar@dolfines.com",
+    "Célio Mauro Aguiar Ferreira": "celio.aguiar@dolfines.com",
+    "Celio AGUIAR":           "celio.aguiar@dolfines.com",
     "Hend OTHMANI":           "hend.othmani@dolfines.com",
     "Dylan CHARRON":          "dylan.charron@dolfines.com",
     "Ines DECHAUT":           "ines.dechaut@aegide-international.com",
@@ -81,6 +84,7 @@ PERSON_NAME_TO_EMAIL = {
     "Julia LE FLOCH":         "julia.lefloch@aegide-international.com",
     "Dimitri FAY":            "dimitri.fay@dolfines.com",
     "Adrien BOURDON":         "adrien.bourdon@dolfines.com",
+    "Adrien BOURDON-FENIOU":  "adrien.bourdon@dolfines.com",
     "Elise MARIN":            "elise.marin@aegide-international.com",
     "Élise MARIN":            "elise.marin@aegide-international.com",
     "Maxime PLANTEY":         "maxime.plantey@dolfines.com",
@@ -100,6 +104,7 @@ PERSON_NAME_TO_EMAIL = {
     "Julia Le Floch":         "julia.lefloch@aegide-international.com",
     "Dimitri Fay":            "dimitri.fay@dolfines.com",
     "Adrien Bourdon":         "adrien.bourdon@dolfines.com",
+    "Adrien Bourdon-Feniou":  "adrien.bourdon@dolfines.com",
     "Elise Marin":            "elise.marin@aegide-international.com",
     "Élise Marin":            "elise.marin@aegide-international.com",
     "Maxime Plantey":         "maxime.plantey@dolfines.com",
